@@ -733,7 +733,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
 
         {/* TAB 4: QUICK ADD */}
         {activeTab === 'quick-add' && (
-          <div className="card-fintech-hero max-w-2xl mx-auto w-full p-5 sm:p-7 rounded-[38px] border border-white/[0.25] border-t-white/[0.75] space-y-4 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_2px_2px_rgba(255,255,255,0.65),inset_0_1.5px_0.5px_rgba(255,255,255,0.50),0_0_32px_rgba(255,255,255,0.06)]">
+          <div className="card-fintech-hero max-w-2xl mx-auto w-full p-5 sm:p-7 rounded-[30px] border border-white/[0.25] border-t-white/[0.75] space-y-4 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_2px_2px_rgba(255,255,255,0.65),inset_0_1.5px_0.5px_rgba(255,255,255,0.50),0_0_32px_rgba(255,255,255,0.06)]">
             <div className="flex items-center gap-2">
               <span className="p-2 rounded-xl bg-white/[0.08] border border-white/10 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
                 <Flame size={16} />

@@ -66,7 +66,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
 
   // Empty state when nothing has been logged yet for the day
   const renderEmptyState = () => (
-    <div className="panel-fintech-history rounded-[38px] p-6 sm:p-8 text-center flex flex-col items-center justify-center select-none">
+    <div className="panel-fintech-history rounded-[28px] p-6 sm:p-8 text-center flex flex-col items-center justify-center select-none">
       <div className="chip-circular-gloss w-14 h-14 mb-3 text-zinc-300">
         <Utensils size={24} />
       </div>
@@ -99,7 +99,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
     }
 
     return (
-      <div className="w-full panel-fintech-history rounded-[38px] p-4 sm:p-5 select-none space-y-4">
+      <div className="w-full panel-fintech-history rounded-[28px] p-4 sm:p-5 select-none space-y-4">
         {/* Panel Header matching Fintech "History / Today" */}
         <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
           <div>
@@ -205,7 +205,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
     }
 
     return (
-      <div className="w-full panel-fintech-history rounded-[38px] p-6 select-none space-y-6">
+      <div className="w-full panel-fintech-history rounded-[28px] p-6 select-none space-y-6">
         {/* Panel Header matching Fintech "History / Today" */}
         <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
           <div>
