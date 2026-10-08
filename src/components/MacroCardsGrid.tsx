@@ -67,25 +67,6 @@ const StraightRadarBar: React.FC<StraightRadarBarProps> = ({ percent, id }) => {
         className="w-full h-full block overflow-visible"
       >
         <defs>
-          {/* Diagonal Cross-Line Pattern (Pure White stripes at 45°) matching Calorie Arc Gauge */}
-          <pattern
-            id={`radarStripes-${id}`}
-            patternUnits="userSpaceOnUse"
-            width="10"
-            height="10"
-            patternTransform="rotate(45)"
-          >
-            <rect width="10" height="10" fill="rgba(255, 255, 255, 0.04)" />
-            <line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="10"
-              stroke="#FFFFFF"
-              strokeWidth="2.4"
-              strokeOpacity="0.45"
-            />
-          </pattern>
           <filter id={`ballShadow-${id}`} x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow dx="0" dy="1.5" stdDeviation="2" floodColor="#000000" floodOpacity="0.8" />
           </filter>
@@ -94,31 +75,20 @@ const StraightRadarBar: React.FC<StraightRadarBarProps> = ({ percent, id }) => {
           </clipPath>
         </defs>
 
-        {/* Base Track Border & Background */}
+        {/* Base Track Border & Background (Clean solid dark track) */}
         <rect
           x={padX}
           y={trackY}
           width={trackW}
           height={trackH}
           rx={rx}
-          fill="rgba(255, 255, 255, 0.06)"
-          stroke="rgba(255, 255, 255, 0.12)"
+          fill="#121319"
+          stroke="rgba(255, 255, 255, 0.08)"
           strokeWidth="1"
         />
 
         {/* Inside Track (Clipped by Pill) */}
         <g clipPath={`url(#trackClip-${id})`}>
-          {/* Remainder Diagonal Stripes */}
-          {clampedPercent < 100 && (
-            <rect
-              x={padX}
-              y={trackY}
-              width={trackW}
-              height={trackH}
-              fill={`url(#radarStripes-${id})`}
-            />
-          )}
-
           {/* Solid White Progress Fill (Rounded cap) */}
           {clampedPercent > 0 && (
             <rect
@@ -231,54 +201,25 @@ const CompactRadarBar: React.FC<CompactRadarBarProps> = ({ percent, id }) => {
         className="w-full h-full block overflow-visible"
       >
         <defs>
-          <pattern
-            id={`compactStripes-${id}`}
-            patternUnits="userSpaceOnUse"
-            width="6"
-            height="6"
-            patternTransform="rotate(45)"
-          >
-            <rect width="6" height="6" fill="rgba(255, 255, 255, 0.04)" />
-            <line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="6"
-              stroke="#FFFFFF"
-              strokeWidth="1.6"
-              strokeOpacity="0.45"
-            />
-          </pattern>
           <clipPath id={`compactClip-${id}`}>
             <rect x={padX} y={trackY} width={trackW} height={trackH} rx={rx} />
           </clipPath>
         </defs>
 
-        {/* Base Track */}
+        {/* Base Track (Clean solid dark track) */}
         <rect
           x={padX}
           y={trackY}
           width={trackW}
           height={trackH}
           rx={rx}
-          fill="rgba(255, 255, 255, 0.06)"
-          stroke="rgba(255, 255, 255, 0.12)"
+          fill="#121319"
+          stroke="rgba(255, 255, 255, 0.08)"
           strokeWidth="0.8"
         />
 
         {/* Inside Track (Clipped by Pill) */}
         <g clipPath={`url(#compactClip-${id})`}>
-          {/* Remainder Striped Buffer */}
-          {clampedPercent < 100 && (
-            <rect
-              x={padX}
-              y={trackY}
-              width={trackW}
-              height={trackH}
-              fill={`url(#compactStripes-${id})`}
-            />
-          )}
-
           {/* Solid White Progress Fill */}
           {clampedPercent > 0 && (
             <rect
@@ -401,7 +342,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3.5 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.04)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.02)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.42] hover:border-white/[0.3] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.40)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[118px] sm:min-h-[136px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3.5 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.45] hover:border-white/[0.25] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[118px] sm:min-h-[136px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Tap to view ${macro.label} on radar arc`}
           >
             {/* Top: Label on Left + Circular Glossy Icon Chip on Right (matching reference circular badges) */}
@@ -464,7 +405,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`group relative rounded-[28px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.12] border-t-white/[0.42] bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.04)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.02)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`group relative rounded-[28px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Click to view ${macro.label} on radar arc`}
           >
             {/* Left: Circular Glossy Icon Chip + Label & Lime Values */}

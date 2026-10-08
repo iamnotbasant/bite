@@ -108,7 +108,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[82vh] select-none relative bg-black text-white">
       {/* Top Navbar (Mobile Only) */}
-      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.38] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] mb-4 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.40)]">
+      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.45] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] mb-4 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)]">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -131,7 +131,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
             {/* Left Column: Calorie Target + Hydration Target */}
             <div className="space-y-5">
               {/* Calorie Card */}
-              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
+              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.42] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.45)]">
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
                   Daily Calorie Target (kcal)
                 </label>
@@ -144,7 +144,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
               </div>
 
               {/* Hydration Card */}
-              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
+              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.42] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.45)]">
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
                   Daily Water Target (ml)
                 </label>
@@ -158,7 +158,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
             </div>
 
             {/* Right Column: Macro Distribution Card with live ratio balancer */}
-            <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-4 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
+            <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.42] space-y-4 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.45)]">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-300 block">
                   Macro Distribution

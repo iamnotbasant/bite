@@ -311,7 +311,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
   }, [aggregatedFoods, metricMode]);
 
   return (
-    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] space-y-6 select-none">
+    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.45] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.45)] space-y-6 select-none">
       {/* Header with Title and Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">

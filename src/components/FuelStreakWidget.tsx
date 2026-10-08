@@ -204,9 +204,9 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
       </div>
 
       {/* Hero Streak Card utilizing full desktop width */}
-      <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] p-5 sm:p-7 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1.5px_1.5px_rgba(255,255,255,0.45)] border border-white/[0.12] border-t-white/[0.42] text-white">
-        {/* Subtle ambient warm glow */}
-        <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.25)_0%,rgba(255,255,255,0.06)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] p-5 sm:p-7 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] border border-white/[0.12] border-t-white/[0.45] text-white">
+        {/* Subtle ambient glow */}
+        <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-br from-[#CDFF50]/5 via-white/[0.02] to-transparent blur-3xl pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.05),transparent_70%)] pointer-events-none" />
 
         {/* Floating Confetti FX on click */}
@@ -222,7 +222,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* ================= LEFT COLUMN: STREAK ENGINE ================= */}
-          <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-between gap-5 p-5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.28] shadow-[inset_0_1px_1px_rgba(255,255,255,0.20)]">
+          <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-between gap-5 p-5 rounded-2xl bg-[#06070a] border border-white/[0.08] border-t-white/[0.25] shadow-[inset_0_1px_0.5px_rgba(255,255,255,0.20)]">
             
             {/* Top: Flame Orb & Huge Streak Counter */}
             <div className="flex items-start justify-between gap-4">
@@ -236,26 +236,26 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
                   </span>
                 </div>
                 <div className="flex items-center gap-2 pt-0.5">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#CDFF50]/15 text-[#CDFF50] border border-[#CDFF50]/30 shadow-[0_0_12px_rgba(205,255,80,0.2)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#CDFF50] animate-pulse" />
                     On Fire Today
                   </span>
                 </div>
               </div>
 
-              {/* Glowing Interactive Flame Orb */}
+              {/* Glowing Interactive Flame Orb (subtle lime/white glow, preserved flame icon) */}
               <div
                 onClick={triggerCelebration}
-                className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-600 p-0.5 shadow-[0_10px_25px_rgba(245,158,11,0.35)] cursor-pointer transition-all duration-300 ${
+                className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-b from-white/30 via-white/10 to-transparent p-0.5 border border-white/20 shadow-[0_0_20px_rgba(205,255,80,0.2),inset_0_1px_1px_rgba(255,255,255,0.4)] cursor-pointer transition-all duration-300 ${
                   isFlameBouncing ? 'scale-110 rotate-6' : 'hover:scale-105 active:scale-95'
                 }`}
                 title="Tap to celebrate streak!"
               >
-                <div className="w-full h-full rounded-[14px] bg-[#12131b] flex items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-orange-500/10 group-hover:opacity-100 transition-opacity" />
+                <div className="w-full h-full rounded-[14px] bg-[#08090d] flex items-center justify-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#CDFF50]/10 to-transparent group-hover:opacity-100 transition-opacity" />
                   <Flame
                     size={34}
-                    className="text-amber-400 drop-shadow-[0_2px_12px_rgba(251,191,36,0.6)] group-hover:scale-110 transition-transform duration-300"
+                    className="text-amber-400 drop-shadow-[0_0_10px_rgba(205,255,80,0.3)] group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
               </div>
@@ -265,7 +265,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
             <div className="p-3.5 rounded-xl bg-black/40 border border-white/[0.06] space-y-2">
               <div className="flex items-center justify-between text-xs font-semibold">
                 <div className="flex items-center gap-1.5 text-zinc-300">
-                  <Trophy size={14} className="text-amber-400" />
+                  <Trophy size={14} className="text-[#CDFF50]" />
                   <span>Next Goal: {nextMilestone} Days</span>
                 </div>
                 <span className="font-mono text-zinc-400 font-bold">{milestonePct}%</span>
@@ -274,7 +274,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
               {/* Progress bar */}
               <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-500 transition-all duration-500 shadow-[0_0_10px_rgba(251,191,36,0.5)]"
+                  className="h-full rounded-full bg-gradient-to-r from-[#CDFF50] to-[#bbf038] transition-all duration-500 shadow-[0_0_10px_rgba(205,255,80,0.35)]"
                   style={{ width: `${milestonePct}%` }}
                 />
               </div>
@@ -305,7 +305,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
           </div>
 
           {/* ================= RIGHT COLUMN: 7-DAY INTERACTIVE MOMENTUM ================= */}
-          <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between gap-4 p-5 rounded-2xl bg-[#12131b] border border-white/[0.06]">
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between gap-4 p-5 rounded-2xl bg-[#06070a] border border-white/[0.08]">
             
             {/* Header: Week label & total calories */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-white/[0.06]">

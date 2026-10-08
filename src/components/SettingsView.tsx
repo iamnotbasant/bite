@@ -138,7 +138,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
       {/* Settings Options */}
       <div className="flex-1 overflow-y-auto no-scrollbar p-1 sm:p-2 pb-32 space-y-5 max-w-5xl xl:max-w-6xl mx-auto w-full">
         {/* Section: Serving Units Manager (Servings Base Units) */}
-        <div className="p-4 sm:p-6 rounded-3xl bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.04)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.42] shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1.5px_1.5px_rgba(255,255,255,0.45)] space-y-5">
+        <div className="p-4 sm:p-6 rounded-3xl bg-[radial-gradient(85%_40%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_50%,transparent_100%),linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_22%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.48] shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.55)] space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">

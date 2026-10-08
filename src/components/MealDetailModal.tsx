@@ -105,9 +105,9 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-xl animate-fade-in">
-      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-[#050608] border border-white/[0.14] border-t-white/[0.45] shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] overflow-hidden flex flex-col max-h-[90vh] text-white">
+      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-[#050507] border border-white/[0.12] border-t-white/[0.50] shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_0.5px_rgba(255,255,255,0.55)] overflow-hidden flex flex-col max-h-[90vh] text-white">
         {/* Specular sheen dome overlay */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-28 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-16 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.03)_40%,transparent_75%)] pointer-events-none" />
         
         {/* Top Header Bar with Close Button */}
         <div className="relative z-10 px-5 sm:px-6 pt-5 pb-3.5 flex items-center justify-between border-b border-white/[0.08] bg-black/40 shrink-0">

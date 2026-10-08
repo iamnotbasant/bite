@@ -217,11 +217,11 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_1.5px_0_rgba(255,255,255,0.55)] border-t-[rgba(255,255,255,0.5)]">
+    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.65)] border-t-[rgba(255,255,255,0.55)]">
       {/* Showpiece Specular Liquid Sheen Overlay (fintech $8,700.46 liquid gloss) */}
-      <div className="absolute top-0 left-0 right-0 h-[48%] pointer-events-none rounded-t-[28px] overflow-hidden z-0">
-        <div className="w-full h-full bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.32)_0%,rgba(255,255,255,0.11)_42%,transparent_100%)]" />
-        <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[22%] pointer-events-none rounded-t-[28px] overflow-hidden z-0">
+        <div className="w-full h-full bg-[radial-gradient(ellipse_75%_100%_at_50%_0%,rgba(255,255,255,0.28)_0%,rgba(255,255,255,0.05)_40%,transparent_100%)]" />
+        <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
       </div>
 
       {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
@@ -279,47 +279,25 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
               <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#CDFF50" floodOpacity="0.28" />
             </filter>
 
-            {/* Diagonal Cross-Line Pattern (Pure White stripes with subtle dark background) */}
-            <pattern
-              id="refStripes"
-              patternUnits="userSpaceOnUse"
-              width="13"
-              height="13"
-              patternTransform="rotate(45)"
-            >
-              <rect
-                width="13"
-                height="13"
-                fill="rgba(255, 255, 255, 0.04)"
-              />
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="13"
-                stroke="#FFFFFF"
-                strokeWidth="2.8"
-                strokeOpacity="0.45"
-              />
-            </pattern>
-
             {/* Drop shadow filter for pin spheres */}
             <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
               <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#000000" floodOpacity="0.8" />
             </filter>
           </defs>
 
-          {/* Layer 1: Translucent Base Track Guide */}
+          {/* Layer 1: Clean Solid Dark Base Track (No stripes, no pattern) */}
           <path
             d={createBaseTrackPath()}
-            fill="rgba(255, 255, 255, 0.06)"
+            fill="#121319"
+            stroke="rgba(255, 255, 255, 0.08)"
+            strokeWidth="1"
           />
 
-          {/* Layer 2: Cross-Line Target Zone (Diagonal Stripes - Zero Green) */}
+          {/* Layer 2: Clean Solid Dark Remaining Track Segment */}
           {!isCompleted && cutAngleDeg > endAngleDeg && (
             <path
               d={createStripedArcPath(cutAngleDeg)}
-              fill="url(#refStripes)"
+              fill="#13141b"
             />
           )}
 

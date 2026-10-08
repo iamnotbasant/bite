@@ -30,9 +30,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-xl animate-fade-in select-none">
-      <div className="relative w-full max-w-lg rounded-[32px] overflow-hidden shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] border border-white/[0.14] border-t-white/[0.45] bg-[#050608] text-white flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-lg rounded-[32px] overflow-hidden shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_0.5px_rgba(255,255,255,0.55)] border border-white/[0.12] border-t-white/[0.50] bg-[#050507] text-white flex flex-col max-h-[90vh]">
         {/* Specular sheen dome overlay */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-24 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.20),transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-16 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.03)_40%,transparent_75%)] pointer-events-none" />
 
         {/* Header */}
         <div className="relative z-10 p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-black/30">

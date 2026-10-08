@@ -293,7 +293,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[85vh] select-none bg-black text-white">
       {/* ----------------- TOP NAVBAR (Mobile Only) ----------------- */}
-      <div className="lg:hidden border border-white/[0.12] border-t-white/[0.38] bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
+      <div className="lg:hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
         <div className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -347,7 +347,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </h3>
 
             {/* Food Name (Required) */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Food Name (Required)
               </label>
@@ -362,7 +362,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </div>
 
             {/* Notes / Description (Optional) */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Notes / Description (Optional)
               </label>
@@ -376,7 +376,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </div>
 
             {/* Food Image (Optional) - Local Upload OR URL */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-3">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div>
                   <label className="block text-xs font-semibold text-zinc-300">
@@ -565,7 +565,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             {/* Serving Size & Equivalent Measurement Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {/* Card 1: Serving Size (Required) */}
-              <div className="p-4 rounded-xl bg-[#0e0e12] border border-white/10 space-y-2">
+              <div className="p-4 rounded-xl bg-[#06070a] border border-white/10 border-t-white/25 space-y-2 shadow-sm">
                 <div className="flex items-center justify-between">
                   <label className="block text-xs font-semibold text-zinc-400">
                     Serving Size (Required)
@@ -610,7 +610,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               </div>
 
               {/* Card 2: Equivalent Measure (Weight in g or Volume in ml) */}
-              <div className="p-4 rounded-xl bg-[#0e0e12] border border-white/10 space-y-2">
+              <div className="p-4 rounded-xl bg-[#06070a] border border-white/10 border-t-white/25 space-y-2 shadow-sm">
                 <div className="flex items-center justify-between">
                   <label className="block text-xs font-semibold text-zinc-400">
                     {equivalentUnit === 'ml' ? 'Equivalent Volume (ml)' : 'Equivalent Weight (grams)'}
@@ -736,7 +736,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             {NUTRIENT_ROWS.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.1] border-t-white/[0.25] bg-[radial-gradient(110%_80%_at_50%_-10%,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_40%,transparent_75%),linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(0,0,0,0.7)_80%)] bg-[#050608] hover:bg-[#0a0b10] transition-colors shadow-sm"
+                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.1] border-t-white/[0.30] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:bg-[#090a0e] transition-colors shadow-sm"
               >
                 <label className="text-sm font-semibold text-white tracking-wide">
                   {item.label}
@@ -773,7 +773,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
       {/* ----------------- MISSING NUTRIENT PROMPT MODAL (Exact match to reference) ----------------- */}
       {showNutrientPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-sm rounded-[28px] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.8)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.14] border-t-white/[0.42] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_1px_rgba(255,255,255,0.4)] text-white animate-scale-in">
+          <div className="w-full max-w-sm rounded-[28px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.14] border-t-white/[0.45] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] text-white animate-scale-in">
             <h3 className="text-base font-bold text-white tracking-tight mb-2">
               Add Nutrient Information
             </h3>

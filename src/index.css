@@ -35,18 +35,17 @@
 }
 
 /* Hero Glossy Glass Card matching "$8,700.46" hero card in ref-fintech-dark
-   BOLD, wide liquid highlight sweeping across top edge, melting into deep black */
+   Narrow bright liquid streak hugging top edge, fading completely by top ~20-22%, deep flat black body */
 .card-fintech-hero {
   position: relative;
   background: 
-    radial-gradient(110% 75% at 50% -8%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 32%, rgba(255, 255, 255, 0.02) 65%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 30%, rgba(0, 0, 0, 0.75) 75%, rgba(0, 0, 0, 0.98) 100%),
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.08) 10%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 8%, transparent 20%),
     #050507;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-top-color: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.55);
   box-shadow: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
-    inset 0 10px 26px -4px rgba(255, 255, 255, 0.18),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.65),
     0 24px 56px -10px rgba(0, 0, 0, 0.98);
   border-radius: 28px;
   overflow: hidden;
@@ -58,27 +57,26 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 50%;
-  background: radial-gradient(ellipse 95% 100% at 50% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.07) 45%, transparent 100%);
+  height: 20%;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 100%);
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Standard Obsidian Glossy Glass Card (Deep obsidian #050608 with brilliant rim light) */
+/* Standard Obsidian Glossy Glass Card (Deep obsidian #050507 with narrow liquid sheen) */
 .card-fintech-gloss {
   position: relative;
   background: 
-    radial-gradient(110% 60% at 50% -5%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 35%, transparent 75%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
-    #050608;
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 10%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 8%, transparent 20%),
+    #050507;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.45);
   box-shadow: 
-    inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.40),
-    inset 0 6px 18px -4px rgba(255, 255, 255, 0.08),
-    0 16px 36px -4px rgba(0, 0, 0, 0.92);
+    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.50),
+    0 16px 36px -4px rgba(0, 0, 0, 0.95);
   border-radius: 24px;
   overflow: hidden;
 }
@@ -89,8 +87,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: radial-gradient(ellipse 90% 100% at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 100%);
+  height: 20%;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 100%);
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   pointer-events: none;
@@ -102,15 +100,14 @@
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-fintech-interactive:hover {
-  border-color: rgba(255, 255, 255, 0.24);
-  border-top-color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.60);
   background: 
-    radial-gradient(110% 60% at 50% -5%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 35%, transparent 75%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 35%, rgba(0, 0, 0, 0.65) 75%, rgba(0, 0, 0, 0.95) 100%),
-    #090a0e;
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 10%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 8%, transparent 20%),
+    #08090d;
   box-shadow: 
-    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.50),
-    inset 0 8px 20px -4px rgba(255, 255, 255, 0.12),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.60),
     0 22px 44px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
@@ -119,17 +116,17 @@
 }
 
 /* History List Panel matching ref-fintech-dark "History" list panel
-   Slightly lighter dark panel with deeply rounded top (~28-32px), subtle liquid rim light */
+   Deep flat black body #06070a with narrow liquid rim highlight */
 .panel-fintech-history {
   position: relative;
   background: 
-    radial-gradient(120% 50% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 65%),
-    linear-gradient(180deg, #0e0f14 0%, #090a0e 35%, #040406 100%);
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  border-top-color: rgba(255, 255, 255, 0.36);
+    radial-gradient(90% 100% at 50% 0%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 10%, transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 8%, transparent 18%),
+    #06070a;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-top-color: rgba(255, 255, 255, 0.40);
   box-shadow: 
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.38),
-    inset 0 8px 24px -4px rgba(255, 255, 255, 0.05),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.50),
     0 24px 56px -8px rgba(0, 0, 0, 0.98);
   border-radius: 28px;
   overflow: hidden;
@@ -143,16 +140,21 @@
   justify-content: space-between;
   padding: 0.75rem 0.9rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top-color: rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 18%, transparent 25%),
+    #08080c;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top-color: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .row-fintech-history:hover {
-  background: rgba(255, 255, 255, 0.055);
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 18%, transparent 25%),
+    #0c0d12;
   border-color: rgba(255, 255, 255, 0.16);
-  border-top-color: rgba(255, 255, 255, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.40);
+  box-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.40);
   transform: translateY(-1px);
 }
 .row-fintech-history:active {
@@ -167,13 +169,13 @@
   justify-content: center;
   border-radius: 9999px;
   background: 
-    radial-gradient(100% 70% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.75) 100%),
-    #0f1016;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+    radial-gradient(100% 70% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 35%, transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 50%),
+    #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.20);
   border-top-color: rgba(255, 255, 255, 0.65);
   box-shadow: 
-    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.60),
+    inset 0 1.5px 0.8px 0 rgba(255, 255, 255, 0.60),
     0 6px 16px rgba(0, 0, 0, 0.85);
   overflow: hidden;
 }
@@ -231,7 +233,7 @@
 }
 
 /* Dark Glass Pill Button matching Fintech "+ add money" / "transfer"
-   High-gloss black with bright liquid rim highlight */
+   High-gloss deep black with narrow bright liquid rim highlight */
 .btn-pill-glass {
   position: relative;
   display: inline-flex;
@@ -239,31 +241,29 @@
   justify-content: center;
   gap: 0.5rem;
   background: 
-    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 60%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.7) 100%),
-    #0a0b10;
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 12%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 10%, transparent 22%),
+    #07070a;
   color: #ffffff;
   font-weight: 600;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-top-color: rgba(255, 255, 255, 0.55);
   box-shadow: 
-    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.7),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.60),
     0 8px 24px rgba(0, 0, 0, 0.85);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-pill-glass:hover {
   background: 
-    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.07) 60%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.55) 100%),
-    #13141e;
-  border-color: rgba(255, 255, 255, 0.32);
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 12%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.04) 10%, transparent 22%),
+    #0c0d12;
+  border-color: rgba(255, 255, 255, 0.24);
   border-top-color: rgba(255, 255, 255, 0.75);
   box-shadow: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.75),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.7),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.75),
     0 12px 28px rgba(0, 0, 0, 0.95);
   transform: translateY(-1px);
 }
@@ -300,13 +300,15 @@
 
 /* Floating Navigation Dock matching Proton / Fintech mobile dock */
 .floating-dock-glass {
-  background: rgba(6, 7, 10, 0.94);
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 12%, transparent 22%),
+    rgba(5, 5, 7, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-top-color: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.45);
   box-shadow: 
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.50),
     0 20px 48px rgba(0, 0, 0, 0.98);
   border-radius: 26px;
 }
@@ -339,24 +341,24 @@
 .glass-obsidian-surface,
 .card-stealth-dark {
   background: 
-    radial-gradient(110% 55% at 50% -5%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 35%, transparent 75%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
-    #050608;
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 10%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 8%, transparent 20%),
+    #050507;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.45);
   box-shadow: 
-    inset 0 1.2px 1px rgba(255, 255, 255, 0.38),
-    0 16px 36px rgba(0, 0, 0, 0.92);
+    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.50),
+    0 16px 36px rgba(0, 0, 0, 0.95);
 }
 .glass-emerald-card-interactive {
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-emerald-card-interactive:hover {
-  background: #0a0b10;
-  border-color: rgba(255, 255, 255, 0.24);
-  border-top-color: rgba(255, 255, 255, 0.5);
+  background: #08090d;
+  border-color: rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.6);
   box-shadow: 
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.60),
     0 20px 42px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
@@ -368,14 +370,14 @@
 .card-ambient-rose,
 .card-ambient-cyan {
   background: 
-    radial-gradient(110% 55% at 50% -5%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 35%, transparent 75%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
-    #050608;
+    radial-gradient(85% 100% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 10%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 8%, transparent 20%),
+    #050507;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.32);
+  border-top-color: rgba(255, 255, 255, 0.45);
   box-shadow: 
-    inset 0 1.2px 1px rgba(255, 255, 255, 0.35),
-    0 16px 36px rgba(0, 0, 0, 0.92);
+    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.50),
+    0 16px 36px rgba(0, 0, 0, 0.95);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-black-gradient:hover,
@@ -385,18 +387,8 @@
 .card-ambient-lavender:hover,
 .card-ambient-rose:hover,
 .card-ambient-cyan:hover {
-  border-color: rgba(255, 255, 255, 0.24);
-  border-top-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
-}
-.card-black-gradient:hover,
-.card-ambient-champagne:hover,
-.card-ambient-coral:hover,
-.card-ambient-graphite:hover,
-.card-ambient-lavender:hover,
-.card-ambient-rose:hover,
-.card-ambient-cyan:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-2px);
 }
 
