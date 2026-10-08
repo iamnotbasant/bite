@@ -342,7 +342,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`rounded-[26px] sm:rounded-[30px] p-2.5 sm:p-3.5 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.06)_24%,transparent_48%),radial-gradient(ellipse_85%_50%_at_50%_0%,rgba(255,255,255,0.14)_0%,transparent_65%)] bg-[#050506] border border-white/[0.14] border-t-white/[0.65] hover:border-white/[0.28] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.78),inset_0_3px_10px_rgba(255,255,255,0.12)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[122px] sm:min-h-[140px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`rounded-[26px] sm:rounded-[30px] p-2.5 sm:p-3.5 bg-[radial-gradient(ellipse_90%_60%_at_35%_-10%,rgba(255,255,255,0.28)_0%,rgba(255,255,255,0.10)_38%,transparent_65%),linear-gradient(180deg,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.12)_22%,rgba(255,255,255,0.03)_44%,transparent_56%)] bg-[#050506] border border-white/[0.16] border-t-white/[0.88] hover:border-white/[0.28] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_2px_1px_rgba(255,255,255,0.90),inset_0_4px_14px_rgba(255,255,255,0.16)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[122px] sm:min-h-[140px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Tap to view ${macro.label} on radar arc`}
           >
             {/* Top: Label on Left + Circular Glossy Icon Chip on Right (matching reference circular badges) */}
@@ -355,10 +355,10 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
               </div>
             </div>
 
-            {/* Middle: Lime Accent for Value + Goal */}
+            {/* Middle: Macro Value + Goal */}
             <div className="my-1 sm:my-1.5">
               <div className="flex items-baseline gap-0.5 sm:gap-1">
-                <span className="text-lg sm:text-2xl font-black text-[#CDFF50] leading-none tracking-tight font-sans drop-shadow-[0_1px_6px_rgba(205,255,80,0.25)]">
+                <span className="text-lg sm:text-2xl font-black text-white leading-none tracking-tight font-sans drop-shadow-[0_1px_6px_rgba(255,255,255,0.25)]">
                   {macro.current}
                 </span>
                 <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium font-mono">
@@ -375,7 +375,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
               />
 
               <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono leading-none pt-0.5">
-                <span className="text-[#CDFF50] font-bold tracking-tight truncate">
+                <span className="text-zinc-300 font-bold tracking-tight truncate">
                   {remaining > 0 ? `${remaining}${macro.unit} left` : 'Done'}
                 </span>
                 <span className="font-bold text-white shrink-0 ml-1">
@@ -405,10 +405,10 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`group relative rounded-[32px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.14] border-t-white/[0.68] bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.06)_24%,transparent_48%),radial-gradient(ellipse_85%_50%_at_50%_0%,rgba(255,255,255,0.14)_0%,transparent_65%)] bg-[#050506] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.80),inset_0_3px_12px_rgba(255,255,255,0.14)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`group relative rounded-[32px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.16] border-t-white/[0.88] bg-[radial-gradient(ellipse_90%_60%_at_35%_-10%,rgba(255,255,255,0.28)_0%,rgba(255,255,255,0.10)_38%,transparent_65%),linear-gradient(180deg,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.12)_22%,rgba(255,255,255,0.03)_44%,transparent_56%)] bg-[#050506] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_2px_1px_rgba(255,255,255,0.90),inset_0_4px_16px_rgba(255,255,255,0.18)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Click to view ${macro.label} on radar arc`}
           >
-            {/* Left: Circular Glossy Icon Chip + Label & Lime Values */}
+            {/* Left: Circular Glossy Icon Chip + Label & White Values */}
             <div className="flex items-center gap-3.5 min-w-[140px] sm:min-w-[170px]">
               <div className="chip-circular-gloss w-14 h-14 text-white group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-[inset_0_1.5px_0.8px_rgba(255,255,255,0.85),0_6px_16px_rgba(0,0,0,0.85)]">
                 {macro.desktopIcon}
@@ -419,7 +419,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
                   {macro.label}
                 </span>
                 <div className="flex items-baseline gap-1 mt-0.5">
-                  <span className="text-2xl sm:text-3xl font-black text-[#CDFF50] font-sans tracking-tight drop-shadow-[0_2px_8px_rgba(205,255,80,0.25)]">
+                  <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]">
                     {macro.current}
                   </span>
                   <span className="text-xs font-semibold font-mono text-zinc-400">
@@ -438,7 +438,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
                 />
 
                 <div className="flex items-center justify-between text-[11px] font-mono px-1">
-                  <span className="text-[#CDFF50] font-bold tracking-tight">
+                  <span className="text-zinc-300 font-bold tracking-tight">
                     {remaining > 0 ? `${remaining}${macro.unit} left` : 'Completed'}
                   </span>
                   <span className="font-bold text-white">{displayPercent}%</span>

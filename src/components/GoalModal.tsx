@@ -60,7 +60,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
 
         <div className="relative z-10 p-5 border-b border-white/10 flex items-center justify-between bg-black/30">
           <div className="flex items-center gap-2">
-            <Target size={20} className="text-[#CDFF50]" />
+            <Target size={20} className="text-white" />
             <h3 className="text-lg font-bold tracking-tight">Adjust Daily Goals</h3>
           </div>
           <button
@@ -81,7 +81,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
               type="number"
               value={calorieGoal}
               onChange={(e) => setCalorieGoal(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-2xl bg-black/70 border border-white/15 text-[#CDFF50] font-black text-2xl focus:outline-none focus:border-[#CDFF50]/60"
+              className="w-full px-4 py-2.5 rounded-2xl bg-black/70 border border-white/15 text-white font-black text-2xl focus:outline-none focus:border-white/60"
             />
           </div>
 
@@ -136,7 +136,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
           <div className="pt-2">
             <button
               type="submit"
-              className="btn-pill-lime w-full py-3 rounded-2xl font-black text-black shadow-[0_0_20px_rgba(205,255,80,0.35)] transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[46px]"
+              className="btn-pill-primary w-full py-3 rounded-2xl font-black text-black shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[46px]"
             >
               <Check size={18} strokeWidth={2.5} />
               <span>Save Target Goals</span>

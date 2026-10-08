@@ -219,7 +219,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   return (
     <div className="hero card-fintech-hero pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none">
 
-      {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
+      {/* 1. Top Header Row: small muted label top-left, white pill badge top-right (...8887 ▾) */}
       <div className="w-full flex items-center justify-between px-1 mb-0.5 relative z-10">
         <span className="text-xs sm:text-sm font-medium text-zinc-400 font-sans tracking-tight">
           {metricLabel === 'Calories' ? 'Energy consumed' : `${metricLabel} consumed`}
@@ -227,11 +227,11 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
         <button
           type="button"
           onClick={onEditGoal}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 hover:bg-black/95 border border-white/20 hover:border-white/35 text-[11px] sm:text-xs font-semibold text-[#CDFF50] transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.3),0_2px_8px_rgba(0,0,0,0.7)] active:scale-95 group"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 hover:bg-black/95 border border-white/20 hover:border-white/35 text-[11px] sm:text-xs font-semibold text-white transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.3),0_2px_8px_rgba(0,0,0,0.7)] active:scale-95 group"
           title="Edit target goal"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#CDFF50] animate-pulse" />
-          <span className="font-mono tracking-tight text-[#CDFF50] group-hover:brightness-110">
+          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.7)] animate-pulse" />
+          <span className="font-mono tracking-tight text-white group-hover:brightness-110">
             {goalKcal} {unit} ▾
           </span>
         </button>
@@ -253,7 +253,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             <button
               type="button"
               onClick={onResetToCalories}
-              className="text-[11px] font-mono text-[#CDFF50] hover:text-white underline cursor-pointer px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15"
+              className="text-[11px] font-mono text-zinc-300 hover:text-white underline cursor-pointer px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15"
               title="Return to Calories"
             >
               ← Calories
@@ -269,9 +269,9 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
           className="w-full h-full overflow-visible"
         >
           <defs>
-            {/* Soft lime glow for gauge accents */}
-            <filter id="limeValueGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#CDFF50" floodOpacity="0.28" />
+            {/* Soft white glow for gauge percentage */}
+            <filter id="whiteValueGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#FFFFFF" floodOpacity="0.25" />
             </filter>
 
             {/* Drop shadow filter for pin spheres */}
@@ -361,8 +361,8 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
               y={cy - 12}
               textAnchor="middle"
               dominantBaseline="central"
-              fill="#CDFF50"
-              filter="url(#limeValueGlow)"
+              fill="#FFFFFF"
+              filter="url(#whiteValueGlow)"
               className="font-sans"
               style={{
                 fontSize: '44px',

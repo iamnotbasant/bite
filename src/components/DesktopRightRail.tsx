@@ -161,7 +161,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
               onClick={() => onSelectDate(cell.dateStr)}
               className={`relative h-8 w-8 mx-auto rounded-full flex flex-col items-center justify-center text-xs font-mono transition-all cursor-pointer ${
                 cell.isSelected
-                  ? 'bg-[#CDFF50] text-black font-black shadow-[0_0_12px_rgba(205,255,80,0.4)] scale-105'
+                  ? 'bg-white text-black font-black shadow-[0_0_12px_rgba(255,255,255,0.25)] scale-105'
                   : cell.isCurrentMonth
                   ? 'text-zinc-200 hover:bg-white/10'
                   : 'text-zinc-600 hover:text-zinc-400'
@@ -170,7 +170,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
               <span>{cell.dayNumber}</span>
               {/* Dot indicator if day has meals */}
               {cell.hasLogs && !cell.isSelected && (
-                <span className="absolute bottom-1 w-1 h-1 rounded-full bg-amber-400" />
+                <span className="absolute bottom-1 w-1 h-1 rounded-full bg-white/70" />
               )}
             </button>
           ))}
@@ -199,7 +199,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
 
         <div>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl font-black font-mono text-[#CDFF50] tracking-tight drop-shadow-[0_0_12px_rgba(205,255,80,0.35)]">
+            <span className="text-2xl font-black font-mono text-white tracking-tight drop-shadow-[0_0_12px_rgba(255,255,255,0.25)]">
               {totalKcal}
             </span>
             <span className="text-xs text-zinc-400 font-mono">
@@ -215,7 +215,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
         <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
           <div
             style={{ width: `${progressPct}%` }}
-            className="h-full bg-[#CDFF50] rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(205,255,80,0.6)]"
+            className="h-full bg-white rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(255,255,255,0.5)]"
           />
         </div>
       </div>

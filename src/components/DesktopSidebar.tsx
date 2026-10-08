@@ -70,8 +70,8 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
             onClick={() => navigate('/dashboard')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#090a0f] border border-white/10 text-[#CDFF50] shadow-sm group-hover:scale-105 transition-transform">
-              <Flame size={16} className="fill-[#CDFF50] text-[#CDFF50]" />
+            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#090a0f] border border-white/10 text-white shadow-sm group-hover:scale-105 transition-transform">
+              <Flame size={16} className="fill-white text-white" />
             </div>
 
             <span className="text-sm font-bold tracking-wider text-white">
@@ -98,7 +98,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
                 onClick={() => navigate(item.path)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs transition-all cursor-pointer ${
                   item.isActive
-                    ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_14px_rgba(205,255,80,0.35)]'
+                    ? 'bg-white text-black font-black shadow-[0_2px_14px_rgba(255,255,255,0.25)]'
                     : 'text-zinc-400 hover:text-white hover:bg-white/[0.04] font-medium'
                 }`}
               >
@@ -120,7 +120,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
         <button
           type="button"
           onClick={onQuickLogClick || (() => navigate('/food'))}
-          className="btn-pill-lime w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-full font-black text-xs cursor-pointer shadow-[0_0_16px_rgba(205,255,80,0.35)] min-h-[40px]"
+          className="btn-pill-lime w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-full font-black text-xs cursor-pointer shadow-[0_0_16px_rgba(255,255,255,0.2)] min-h-[40px]"
         >
           <Plus size={14} strokeWidth={3} />
           <span>Quick Log</span>

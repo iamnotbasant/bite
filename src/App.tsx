@@ -28,7 +28,6 @@ import {
   LayoutGrid,
   Utensils,
   PlusCircle,
-  Plus,
   BarChart2,
   Target,
   Flame,
@@ -258,27 +257,6 @@ export function App() {
                       onEditGoal={() => navigate('/goals')}
                       onResetToCalories={() => setSpotlightMetric('calories')}
                     />
-
-                    {/* Twin Pill Buttons matching reference (+ add money / transfer) */}
-                    <div className="w-full max-w-[370px] sm:max-w-[410px] grid grid-cols-2 gap-3 sm:gap-3.5 mt-3 sm:mt-4 px-0.5">
-                      <button
-                        type="button"
-                        onClick={() => openLogForCategory(activeLogCategory)}
-                        className="pill btn-pill-glass w-full"
-                      >
-                        <Plus size={18} strokeWidth={2.5} className="text-[#CDFF50] shrink-0" />
-                        <span className="tracking-tight">Log Food</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => navigate('/goals')}
-                        className="pill btn-pill-glass w-full"
-                      >
-                        <Target size={18} strokeWidth={2.2} className="text-[#CDFF50] shrink-0" />
-                        <span className="tracking-tight">Goals</span>
-                      </button>
-                    </div>
                   </div>
 
                   {/* Right: Macro Cards Grid with interactive swapping */}
@@ -420,11 +398,11 @@ export function App() {
           onClick={() => navigate('/dashboard')}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
             isDashboard
-              ? 'text-[#CDFF50] font-bold bg-[#CDFF50]/[0.15] border border-[#CDFF50]/30 shadow-[inset_0_1px_1px_rgba(205,255,80,0.25)]'
+              ? 'text-white font-bold bg-white/[0.14] border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]'
               : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.04]'
           }`}
         >
-          <LayoutGrid size={18} strokeWidth={isDashboard ? 2.5 : 1.75} className={isDashboard ? 'text-[#CDFF50]' : 'text-zinc-400'} />
+          <LayoutGrid size={18} strokeWidth={isDashboard ? 2.5 : 1.75} className={isDashboard ? 'text-white' : 'text-zinc-400'} />
           <span className="text-[10px] tracking-tight">Dashboard</span>
         </button>
 
@@ -436,11 +414,11 @@ export function App() {
           }}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
             isFood
-              ? 'text-[#CDFF50] font-bold bg-[#CDFF50]/[0.15] border border-[#CDFF50]/30 shadow-[inset_0_1px_1px_rgba(205,255,80,0.25)]'
+              ? 'text-white font-bold bg-white/[0.14] border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]'
               : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.04]'
           }`}
         >
-          <Utensils size={18} strokeWidth={isFood ? 2.5 : 1.75} className={isFood ? 'text-[#CDFF50]' : 'text-zinc-400'} />
+          <Utensils size={18} strokeWidth={isFood ? 2.5 : 1.75} className={isFood ? 'text-white' : 'text-zinc-400'} />
           <span className="text-[10px] tracking-tight">Food Log</span>
         </button>
 
@@ -449,11 +427,11 @@ export function App() {
           onClick={() => navigate('/create-food')}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
             isCreateFood
-              ? 'text-[#CDFF50] font-bold bg-[#CDFF50]/[0.15] border border-[#CDFF50]/30 shadow-[inset_0_1px_1px_rgba(205,255,80,0.25)]'
+              ? 'text-white font-bold bg-white/[0.14] border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]'
               : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.04]'
           }`}
         >
-          <PlusCircle size={18} strokeWidth={isCreateFood ? 2.5 : 1.75} className={isCreateFood ? 'text-[#CDFF50]' : 'text-zinc-400'} />
+          <PlusCircle size={18} strokeWidth={isCreateFood ? 2.5 : 1.75} className={isCreateFood ? 'text-white' : 'text-zinc-400'} />
           <span className="text-[10px] tracking-tight">Create</span>
         </button>
 
@@ -462,11 +440,11 @@ export function App() {
           onClick={() => navigate('/stats')}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
             isStats
-              ? 'text-[#CDFF50] font-bold bg-[#CDFF50]/[0.15] border border-[#CDFF50]/30 shadow-[inset_0_1px_1px_rgba(205,255,80,0.25)]'
+              ? 'text-white font-bold bg-white/[0.14] border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]'
               : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.04]'
           }`}
         >
-          <BarChart2 size={18} strokeWidth={isStats ? 2.5 : 1.75} className={isStats ? 'text-[#CDFF50]' : 'text-zinc-400'} />
+          <BarChart2 size={18} strokeWidth={isStats ? 2.5 : 1.75} className={isStats ? 'text-white' : 'text-zinc-400'} />
           <span className="text-[10px] tracking-tight">Stats</span>
         </button>
 
@@ -475,11 +453,11 @@ export function App() {
           onClick={() => navigate('/goals')}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
             isGoals
-              ? 'text-[#CDFF50] font-bold bg-[#CDFF50]/[0.15] border border-[#CDFF50]/30 shadow-[inset_0_1px_1px_rgba(205,255,80,0.25)]'
+              ? 'text-white font-bold bg-white/[0.14] border border-white/25 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]'
               : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.04]'
           }`}
         >
-          <Target size={18} strokeWidth={isGoals ? 2.5 : 1.75} className={isGoals ? 'text-[#CDFF50]' : 'text-zinc-400'} />
+          <Target size={18} strokeWidth={isGoals ? 2.5 : 1.75} className={isGoals ? 'text-white' : 'text-zinc-400'} />
           <span className="text-[10px] tracking-tight">Goals</span>
         </button>
       </nav>

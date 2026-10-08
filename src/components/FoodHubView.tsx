@@ -408,7 +408,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             onClick={() => setActiveTab('all')}
             className={`py-2 rounded-full text-xs transition-all cursor-pointer min-h-[38px] flex items-center justify-center ${
               activeTab === 'all'
-                ? 'bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)] font-black'
+                ? 'bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.25)] font-black'
                 : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
@@ -421,7 +421,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             onClick={() => setActiveTab('my-foods')}
             className={`py-2 rounded-full text-xs transition-all cursor-pointer flex items-center justify-center gap-1 min-h-[38px] ${
               activeTab === 'my-foods'
-                ? 'bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)] font-black'
+                ? 'bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.25)] font-black'
                 : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
@@ -429,7 +429,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             {customFoods.length > 0 && (
               <span
                 className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
-                  activeTab === 'my-foods' ? 'bg-black text-[#CDFF50]' : 'bg-white/15 text-zinc-300'
+                  activeTab === 'my-foods' ? 'bg-black text-white' : 'bg-white/15 text-zinc-300'
                 }`}
               >
                 {customFoods.length}
@@ -442,7 +442,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             onClick={() => setActiveTab('my-meals')}
             className={`py-2 rounded-full text-xs transition-all cursor-pointer min-h-[38px] flex items-center justify-center ${
               activeTab === 'my-meals'
-                ? 'bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)] font-black'
+                ? 'bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.25)] font-black'
                 : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
@@ -455,7 +455,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             onClick={() => setActiveTab('quick-add')}
             className={`py-2 rounded-full text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 min-h-[38px] ${
               activeTab === 'quick-add'
-                ? 'bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)] font-black'
+                ? 'bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.25)] font-black'
                 : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
@@ -585,7 +585,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between pb-1 px-1">
               <span className="text-[11px] sm:text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                <BookmarkCheck size={13} className="text-[#CDFF50]" />
+                <BookmarkCheck size={13} className="text-white" />
                 My Custom Foods ({customFoods.length})
               </span>
             </div>
@@ -975,7 +975,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                       onClick={() => setModalCategory(opt.id)}
                       className={`py-2 px-1 rounded-xl text-xs font-semibold transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 ${
                         isSelected
-                          ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_14px_rgba(205,255,80,0.38)] scale-[1.02]'
+                          ? 'bg-white text-black font-black shadow-[0_2px_14px_rgba(255,255,255,0.25)] scale-[1.02]'
                           : 'text-zinc-400 hover:text-white hover:bg-white/[0.06]'
                       }`}
                     >

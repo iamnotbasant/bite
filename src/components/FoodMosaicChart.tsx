@@ -330,7 +330,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
             onClick={() => setMetricMode('calories')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'calories'
-                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
+                ? 'bg-white text-black font-black shadow-[0_2px_12px_rgba(255,255,255,0.25)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -341,7 +341,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
             onClick={() => setMetricMode('protein')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'protein'
-                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
+                ? 'bg-white text-black font-black shadow-[0_2px_12px_rgba(255,255,255,0.25)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -352,7 +352,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
             onClick={() => setMetricMode('servings')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'servings'
-                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
+                ? 'bg-white text-black font-black shadow-[0_2px_12px_rgba(255,255,255,0.25)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >

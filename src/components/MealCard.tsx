@@ -36,7 +36,7 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
       {/* Middle: Two-Line Text (Title + Subtitle) */}
       <div className="flex-1 min-w-0 px-3 sm:px-3.5">
         <div className="flex items-center gap-1.5 min-w-0">
-          <h4 className="font-bold text-[14px] sm:text-[15px] tracking-tight text-white truncate group-hover:text-[#CDFF50] transition-colors">
+          <h4 className="font-bold text-[14px] sm:text-[15px] tracking-tight text-white truncate group-hover:text-zinc-200 transition-colors">
             {meal.name}
           </h4>
           {meal.brand && (

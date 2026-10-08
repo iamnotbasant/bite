@@ -36,7 +36,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
       key: 'lunch',
       title: 'Lunch',
       icon: Utensils,
-      accentColor: 'text-emerald-400',
+      accentColor: 'text-zinc-200',
     },
     {
       key: 'dinner',
@@ -111,7 +111,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
             </p>
           </div>
           <div className="text-right">
-            <span className="text-sm sm:text-base font-bold font-mono text-[#CDFF50]">
+            <span className="text-sm sm:text-base font-bold font-mono text-white">
               {totalDayKcal} kcal
             </span>
           </div>
@@ -217,7 +217,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
             </p>
           </div>
           <div className="text-right">
-            <span className="text-base font-bold font-mono text-[#CDFF50]">
+            <span className="text-base font-bold font-mono text-white">
               {totalDayKcal} kcal total
             </span>
           </div>
