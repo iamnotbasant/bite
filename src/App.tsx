@@ -264,19 +264,19 @@ export function App() {
                       <button
                         type="button"
                         onClick={() => openLogForCategory(activeLogCategory)}
-                        className="btn-pill-glass w-full"
+                        className="pill btn-pill-glass w-full"
                       >
-                        <Plus size={16} strokeWidth={2.5} className="text-[#CDFF50] shrink-0" />
-                        <span className="text-white font-semibold text-sm tracking-tight">Log Food</span>
+                        <Plus size={18} strokeWidth={2.5} className="text-[#CDFF50] shrink-0" />
+                        <span className="tracking-tight">Log Food</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => navigate('/goals')}
-                        className="btn-pill-glass w-full"
+                        className="pill btn-pill-glass w-full"
                       >
-                        <Target size={16} strokeWidth={2.2} className="text-[#CDFF50] shrink-0" />
-                        <span className="text-white font-semibold text-sm tracking-tight">Goals</span>
+                        <Target size={18} strokeWidth={2.2} className="text-[#CDFF50] shrink-0" />
+                        <span className="tracking-tight">Goals</span>
                       </button>
                     </div>
                   </div>

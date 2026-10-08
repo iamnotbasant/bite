@@ -217,13 +217,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero rounded-[34px] sm:rounded-[36px] pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_60px_-10px_rgba(0,0,0,0.98),0_0_24px_-4px_rgba(255,255,255,0.06),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.92),inset_0_4px_18px_0_rgba(255,255,255,0.22)] border-t-[rgba(255,255,255,0.88)]">
-      {/* Luminous bright rim wrapping top edge and curves */}
-      <div className="absolute top-0 inset-x-4 sm:inset-x-6 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-20 opacity-90" />
-      {/* Specular corner reflection flare in top-right catching glass curve */}
-      <div className="absolute top-1.5 right-6 w-14 h-6 bg-gradient-to-bl from-white/25 via-white/5 to-transparent blur-[2px] rounded-full pointer-events-none z-20" />
-      {/* Inner frosted top sheen diffusion giving thick glass slab depth */}
-      <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-white/12 via-white/[0.03] to-transparent pointer-events-none rounded-t-[34px] sm:rounded-t-[36px] z-10" />
+    <div className="hero card-fintech-hero pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none">
 
       {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
       <div className="w-full flex items-center justify-between px-1 mb-0.5 relative z-10">
