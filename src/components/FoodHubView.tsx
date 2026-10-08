@@ -191,6 +191,11 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
   const [quickFat, setQuickFat] = useState('');
   const [quickName, setQuickName] = useState('Quick Calories');
   const [quickCategory, setQuickCategory] = useState<MealCategory>(defaultCategory || getDefaultMealCategoryByTime());
+
+  // Keep Quick Add's category in sync with the section the user came from (same fix as the portion modal)
+  useEffect(() => {
+    if (defaultCategory) setQuickCategory(defaultCategory);
+  }, [defaultCategory]);
   const [quickDate, setQuickDate] = useState<string>(selectedDate || '2026-08-23');
   const [quickTime, setQuickTime] = useState<string>(''); // Blank by default as requested!
 

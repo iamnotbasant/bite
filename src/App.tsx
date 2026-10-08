@@ -46,7 +46,15 @@ export function App() {
   const [selectedDate] = useState<string>('2026-08-23'); // Today
   const [theme, setTheme] = useState<ThemeMode>(() => loadSavedTheme());
   const [cardStyle, setCardStyle] = useState<CardStyleMode>(() => loadSavedCardStyle());
-  const [activeLogCategory, setActiveLogCategory] = useState<MealCategory>('lunch');
+  const [activeLogCategory, setActiveLogCategory] = useState<MealCategory>(() => {
+    // Default to the last meal category the user actually logged into,
+    // so the Food Log never silently dumps everything into one fixed meal.
+    try {
+      const last = window.localStorage.getItem('fuel-last-category');
+      if (last === 'breakfast' || last === 'lunch' || last === 'dinner' || last === 'snack') return last;
+    } catch { /* localStorage unavailable */ }
+    return 'lunch';
+  });
   const [selectedMealForDetail, setSelectedMealForDetail] = useState<MealItem | null>(null);
   const [isMealDetailOpen, setIsMealDetailOpen] = useState<boolean>(false);
   const [editingFood, setEditingFood] = useState<import('./types').FoodLibraryItem | null>(null);
@@ -150,6 +158,10 @@ export function App() {
     mealData: Omit<MealItem, 'id' | 'timestamp'> & { timestamp?: string; targetDate?: string }
   ) => {
     const targetDate = mealData.targetDate || selectedDate;
+    // Remember the last meal category used so future logs default to it
+    try {
+      window.localStorage.setItem('fuel-last-category', mealData.category);
+    } catch { /* localStorage unavailable */ }
     const nextCalories = dayTotals.calories + mealData.calories;
     checkGoalAchievement(nextCalories, currentDay.calorieGoal);
 
@@ -409,7 +421,6 @@ export function App() {
         <button
           type="button"
           onClick={() => {
-            setActiveLogCategory('lunch');
             navigate('/food');
           }}
           className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl min-h-[48px] min-w-[48px] transition-all cursor-pointer ${
