@@ -217,42 +217,28 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="hero card-fintech-hero pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none">
+    <div className="hero card-fintech-hero pt-4 sm:pt-4.5 px-5 sm:px-6 pb-4 sm:pb-4.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none">
 
-      {/* 1. Top Header Row: small muted label top-left */}
-      <div className="w-full flex items-center justify-between px-1 mb-0.5 relative z-10">
+      {/* 1. Top Header Row: small muted label top-left, optional reset button top-right */}
+      <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">
         <span className="text-xs sm:text-sm font-medium text-zinc-400 font-sans tracking-tight">
           {metricLabel === 'Calories' ? 'Energy consumed' : `${metricLabel} consumed`}
         </span>
+
+        {metricLabel !== 'Calories' && (
+          <button
+            type="button"
+            onClick={onResetToCalories}
+            className="text-[11px] font-mono text-zinc-300 hover:text-white underline cursor-pointer px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15 transition-colors"
+            title="Return to Calories"
+          >
+            ← Calories
+          </button>
+        )}
       </div>
 
-      {/* 2. TWO-TONE calorie number matching "$8,700.46" (glossy specular gradient digits, dimmer gray unit) */}
-      <div className="w-full px-1 pt-0.5 pb-1 relative z-10">
-        <div className="flex items-baseline justify-between">
-          <div className="hero-number">
-            <span className="big">
-              {Math.round(animValue).toLocaleString()}
-            </span>
-            <span className="unit text-base sm:text-lg font-semibold text-zinc-500 font-mono tracking-tight self-baseline">
-              {unit}
-            </span>
-          </div>
-
-          {metricLabel !== 'Calories' && (
-            <button
-              type="button"
-              onClick={onResetToCalories}
-              className="text-[11px] font-mono text-zinc-300 hover:text-white underline cursor-pointer px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15"
-              title="Return to Calories"
-            >
-              ← Calories
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* 3. The arc gauge below the huge white number — wide low proportions */}
-      <div className="relative w-full aspect-[380/236] flex items-center justify-center z-10 -mt-1 sm:-mt-2">
+      {/* 2. The arc gauge wrapping around centered big glossy number & subtext */}
+      <div className="relative w-full aspect-[380/236] flex items-center justify-center z-10">
         <svg
           viewBox={`0 22 ${width} ${height}`}
           className="w-full h-full overflow-visible"
@@ -348,7 +334,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             />
           )}
 
-          {/* Center Typography inside Arc: Percentage + Remaining status */}
+          {/* Center Typography inside Arc: Centered big glossy number + Percentage & Remaining subtext */}
           <g
             key={metricLabel}
             className={`select-none transition-opacity duration-300 ${
@@ -356,34 +342,34 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             }`}
             onClick={metricLabel !== 'Calories' ? onResetToCalories : undefined}
           >
-            {/* Percentage Display */}
+            {/* Centered Big Glossy Calorie Number */}
             <text
               x={cx}
-              y={cy - 12}
+              y={136}
               textAnchor="middle"
               dominantBaseline="central"
               fill="url(#glossyGaugeGrad)"
               filter="url(#glossyGaugeShadow)"
               style={{
-                fontSize: '44px',
+                fontSize: '52px',
                 fontWeight: 800,
                 letterSpacing: '-2px',
                 fontFamily: "-apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif",
               }}
             >
-              {Math.round(ratio * 100)}%
+              {Math.round(animValue).toLocaleString()}
             </text>
 
-            {/* Subtitle / Remaining info */}
+            {/* Centered Subtext: Percentage of Goal · Remaining */}
             <text
               x={cx}
-              y={cy + 26}
+              y={176}
               textAnchor="middle"
               dominantBaseline="central"
-              fill="rgba(255, 255, 255, 0.8)"
+              fill="rgba(255, 255, 255, 0.75)"
               className="font-sans pointer-events-auto cursor-pointer"
               style={{
-                fontSize: '13px',
+                fontSize: '11.5px',
                 fontWeight: 500,
                 letterSpacing: '-0.01em',
               }}
@@ -393,8 +379,8 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
               }}
             >
               {isCompleted
-                ? 'Daily Goal Achieved'
-                : `${Math.max(0, goalKcal - Math.round(animValue)).toLocaleString()} ${unit} remaining`}
+                ? `${Math.round(ratio * 100)}% of ${goalKcal.toLocaleString()} ${unit} · Goal reached`
+                : `${Math.round(ratio * 100)}% of ${goalKcal.toLocaleString()} ${unit} · ${Math.max(0, goalKcal - Math.round(animValue)).toLocaleString()} ${unit} remaining`}
             </text>
           </g>
         </svg>

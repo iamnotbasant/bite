@@ -33,14 +33,19 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
         />
       </div>
 
-      {/* Middle: Two-Line Text (Title + Subtitle) */}
+      {/* Middle: Two-Line Text (Title with Time Pill + Subtitle with Macros) */}
       <div className="flex-1 min-w-0 px-3 sm:px-3.5">
-        <div className="flex items-center gap-1.5 min-w-0">
+        <div className="flex items-center gap-2 min-w-0">
           <h4 className="font-bold text-[14px] sm:text-[15px] tracking-tight text-white truncate group-hover:text-zinc-200 transition-colors">
             {meal.name}
           </h4>
+          {meal.timestamp && (
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/[0.08] border border-white/15 text-[10px] sm:text-[11px] font-mono font-medium text-zinc-300 shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
+              {meal.timestamp}
+            </span>
+          )}
           {meal.brand && (
-            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 text-zinc-300 font-medium shrink-0">
+            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 text-zinc-400 font-medium shrink-0 truncate">
               {meal.brand}
             </span>
           )}
@@ -58,12 +63,6 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
           <span>{meal.carbs}g C</span>
           <span className="text-zinc-600">·</span>
           <span>{meal.fat}g F</span>
-          {meal.timestamp && (
-            <>
-              <span className="text-zinc-600">·</span>
-              <span className="font-mono text-zinc-400">{meal.timestamp}</span>
-            </>
-          )}
         </div>
       </div>
 
