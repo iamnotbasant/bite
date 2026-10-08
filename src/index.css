@@ -62,6 +62,54 @@
   display: none;
 }
 
+/* ============ HERO NUMBER & GLOSSY TYPOGRAPHY (Round 11) ============
+   Ported from glass-lab/hero-card.html (.hero-number .big)
+   Liquid metallic specular gradient, bright at top melting dimmer at bottom */
+.hero-number {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hero-number .big,
+.text-glossy-hero {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+  font-family: -apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 45%, #d9d9d9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.18));
+}
+
+@media (max-width: 380px) {
+  .hero-number .big,
+  .text-glossy-hero {
+    font-size: 52px;
+  }
+}
+
+.hero-number .unit {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Subtle glossy text treatment for other large numbers (gauge, history total) */
+.text-glossy-number {
+  font-family: -apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 45%, #d9d9d9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.18));
+}
+
 /* Frosted-White Top Large Card (Macro cards, large panels) - Round 10
    Generous squircle radius (26px), luminous top rim with inner glow,
    white-dominant frost upper ~50% melting into #050506 deep black */

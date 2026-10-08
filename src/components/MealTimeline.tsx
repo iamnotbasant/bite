@@ -110,9 +110,12 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
               Today
             </p>
           </div>
-          <div className="text-right">
-            <span className="text-sm sm:text-base font-bold font-mono text-white">
-              {totalDayKcal} kcal
+          <div className="text-right flex items-baseline justify-end gap-1.5">
+            <span className="text-glossy-number text-sm sm:text-base font-extrabold tracking-tight">
+              {totalDayKcal.toLocaleString()}
+            </span>
+            <span className="text-xs sm:text-sm font-semibold text-zinc-500 font-mono tracking-tight">
+              kcal
             </span>
           </div>
         </div>
@@ -216,9 +219,12 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
               Today
             </p>
           </div>
-          <div className="text-right">
-            <span className="text-base font-bold font-mono text-white">
-              {totalDayKcal} kcal total
+          <div className="text-right flex items-baseline justify-end gap-1.5">
+            <span className="text-glossy-number text-base sm:text-lg font-extrabold tracking-tight">
+              {totalDayKcal.toLocaleString()}
+            </span>
+            <span className="text-xs sm:text-sm font-semibold text-zinc-500 font-mono tracking-tight">
+              kcal total
             </span>
           </div>
         </div>

@@ -237,14 +237,14 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
         </button>
       </div>
 
-      {/* 2. TWO-TONE calorie number matching "$8,700.46" (bright WHITE & larger digits, clearly smaller & DIMMER gray unit) */}
+      {/* 2. TWO-TONE calorie number matching "$8,700.46" (glossy specular gradient digits, dimmer gray unit) */}
       <div className="w-full px-1 pt-0.5 pb-1 relative z-10">
         <div className="flex items-baseline justify-between">
-          <div className="flex items-baseline gap-1.5 tracking-tight">
-            <span className="text-5xl sm:text-6xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_24px_rgba(255,255,255,0.4)] leading-none">
+          <div className="hero-number">
+            <span className="big">
               {Math.round(animValue).toLocaleString()}
             </span>
-            <span className="text-base sm:text-lg font-semibold text-zinc-500 font-mono tracking-tight self-baseline">
+            <span className="unit text-base sm:text-lg font-semibold text-zinc-500 font-mono tracking-tight self-baseline">
               {unit}
             </span>
           </div>
@@ -272,6 +272,18 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             {/* Soft white glow for gauge percentage */}
             <filter id="whiteValueGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#FFFFFF" floodOpacity="0.25" />
+            </filter>
+
+            {/* Glossy gradient for gauge percentage matching Round 11 */}
+            <linearGradient id="glossyGaugeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="45%" stopColor="#f4f4f4" />
+              <stop offset="100%" stopColor="#d9d9d9" />
+            </linearGradient>
+
+            {/* Drop shadow filter for gauge percentage matching Round 11 */}
+            <filter id="glossyGaugeShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#FFFFFF" floodOpacity="0.18" />
             </filter>
 
             {/* Drop shadow filter for pin spheres */}
@@ -361,13 +373,13 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
               y={cy - 12}
               textAnchor="middle"
               dominantBaseline="central"
-              fill="#FFFFFF"
-              filter="url(#whiteValueGlow)"
-              className="font-sans"
+              fill="url(#glossyGaugeGrad)"
+              filter="url(#glossyGaugeShadow)"
               style={{
                 fontSize: '44px',
                 fontWeight: 800,
-                letterSpacing: '-0.03em',
+                letterSpacing: '-2px',
+                fontFamily: "-apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif",
               }}
             >
               {Math.round(ratio * 100)}%
