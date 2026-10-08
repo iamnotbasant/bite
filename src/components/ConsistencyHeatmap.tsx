@@ -43,7 +43,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
   return (
     <div className="w-full space-y-4 select-none">
       {/* 1. Top Heatmap Card */}
-      <div className="rounded-[32px] p-5 sm:p-6 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] overflow-hidden">
+      <div className="rounded-[38px] p-5 sm:p-6 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.25] border-t-white/[0.75] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_2px_2px_rgba(255,255,255,0.65),inset_0_1.5px_1px_rgba(255,255,255,0.38),0_0_32px_rgba(255,255,255,0.06)] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2.5">
