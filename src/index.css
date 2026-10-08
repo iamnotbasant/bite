@@ -23,95 +23,180 @@
   font-feature-settings: "tnum" 1, "cv02" 1;
 }
 
-/* Pure OLED Stealth Card styling */
-.bg-signature-emerald {
-  background: linear-gradient(180deg, #080808 0%, #000000 100%);
+/* =========================================================================
+   PURE OLED FINTECH & PROTON DESIGN SYSTEM (Unified Black Theme)
+   ========================================================================= */
+
+/* Subtle dot-matrix grid on OLED black background matching fintech reference */
+.bg-dot-matrix {
+  background-color: #000000;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.bg-signature-emerald-subtle {
-  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
-}
-
-/* Dark Specular Glassmorphism Card */
-.glass-emerald-card {
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Hero Glossy Glass Card matching "$8,700.46" hero card in ref-fintech-dark */
+.card-fintech-hero {
+  position: relative;
+  background: radial-gradient(ellipse 90% 55% at 50% -10%, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(0, 0, 0, 0.7) 100%), #08090d;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
-    0 12px 32px rgba(0, 0, 0, 0.85);
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28),
+    0 20px 48px -10px rgba(0, 0, 0, 0.95);
+  border-radius: 28px;
 }
 
+/* Standard Obsidian Glossy Glass Card */
+.card-fintech-gloss {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 32px -4px rgba(0, 0, 0, 0.85);
+  border-radius: 24px;
+}
+
+/* Interactive Card Hover & Press with Specular Flare */
+.card-fintech-interactive {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-fintech-interactive:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 50%, rgba(0, 0, 0, 0.45) 100%), #0d0e14;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    0 20px 40px -4px rgba(0, 0, 0, 0.95);
+  transform: translateY(-2px);
+}
+.card-fintech-interactive:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Primary High-Contrast Pill Button matching Proton "Get Started" / "Enable" */
+.btn-pill-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #eaeaf0 100%);
+  color: #000000;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+}
+.btn-pill-primary:hover {
+  filter: brightness(0.96);
+  transform: scale(1.01);
+}
+.btn-pill-primary:active {
+  transform: scale(0.97);
+}
+
+/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer" */
+.btn-pill-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%), #101117;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 6px 16px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+}
+.btn-pill-glass:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%), #151620;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.32), 0 8px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(-1px);
+}
+.btn-pill-glass:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Floating Navigation Dock matching Proton / Fintech mobile dock */
+.floating-dock-glass {
+  background: rgba(10, 11, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 16px 40px rgba(0, 0, 0, 0.95);
+  border-radius: 24px;
+}
+
+/* Sleek Dark Glass Capsule Input */
+.input-fintech-glass {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+.input-fintech-glass:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Legacy utility aliases mapped to unified system */
+.bg-signature-emerald {
+  background: linear-gradient(180deg, #08080a 0%, #000000 100%);
+}
+.bg-signature-emerald-subtle {
+  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+}
+.glass-emerald-card,
+.glass-obsidian-surface,
+.card-stealth-dark {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    0 14px 32px rgba(0, 0, 0, 0.85);
+}
 .glass-emerald-card-interactive {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-emerald-card-interactive:hover {
-  background: #0a0a0a;
-  border-color: rgba(255, 255, 255, 0.16);
+  background: #0e0f14;
+  border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.12),
-    0 12px 32px -4px rgba(0, 0, 0, 0.9);
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 16px 36px -4px rgba(0, 0, 0, 0.95);
   transform: translateY(-2px);
 }
-
-/* Obsidian Ambient Surface Cards */
-.glass-obsidian-surface {
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.1),
-    0 12px 32px rgba(0, 0, 0, 0.8);
-}
-
-/* Pure Black Gradient Cards with one-sided soft opacity highlight */
-.card-black-gradient {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, #060606 50%, #000000 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
-    0 16px 36px rgba(0, 0, 0, 0.9);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-black-gradient:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.14),
-    0 20px 42px rgba(0, 0, 0, 0.95);
-  transform: translateY(-2px);
-}
-
+.card-black-gradient,
 .card-ambient-champagne,
 .card-ambient-coral,
 .card-ambient-graphite,
 .card-ambient-lavender,
 .card-ambient-rose,
 .card-ambient-cyan {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, #060606 50%, #000000 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
     0 16px 36px rgba(0, 0, 0, 0.9);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.card-black-gradient:hover,
 .card-ambient-champagne:hover,
 .card-ambient-coral:hover,
 .card-ambient-graphite:hover,
 .card-ambient-lavender:hover,
 .card-ambient-rose:hover,
 .card-ambient-cyan:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-}
-
-/* Stealth Matte Minimalist Black Cards */
-.card-stealth-dark {
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.85);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-stealth-dark:hover {
-  background: #090909;
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 

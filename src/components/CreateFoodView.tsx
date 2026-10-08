@@ -293,19 +293,19 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[85vh] select-none bg-black text-white">
       {/* ----------------- TOP NAVBAR (Mobile Only) ----------------- */}
-      <div className="lg:hidden border border-white/10 bg-[#0c0d12]/90 backdrop-blur-md rounded-2xl mb-4 sticky top-0 z-40">
+      <div className="lg:hidden border border-white/[0.1] bg-gradient-to-b from-white/[0.07] via-[#090a0e] to-[#040406] shadow-[0_12px_32px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.2)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
         <div className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={currentPage === 2 ? () => setCurrentPage(1) : onBack}
-              className="w-9 h-9 rounded-full bg-[#111111] hover:bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
               title="Go back"
             >
-              <ArrowLeft size={18} />
+              <ArrowLeft size={16} />
             </button>
 
-            <h2 className="text-base sm:text-lg font-bold tracking-tight text-white">
+            <h2 className="text-base sm:text-lg font-black tracking-tight text-white">
               Create Food
             </h2>
           </div>
@@ -316,7 +316,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleNext}
               disabled={!foodName.trim()}
-              className="px-4 py-1.5 rounded-xl text-sm font-semibold text-white hover:text-zinc-300 disabled:opacity-40 transition-all cursor-pointer"
+              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px]"
             >
               Next
             </button>
@@ -325,7 +325,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleAttemptSave}
               disabled={!calories || Number(calories) <= 0}
-              className="px-4 py-1.5 rounded-xl text-sm font-semibold text-white hover:text-zinc-300 disabled:opacity-40 transition-all cursor-pointer"
+              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px]"
             >
               Save
             </button>
@@ -347,7 +347,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </h3>
 
             {/* Food Name (Required) */}
-            <div className="p-4 rounded-xl bg-[#0e0e12] border border-white/10 space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Food Name (Required)
               </label>
@@ -356,13 +356,13 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
                 placeholder="e.g. Whole Wheat Roti, Paneer Bhurji"
                 value={foodName}
                 onChange={(e) => setFoodName(e.target.value)}
-                className="w-full bg-transparent text-white text-base focus:outline-none placeholder:text-zinc-600 font-medium"
+                className="w-full bg-black/60 rounded-xl px-3.5 py-2.5 border border-white/10 text-white text-base focus:outline-none focus:border-white/30 placeholder:text-zinc-600 font-medium"
                 autoFocus
               />
             </div>
 
             {/* Notes / Description (Optional) */}
-            <div className="p-4 rounded-xl bg-[#0e0e12] border border-white/10 space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Notes / Description (Optional)
               </label>
@@ -371,12 +371,12 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
                 placeholder="e.g. Homemade chapati without oil or ghee"
                 value={foodDescription}
                 onChange={(e) => setFoodDescription(e.target.value)}
-                className="w-full bg-transparent text-white text-base focus:outline-none placeholder:text-zinc-600 font-medium"
+                className="w-full bg-black/60 rounded-xl px-3.5 py-2.5 border border-white/10 text-white text-base focus:outline-none focus:border-white/30 placeholder:text-zinc-600 font-medium"
               />
             </div>
 
             {/* Food Image (Optional) - Local Upload OR URL */}
-            <div className="p-4 rounded-xl bg-[#0e0e12] border border-white/10 space-y-3">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.09] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div>
                   <label className="block text-xs font-semibold text-zinc-300">

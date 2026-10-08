@@ -401,7 +401,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`rounded-2xl p-2 sm:p-3.5 bg-gradient-to-b from-[#181923] to-[#111219] border border-white/[0.08] shadow-[0_10px_25px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.07)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[114px] sm:min-h-[132px] group ${cardHoverClass} ${staggerClass} card-interactive-lift`}
+            className={`rounded-2xl p-2.5 sm:p-3.5 bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] hover:border-white/[0.24] shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[114px] sm:min-h-[132px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Tap to view ${macro.label} on radar arc`}
           >
             {/* Top: Label on Left + Icon Badge on Right */}
@@ -409,7 +409,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
               <span className="text-[11px] sm:text-sm font-bold text-white tracking-tight truncate">
                 {macro.label}
               </span>
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
                 {macro.icon}
               </div>
             </div>
@@ -437,7 +437,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
                 <span className="text-zinc-400 truncate">
                   {remaining > 0 ? `${remaining}${macro.unit} left` : 'Done'}
                 </span>
-                <span className="font-bold text-white/90 shrink-0 ml-1">
+                <span className="font-bold text-white shrink-0 ml-1">
                   {displayPercent}%
                 </span>
               </div>
@@ -456,7 +456,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
         const displayPercent = Math.min(100, Math.round(rawPercent));
         const remaining = Math.max(0, macro.goal - macro.current);
         const staggerClass = idx === 0 ? 'animate-stagger-1' : idx === 1 ? 'animate-stagger-2' : 'animate-stagger-3';
-        const cardHoverClass = 'hover:border-white/20 hover:bg-[#1a1b24]';
+        const cardHoverClass = 'hover:border-white/25 hover:bg-[#111218]';
 
         return (
           <div
@@ -464,24 +464,24 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`group relative rounded-3xl p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.08] bg-gradient-to-b from-[#181923] to-[#0e0f14] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_12px_28px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.07)] ${cardHoverClass} ${staggerClass} card-interactive-lift`}
+            className={`group relative rounded-3xl p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.1] bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_16px_36px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.22)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Click to view ${macro.label} on radar arc`}
           >
             {/* Left: Icon + Label & Values */}
             <div className="flex items-center gap-3.5 min-w-[140px] sm:min-w-[170px]">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-white/15 to-white/5 border border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.3)] flex items-center justify-center shrink-0 text-white group-hover:scale-105 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-white/15 to-white/5 border border-white/15 shadow-[0_4px_14px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center justify-center shrink-0 text-white group-hover:scale-105 transition-transform duration-300">
                 {macro.desktopIcon}
               </div>
 
               <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase tracking-wider font-sans text-white/50">
+                <span className="text-xs font-bold uppercase tracking-wider font-sans text-zinc-400">
                   {macro.label}
                 </span>
                 <div className="flex items-baseline gap-1 mt-0.5">
                   <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight">
                     {macro.current}
                   </span>
-                  <span className="text-xs font-semibold font-mono text-zinc-500">
+                  <span className="text-xs font-semibold font-mono text-zinc-400">
                     /{macro.goal}{macro.unit}
                   </span>
                 </div>
@@ -497,10 +497,10 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
                 />
 
                 <div className="flex items-center justify-between text-[11px] font-mono px-1">
-                  <span className="text-zinc-500">
+                  <span className="text-zinc-400">
                     {remaining > 0 ? `${remaining}${macro.unit} left` : 'Completed'}
                   </span>
-                  <span className="font-bold text-white/90">{displayPercent}%</span>
+                  <span className="font-bold text-white">{displayPercent}%</span>
                 </div>
               </div>
             </div>

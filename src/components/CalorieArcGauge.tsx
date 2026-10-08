@@ -217,7 +217,23 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full max-w-[330px] sm:max-w-[380px] mx-auto select-none">
+    <div className="relative card-fintech-hero p-4 sm:p-5 w-full max-w-[340px] sm:max-w-[390px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_20px_48px_rgba(0,0,0,0.95)]">
+      {/* Top Header Pill Row matching Fintech card ("Your money ...8887 ▾") */}
+      <div className="w-full flex items-center justify-between px-1 mb-1">
+        <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+          {metricLabel === 'Calories' ? 'Energy Consumed' : `${metricLabel} Metric`}
+        </span>
+        <button
+          type="button"
+          onClick={onEditGoal}
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.12] border border-white/[0.14] text-[11px] font-semibold text-zinc-200 hover:text-white transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
+          title="Edit target goal"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>{goalKcal} {unit}</span>
+        </button>
+      </div>
+
       {/* SVG Container */}
       <div className="relative w-full aspect-[380/280] flex items-center justify-center">
         <svg

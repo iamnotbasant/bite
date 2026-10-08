@@ -355,19 +355,19 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
   return (
     <div className={`w-full flex flex-col ${isModal ? 'max-h-[92vh] sm:max-h-[88vh]' : 'min-h-[82vh]'} select-none relative bg-black`}>
       {/* ----------------- TOP NAVBAR ----------------- */}
-      <div className={`${!isModal ? 'lg:hidden ' : ''}px-4 sm:px-6 py-3.5 border border-white/[0.08] ${isModal ? 'rounded-t-3xl' : 'rounded-2xl'} flex items-center justify-between shrink-0 bg-[#0c0d12]/90 backdrop-blur-md mb-3 shadow-md`}>
+      <div className={`${!isModal ? 'lg:hidden ' : ''}px-4 sm:px-6 py-3.5 border border-white/[0.1] ${isModal ? 'rounded-t-3xl' : 'rounded-2xl sm:rounded-3xl'} flex items-center justify-between shrink-0 bg-gradient-to-b from-white/[0.07] via-[#090a0e] to-[#040406] shadow-[0_12px_32px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.2)] mb-3`}>
         <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             type="button"
             onClick={onBackToDashboard}
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer shadow-sm"
+            className="w-9 h-9 rounded-full bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 flex items-center justify-center text-white transition-all active:scale-95 cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
             title="Back to Dashboard"
           >
             <ArrowLeft size={16} />
           </button>
 
           <div>
-            <h2 className="text-base sm:text-lg font-bold tracking-tight text-white">
+            <h2 className="text-base sm:text-lg font-black tracking-tight text-white">
               Food Log
             </h2>
           </div>
@@ -379,9 +379,9 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToCreateFood}
-              className="px-3 py-1.5 rounded-xl bg-white text-black font-bold text-xs hover:bg-zinc-200 transition-all active:scale-95 cursor-pointer shadow-sm flex items-center gap-1.5"
+              className="btn-pill-primary px-3.5 py-1.5 text-xs min-h-[36px]"
             >
-              <Plus size={13} />
+              <Plus size={14} />
               <span>Create Food</span>
             </button>
           )}
@@ -390,7 +390,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             <button
               type="button"
               onClick={onCloseModal}
-              className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-white/[0.06]"
+              className="w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-white/[0.1]"
               title="Close"
             >
               <X size={16} />
@@ -400,16 +400,16 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
       </div>
 
       {/* ----------------- CLUTTER-FREE TABS & CONTEXTUAL SEARCH ----------------- */}
-      <div className="px-3.5 sm:px-6 pt-2.5 pb-2 space-y-2 shrink-0 bg-black">
-        {/* Clean Segmented Filter Tabs: Frequent | My Foods | Combos | Quick */}
-        <div className="grid grid-cols-4 p-1 rounded-xl sm:rounded-2xl bg-[#0f1016] border border-white/[0.06] text-center">
+      <div className="px-3.5 sm:px-6 pt-2 pb-2 space-y-2.5 shrink-0 bg-black">
+        {/* Clean Segmented Filter Tabs: Frequent | My Foods | Combos | Quick matching Proton pill style */}
+        <div className="grid grid-cols-4 p-1 rounded-full bg-black/60 border border-white/[0.09] text-center shadow-inner">
           <button
             type="button"
             onClick={() => setActiveTab('all')}
-            className={`py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`py-2 rounded-full text-xs transition-all cursor-pointer min-h-[38px] flex items-center justify-center ${
               activeTab === 'all'
-                ? 'bg-white text-black shadow-sm font-bold'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-white to-zinc-200 text-black shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-bold'
+                : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
             <span className="sm:hidden">Frequent</span>
@@ -419,10 +419,10 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('my-foods')}
-            className={`py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1 ${
+            className={`py-2 rounded-full text-xs transition-all cursor-pointer flex items-center justify-center gap-1 min-h-[38px] ${
               activeTab === 'my-foods'
-                ? 'bg-white text-black shadow-sm font-bold'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-white to-zinc-200 text-black shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-bold'
+                : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
             <span>My Foods</span>
@@ -440,10 +440,10 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('my-meals')}
-            className={`py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`py-2 rounded-full text-xs transition-all cursor-pointer min-h-[38px] flex items-center justify-center ${
               activeTab === 'my-meals'
-                ? 'bg-white text-black shadow-sm font-bold'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-white to-zinc-200 text-black shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-bold'
+                : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
             <span className="sm:hidden">Combos</span>
@@ -453,33 +453,33 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('quick-add')}
-            className={`py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1 ${
+            className={`py-2 rounded-full text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 min-h-[38px] ${
               activeTab === 'quick-add'
-                ? 'bg-white text-black shadow-sm font-bold'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-white to-zinc-200 text-black shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-bold'
+                : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
-            <Flame size={12} className={activeTab === 'quick-add' ? 'text-black' : 'text-amber-400'} />
+            <Flame size={13} className={activeTab === 'quick-add' ? 'text-black fill-black' : 'text-amber-400'} />
             <span>Quick</span>
           </button>
         </div>
 
-        {/* Contextual Search Bar (Only shown on Frequent Foods and My Foods) */}
+        {/* Contextual Search Bar (Proton search pill capsule) */}
         {(activeTab === 'all' || activeTab === 'my-foods') && (
           <div className="relative animate-fade-in">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
             <input
               type="text"
               placeholder={activeTab === 'my-foods' ? 'Search custom foods...' : 'Search foods (Roti, Milk, Oats)...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-9 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0f1016] border border-white/10 text-white placeholder:text-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-white/30 transition-all shadow-inner"
+              className="w-full pl-10 pr-10 py-3 rounded-full bg-white/[0.04] border border-white/[0.12] hover:border-white/[0.22] focus:border-white/[0.38] text-white placeholder:text-zinc-500 text-xs sm:text-sm focus:outline-none transition-all shadow-inner"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-zinc-400 hover:text-white cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full text-zinc-400 hover:text-white cursor-pointer"
               >
                 <X size={14} />
               </button>
@@ -506,10 +506,10 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                 <div
                   key={food.id}
                   onClick={() => handleOpenDetail(food)}
-                  className="group p-3 sm:p-4 rounded-2xl bg-[#050505] hover:bg-[#0a0a0a] border border-white/[0.07] hover:border-white/20 flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] shadow-sm"
+                  className="group p-3.5 sm:p-4 rounded-[22px] bg-gradient-to-r from-white/[0.06] via-[#090a0e] to-[#040406] hover:from-white/[0.1] hover:via-[#0e0f14] hover:to-[#060608] border border-white/[0.09] hover:border-white/[0.24] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
                 >
                   <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 pr-2">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-white/15 bg-black shrink-0 shadow-sm">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/15 bg-black shrink-0 shadow-md group-hover:scale-105 transition-transform">
                       <img
                         src={food.imageUrl || getFoodImage(food.name)}
                         alt={food.name}
@@ -522,11 +522,11 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <h4 className="font-semibold text-sm sm:text-base text-white tracking-tight truncate group-hover:text-white transition-colors">
+                        <h4 className="font-bold text-sm sm:text-base text-white tracking-tight truncate group-hover:text-white transition-colors">
                           {food.name}
                         </h4>
                         {food.brand && (
-                          <span className="text-[9px] px-1.5 py-0.2 rounded bg-white/10 text-zinc-400 font-medium shrink-0">
+                          <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-zinc-300 font-medium shrink-0">
                             {food.brand}
                           </span>
                         )}
@@ -542,7 +542,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                   </div>
 
                   <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-                    <span className="font-bold text-xs sm:text-base text-white font-mono whitespace-nowrap">
+                    <span className="font-extrabold text-sm sm:text-base text-white font-mono whitespace-nowrap">
                       {safeMacro(Math.round(food.calories))} kcal
                     </span>
 
@@ -552,10 +552,10 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                         e.stopPropagation();
                         handleOpenDetail(food);
                       }}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-zinc-200 text-black flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-md"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-b from-white to-zinc-200 text-black flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-[0_4px_14px_rgba(255,255,255,0.2)] hover:brightness-95"
                       title="Add food (adjust portion)"
                     >
-                      <Plus size={16} strokeWidth={2.5} />
+                      <Plus size={18} strokeWidth={2.5} />
                     </button>
                   </div>
                 </div>
@@ -570,7 +570,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                   <button
                     type="button"
                     onClick={onNavigateToCreateFood}
-                    className="mt-4 px-4 py-2 rounded-full text-xs font-bold bg-white text-black hover:bg-zinc-200 transition-all cursor-pointer shadow-md"
+                    className="btn-pill-primary mt-4 px-5 py-2 text-xs"
                   >
                     Create Custom Food
                   </button>
@@ -596,10 +596,10 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                   <div
                     key={food.id}
                     onClick={() => handleOpenDetail(food)}
-                    className="group p-3 sm:p-4 rounded-2xl bg-[#050505] hover:bg-[#0a0a0a] border border-white/[0.07] hover:border-white/20 flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] shadow-sm"
+                    className="group p-3.5 sm:p-4 rounded-[22px] bg-gradient-to-r from-white/[0.06] via-[#090a0e] to-[#040406] hover:from-white/[0.1] hover:via-[#0e0f14] hover:to-[#060608] border border-white/[0.09] hover:border-white/[0.24] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
                   >
                     <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 pr-2">
-                      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-white/15 bg-black shrink-0 shadow-sm">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/15 bg-black shrink-0 shadow-md">
                         <img
                           src={food.imageUrl || getFoodImage(food.name)}
                           alt={food.name}
@@ -612,7 +612,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
 
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5">
-                          <h4 className="font-semibold text-sm sm:text-base text-white tracking-tight truncate">
+                          <h4 className="font-bold text-sm sm:text-base text-white tracking-tight truncate">
                             {food.name}
                           </h4>
                         </div>
@@ -625,7 +625,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                      <span className="font-bold text-xs sm:text-sm text-white font-mono mr-1">
+                      <span className="font-bold text-xs sm:text-base text-white font-mono mr-1">
                         {safeMacro(Math.round(food.calories))} kcal
                       </span>
 
@@ -636,20 +636,20 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                             e.stopPropagation();
                             onEditFood(food);
                           }}
-                          className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                          className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                           title="Edit custom food"
                         >
-                          <Pencil size={15} />
+                          <Pencil size={14} />
                         </button>
                       )}
 
                       <button
                         type="button"
                         onClick={(e) => handleDeleteCustomFood(food.id, e)}
-                        className="p-1.5 sm:p-2 rounded-full hover:bg-red-500/20 text-zinc-500 hover:text-red-400 transition-colors cursor-pointer"
+                        className="w-8 h-8 rounded-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 flex items-center justify-center transition-colors cursor-pointer"
                         title="Delete custom food"
                       >
-                        <Trash2 size={15} />
+                        <Trash2 size={14} />
                       </button>
 
                       <button
@@ -658,24 +658,24 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                           e.stopPropagation();
                           handleOpenDetail(food);
                         }}
-                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-zinc-200 text-black flex items-center justify-center transition-all active:scale-90 shadow-md cursor-pointer"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-b from-white to-zinc-200 text-black flex items-center justify-center transition-all active:scale-90 shadow-[0_4px_14px_rgba(255,255,255,0.2)] hover:brightness-95 cursor-pointer"
                         title="Add food (adjust portion)"
                       >
-                        <Plus size={16} strokeWidth={2.5} />
+                        <Plus size={18} strokeWidth={2.5} />
                       </button>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="py-12 px-4 rounded-2xl bg-[#0f1016] border border-white/[0.06] flex flex-col items-center justify-center text-center">
-                <BookmarkCheck size={32} className="text-zinc-600 mb-2" />
+              <div className="py-12 px-4 rounded-3xl bg-gradient-to-b from-white/[0.06] via-[#090a0e] to-[#040406] border border-white/[0.08] flex flex-col items-center justify-center text-center shadow-lg">
+                <BookmarkCheck size={32} className="text-zinc-500 mb-2" />
                 <h4 className="text-sm font-bold text-white">No custom foods yet</h4>
                 {onNavigateToCreateFood && (
                   <button
                     type="button"
                     onClick={onNavigateToCreateFood}
-                    className="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-white text-black hover:bg-zinc-200 transition-all cursor-pointer shadow-md"
+                    className="btn-pill-primary mt-4 px-5 py-2 text-xs"
                   >
                     Create Your First Food
                   </button>
@@ -699,16 +699,16 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
               {PRESET_COMBOS.map((combo) => (
                 <div
                   key={combo.id}
-                  className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#0e0f15] border border-white/[0.05] flex items-center justify-between gap-2.5 shadow-sm"
+                  className="p-3.5 sm:p-4.5 rounded-[24px] bg-gradient-to-b from-white/[0.07] via-[#090a0e] to-[#040405] border border-white/[0.1] flex items-center justify-between gap-3 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2)] card-fintech-interactive"
                 >
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-bold text-xs sm:text-base text-white tracking-tight">
+                    <h4 className="font-bold text-sm sm:text-base text-white tracking-tight">
                       {combo.name}
                     </h4>
                     <p className="text-[10px] sm:text-xs text-zinc-400 mt-0.5 line-clamp-1">
                       {combo.description}
                     </p>
-                    <div className="text-[10px] sm:text-[11px] text-zinc-500 font-mono mt-0.5">
+                    <div className="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">
                       {combo.protein}g P · {combo.carbs}g C · {combo.fat}g F
                     </div>
                   </div>
@@ -720,7 +720,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                     <button
                       type="button"
                       onClick={() => handleLogCombo(combo)}
-                      className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-white text-black font-bold text-xs hover:bg-zinc-200 transition-all active:scale-95 flex items-center gap-1 cursor-pointer shadow-sm"
+                      className="btn-pill-primary px-3.5 py-1.5 text-xs min-h-[36px]"
                     >
                       <Plus size={13} /> Log
                     </button>
@@ -733,12 +733,12 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
 
         {/* TAB 4: QUICK ADD */}
         {activeTab === 'quick-add' && (
-          <div className="max-w-2xl mx-auto w-full p-4 sm:p-6 rounded-3xl bg-[#0e0f15] border border-white/[0.08] space-y-4 shadow-xl">
+          <div className="card-fintech-hero max-w-2xl mx-auto w-full p-5 sm:p-7 rounded-[32px] border border-white/[0.14] space-y-4 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1px_1.5px_rgba(255,255,255,0.28)]">
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-xl bg-white/5 border border-white/10 text-white">
+              <span className="p-2 rounded-xl bg-white/[0.08] border border-white/10 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
                 <Flame size={16} />
               </span>
-              <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">Quick Calorie Entry</h3>
+              <h3 className="text-sm sm:text-base font-extrabold text-white tracking-tight">Quick Calorie Entry</h3>
             </div>
 
             <form onSubmit={handleQuickAddSubmit} className="space-y-4">
@@ -902,7 +902,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
               <button
                 type="submit"
                 disabled={!quickCalories || Number(quickCalories) <= 0}
-                className="w-full mt-2 py-3.5 rounded-2xl bg-white text-black font-bold text-xs sm:text-sm hover:bg-zinc-200 transition-all active:scale-95 disabled:opacity-40 cursor-pointer shadow-lg"
+                className="btn-pill-primary w-full mt-2 py-3.5 text-xs sm:text-sm font-bold disabled:opacity-40 cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.18)]"
               >
                 Log Calories to {quickCategory.charAt(0).toUpperCase() + quickCategory.slice(1)}
               </button>
@@ -914,17 +914,17 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
       {/* ----------------- ULTRA-MINIMAL, CLUTTER-FREE PORTION & MEAL MODAL ----------------- */}
       {selectedFood && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-black/85 backdrop-blur-xl animate-fade-in"
           onClick={() => setSelectedFood(null)}
         >
           <div
-            className="w-full max-w-md rounded-[32px] bg-[#0c0d12] border border-white/10 p-5 sm:p-6 shadow-2xl text-white space-y-4 max-h-[92vh] overflow-y-auto no-scrollbar animate-scale-in"
+            className="w-full max-w-md rounded-[36px] bg-gradient-to-b from-white/[0.08] via-[#090a0e] to-[#040405] border border-white/[0.14] p-5 sm:p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1px_1.5px_rgba(255,255,255,0.28)] text-white space-y-4 max-h-[92vh] overflow-y-auto no-scrollbar animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Minimal Header */}
-            <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+            <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
               <div className="flex items-center gap-3 min-w-0 pr-2">
-                <div className="w-12 h-12 rounded-full overflow-hidden border border-white/15 bg-black shrink-0 shadow-md">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-black shrink-0 shadow-md">
                   <img
                     src={selectedFood.imageUrl || getFoodImage(selectedFood.name)}
                     alt={selectedFood.name}
@@ -964,7 +964,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
               <label className="block text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
                 Log into Meal
               </label>
-              <div className="grid grid-cols-4 p-1 rounded-2xl bg-white/[0.04] border border-white/10 gap-1">
+              <div className="grid grid-cols-4 p-1.5 rounded-2xl bg-black/60 border border-white/10 gap-1 shadow-inner">
                 {MEAL_CATEGORY_OPTIONS.map((opt) => {
                   const Icon = opt.icon;
                   const isSelected = modalCategory === opt.id;
@@ -975,8 +975,8 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                       onClick={() => setModalCategory(opt.id)}
                       className={`py-2 px-1 rounded-xl text-xs font-semibold transition-all cursor-pointer flex flex-col items-center justify-center gap-1.5 ${
                         isSelected
-                          ? 'bg-white text-black font-bold shadow-md scale-[1.02]'
-                          : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                          ? 'bg-gradient-to-b from-white to-zinc-200 text-black font-bold shadow-[0_2px_10px_rgba(255,255,255,0.2)] scale-[1.02]'
+                          : 'text-zinc-400 hover:text-white hover:bg-white/[0.06]'
                       }`}
                     >
                       <Icon size={16} strokeWidth={isSelected ? 2.5 : 2} className={isSelected ? 'text-black' : 'text-zinc-400'} />
@@ -1206,9 +1206,9 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             <button
               type="button"
               onClick={handleConfirmLogFromDetail}
-              className="w-full py-4 rounded-2xl bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all active:scale-[0.98] cursor-pointer shadow-xl flex items-center justify-center gap-2"
+              className="btn-pill-primary w-full py-4 text-sm font-bold shadow-[0_4px_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Check size={18} />
+              <Check size={18} strokeWidth={2.5} />
               <span>
                 Add to {modalCategory.charAt(0).toUpperCase() + modalCategory.slice(1)} • {detailKcal} kcal
               </span>

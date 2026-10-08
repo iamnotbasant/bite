@@ -8,18 +8,29 @@ export default {
   theme: {
     extend: {
       colors: {
+        obsidian: {
+          950: '#000000',
+          900: '#050507',
+          850: '#090a0d',
+          800: '#0e0f14',
+          750: '#14151c',
+          700: '#1a1b24',
+          600: '#252632',
+          border: 'rgba(255, 255, 255, 0.08)',
+          'border-highlight': 'rgba(255, 255, 255, 0.16)',
+        },
         fuel: {
           green: {
-            DEFAULT: '#2EB65C',
-            light: '#3FD474',
-            dark: '#179344',
-            deep: '#0F6830',
+            DEFAULT: '#22c55e',
+            light: '#4ade80',
+            dark: '#16a34a',
+            deep: '#14532d',
           },
           dark: {
             bg: '#000000',
-            card: '#080808',
-            surface: '#101010',
-            hover: '#181818',
+            card: '#08080a',
+            surface: '#0e0f13',
+            hover: '#16171d',
             border: 'rgba(255, 255, 255, 0.08)',
           },
           coral: '#FF7A59',
@@ -38,12 +49,13 @@ export default {
         outfit: ['Outfit', 'sans-serif'],
       },
       boxShadow: {
-        'glass-card': '0 8px 32px 0 rgba(0, 0, 0, 0.18)',
-        'glass-card-sm': '0 4px 16px 0 rgba(0, 0, 0, 0.12)',
-        'emerald-glow': '0 0 40px -10px rgba(46, 182, 92, 0.6)',
-        'coral-glow': '0 0 35px -8px rgba(255, 122, 89, 0.5)',
-        'blue-glow': '0 0 35px -8px rgba(59, 130, 246, 0.5)',
-        'purple-glow': '0 0 35px -8px rgba(139, 92, 246, 0.5)',
+        'glass-card': '0 12px 32px 0 rgba(0, 0, 0, 0.85)',
+        'glass-card-sm': '0 4px 16px 0 rgba(0, 0, 0, 0.65)',
+        'rim-top': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.2)',
+        'rim-top-bright': 'inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35)',
+        'specular-glow': '0 0 32px -4px rgba(255, 255, 255, 0.08)',
+        'emerald-glow': '0 0 40px -10px rgba(34, 197, 94, 0.5)',
+        'pill-float': '0 16px 36px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.18)',
       },
       animation: {
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',

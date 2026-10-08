@@ -104,17 +104,17 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
   const currentImg = meal.imageUrl || getFoodImage(meal.name);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-[#0d0e14] border border-white/[0.12] shadow-[0_24px_70px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col max-h-[90vh] text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-xl animate-fade-in">
+      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-gradient-to-b from-white/[0.08] via-[#090a0e] to-[#040405] border border-white/[0.14] shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1px_1.5px_rgba(255,255,255,0.28)] overflow-hidden flex flex-col max-h-[90vh] text-white">
         
         {/* Top Header Bar with Close Button */}
-        <div className="px-5 sm:px-6 pt-5 pb-3 flex items-center justify-between border-b border-white/[0.06] bg-black/40 shrink-0">
+        <div className="px-5 sm:px-6 pt-5 pb-3.5 flex items-center justify-between border-b border-white/[0.08] bg-black/50 shrink-0">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/15">
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-white border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
               {categoryTitles[category]}
             </span>
-            <span className="text-xs text-zinc-400 font-mono flex items-center gap-1">
-              <Clock size={12} className="text-zinc-500" />
+            <span className="text-xs text-zinc-400 font-mono flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+              <Clock size={12} className="text-zinc-400" />
               <span>{timestamp}</span>
             </span>
           </div>
@@ -124,19 +124,19 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               <button
                 type="button"
                 onClick={() => setIsEditing(true)}
-                className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition-all cursor-pointer btn-spring-press"
+                className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-zinc-300 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
                 title="Edit this meal"
               >
-                <Edit3 size={15} />
+                <Edit3 size={14} />
               </button>
             )}
             <button
               type="button"
               onClick={onClose}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all cursor-pointer btn-spring-press"
+              className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-zinc-400 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
               title="Close modal"
             >
-              <X size={17} />
+              <X size={16} />
             </button>
           </div>
         </div>
@@ -252,7 +252,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
             {/* 4 Macro Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {/* Calories */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-[#181923] to-[#101117] border border-orange-500/20 shadow-md">
+              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Energy</span>
                   <FuelIconBadge name="energy" size="sm" />
@@ -262,18 +262,18 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     type="number"
                     value={calories}
                     onChange={(e) => setCalories(Number(e.target.value) || 0)}
-                    className="w-full text-lg font-black font-mono text-orange-400 bg-black/50 rounded-lg px-2 py-1 border border-white/20 focus:outline-none"
+                    className="w-full text-lg font-black font-mono text-white bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
                   />
                 ) : (
-                  <div className="text-xl font-black font-mono text-orange-400">
+                  <div className="text-xl font-black font-mono text-white">
                     {calories}
-                    <span className="text-[10px] font-normal text-zinc-500 ml-1">kcal</span>
+                    <span className="text-[10px] font-normal text-zinc-400 ml-1">kcal</span>
                   </div>
                 )}
               </div>
 
               {/* Protein */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-[#181923] to-[#101117] border border-rose-500/20 shadow-md">
+              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Protein</span>
                   <FuelIconBadge name="protein" size="sm" />
@@ -283,18 +283,18 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     type="number"
                     value={protein}
                     onChange={(e) => setProtein(Number(e.target.value) || 0)}
-                    className="w-full text-lg font-black font-mono text-rose-400 bg-black/50 rounded-lg px-2 py-1 border border-white/20 focus:outline-none"
+                    className="w-full text-lg font-black font-mono text-white bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
                   />
                 ) : (
-                  <div className="text-xl font-black font-mono text-rose-400">
+                  <div className="text-xl font-black font-mono text-white">
                     {protein}
-                    <span className="text-[10px] font-normal text-zinc-500 ml-1">g</span>
+                    <span className="text-[10px] font-normal text-zinc-400 ml-1">g</span>
                   </div>
                 )}
               </div>
 
               {/* Carbs */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-[#181923] to-[#101117] border border-amber-500/20 shadow-md">
+              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Carbs</span>
                   <FuelIconBadge name="carbs" size="sm" />
@@ -304,18 +304,18 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     type="number"
                     value={carbs}
                     onChange={(e) => setCarbs(Number(e.target.value) || 0)}
-                    className="w-full text-lg font-black font-mono text-amber-400 bg-black/50 rounded-lg px-2 py-1 border border-white/20 focus:outline-none"
+                    className="w-full text-lg font-black font-mono text-white bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
                   />
                 ) : (
-                  <div className="text-xl font-black font-mono text-amber-400">
+                  <div className="text-xl font-black font-mono text-white">
                     {carbs}
-                    <span className="text-[10px] font-normal text-zinc-500 ml-1">g</span>
+                    <span className="text-[10px] font-normal text-zinc-400 ml-1">g</span>
                   </div>
                 )}
               </div>
 
               {/* Fat */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-[#181923] to-[#101117] border border-lime-500/20 shadow-md">
+              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Fat</span>
                   <FuelIconBadge name="fat" size="sm" />
@@ -325,12 +325,12 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     type="number"
                     value={fat}
                     onChange={(e) => setFat(Number(e.target.value) || 0)}
-                    className="w-full text-lg font-black font-mono text-lime-400 bg-black/50 rounded-lg px-2 py-1 border border-white/20 focus:outline-none"
+                    className="w-full text-lg font-black font-mono text-white bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
                   />
                 ) : (
-                  <div className="text-xl font-black font-mono text-lime-400">
+                  <div className="text-xl font-black font-mono text-white">
                     {fat}
-                    <span className="text-[10px] font-normal text-zinc-500 ml-1">g</span>
+                    <span className="text-[10px] font-normal text-zinc-400 ml-1">g</span>
                   </div>
                 )}
               </div>
@@ -339,13 +339,13 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
 
           {/* Quick Serving Multiplier Scaler (When not editing raw fields) */}
           {!isEditing && (
-            <div className="p-3 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
+            <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-2">
               <div className="flex items-center justify-between text-xs text-zinc-400">
                 <span className="font-semibold text-zinc-300 flex items-center gap-1.5">
-                  <Scale size={13} className="text-cyan-400" />
+                  <Scale size={13} className="text-zinc-300" />
                   <span>Quick Portion Scale</span>
                 </span>
-                <span className="text-[11px] font-mono text-cyan-300 font-bold">{multiplier}x Portion</span>
+                <span className="text-[11px] font-mono text-white font-bold">{multiplier}x Portion</span>
               </div>
               <div className="grid grid-cols-4 gap-1.5">
                 {[0.5, 1, 1.5, 2].map((m) => (
@@ -353,10 +353,10 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     key={m}
                     type="button"
                     onClick={() => applyMultiplier(m)}
-                    className={`py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border ${
+                    className={`py-2 rounded-full text-xs font-mono font-bold transition-all cursor-pointer border min-h-[40px] flex items-center justify-center ${
                       multiplier === m
-                        ? 'bg-white text-black border-white shadow-sm font-extrabold'
-                        : 'bg-black/40 text-zinc-400 border-white/10 hover:text-white hover:bg-white/5'
+                        ? 'bg-gradient-to-b from-white to-zinc-200 text-black border-white shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-extrabold'
+                        : 'bg-white/[0.05] text-zinc-300 border-white/10 hover:text-white hover:bg-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
                     }`}
                   >
                     {m}x
@@ -367,48 +367,48 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
           )}
 
           {/* Section 4: Micro-Nutrient Details */}
-          <div className="p-4 rounded-2xl bg-black/40 border border-white/5 space-y-2.5">
+          <div className="p-4 rounded-2xl bg-black/40 border border-white/[0.08] space-y-2.5">
             <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">
               Secondary Micronutrients
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-              <div className="p-2 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
                 <span className="text-[10px] text-zinc-500 block">FIBER</span>
-                <strong className="text-zinc-200">{fiber}g</strong>
+                <strong className="text-white">{fiber}g</strong>
               </div>
-              <div className="p-2 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
                 <span className="text-[10px] text-zinc-500 block">SAT FAT</span>
-                <strong className="text-zinc-200">{estimatedSatFat}g</strong>
+                <strong className="text-white">{estimatedSatFat}g</strong>
               </div>
-              <div className="p-2 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
                 <span className="text-[10px] text-zinc-500 block">SUGARS</span>
-                <strong className="text-zinc-200">{estimatedSugar}g</strong>
+                <strong className="text-white">{estimatedSugar}g</strong>
               </div>
-              <div className="p-2 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
                 <span className="text-[10px] text-zinc-500 block">SODIUM</span>
-                <strong className="text-zinc-200">{estimatedSodium}mg</strong>
+                <strong className="text-white">{estimatedSodium}mg</strong>
               </div>
             </div>
           </div>
         </div>
 
         {/* Modal Bottom Action Footer */}
-        <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-black/60 shrink-0 flex items-center justify-between gap-3">
+        <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-black/70 shrink-0 flex items-center justify-between gap-3">
           {/* Delete Action (Red) */}
           {isConfirmingDelete ? (
             <div className="flex items-center gap-2 w-full">
-              <span className="text-xs text-red-400 font-semibold truncate">Sure delete this meal?</span>
+              <span className="text-xs text-rose-400 font-semibold truncate">Sure delete this meal?</span>
               <button
                 type="button"
                 onClick={handleDelete}
-                className="ml-auto px-3 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs cursor-pointer shadow-md btn-spring-press"
+                className="ml-auto px-4 py-2.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs cursor-pointer shadow-md min-h-[44px]"
               >
                 Yes, Delete
               </button>
               <button
                 type="button"
                 onClick={() => setIsConfirmingDelete(false)}
-                className="px-3 py-2 rounded-xl bg-white/10 text-zinc-300 font-bold text-xs cursor-pointer btn-spring-press"
+                className="px-4 py-2.5 rounded-full bg-white/10 text-zinc-300 font-bold text-xs cursor-pointer min-h-[44px]"
               >
                 Cancel
               </button>
@@ -418,7 +418,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               <button
                 type="button"
                 onClick={() => setIsConfirmingDelete(true)}
-                className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 font-bold text-xs transition-all cursor-pointer btn-spring-press"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 font-bold text-xs transition-all cursor-pointer min-h-[44px]"
                 title="Delete meal from today"
               >
                 <Trash2 size={14} />
@@ -431,14 +431,14 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setIsEditing(false)}
-                      className="px-3.5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-bold text-xs transition-all cursor-pointer btn-spring-press"
+                      className="px-4 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-zinc-300 font-bold text-xs transition-all cursor-pointer border border-white/10 min-h-[44px]"
                     >
                       Cancel
                     </button>
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white text-black font-extrabold text-xs transition-all cursor-pointer shadow-lg hover:bg-zinc-200 btn-spring-press"
+                      className="btn-pill-primary px-5 py-2.5 text-xs min-h-[44px]"
                     >
                       <Check size={14} />
                       <span>Save Changes</span>
@@ -449,7 +449,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setIsEditing(true)}
-                      className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all cursor-pointer border border-white/10 btn-spring-press"
+                      className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] text-white font-bold text-xs transition-all cursor-pointer border border-white/15 min-h-[44px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
                     >
                       <Edit3 size={14} />
                       <span>Edit</span>
@@ -457,7 +457,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={onClose}
-                      className="px-4 py-2.5 rounded-xl bg-white text-black font-extrabold text-xs transition-all cursor-pointer shadow-lg hover:bg-zinc-200 btn-spring-press"
+                      className="btn-pill-primary px-6 py-2.5 text-xs min-h-[44px]"
                     >
                       Done
                     </button>
