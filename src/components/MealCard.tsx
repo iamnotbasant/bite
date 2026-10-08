@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
 import type { MealItem } from '../types';
 import { getFoodImage, FALLBACK_FOOD_IMAGE } from '../utils/foodImages';
 
@@ -39,11 +38,6 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
           <h4 className="font-bold text-[14px] sm:text-[15px] tracking-tight text-white truncate group-hover:text-zinc-200 transition-colors">
             {meal.name}
           </h4>
-          {meal.timestamp && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/[0.08] border border-white/15 text-[10px] sm:text-[11px] font-mono font-medium text-zinc-300 shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
-              {meal.timestamp}
-            </span>
-          )}
           {meal.brand && (
             <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 text-zinc-400 font-medium shrink-0 truncate">
               {meal.brand}
@@ -66,15 +60,11 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
         </div>
       </div>
 
-      {/* Right: Kcal Right-Aligned with subtle chevron */}
+      {/* Right: Kcal Right-Aligned */}
       <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 text-right">
         <span className="font-bold text-sm sm:text-base text-white font-mono tracking-tight whitespace-nowrap">
           {meal.calories} kcal
         </span>
-        <ChevronRight
-          size={16}
-          className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0"
-        />
       </div>
     </div>
   );

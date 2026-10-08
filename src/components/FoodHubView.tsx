@@ -175,6 +175,12 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
   const [detailMode, setDetailMode] = useState<'unit' | 'weight'>('unit');
   const [detailWeightInput, setDetailWeightInput] = useState<string>('100');
   const [modalCategory, setModalCategory] = useState<MealCategory>(defaultCategory || getDefaultMealCategoryByTime());
+
+  // Keep the log category in sync with the section the user came from,
+  // so food never lands in the wrong meal (breakfast/lunch/dinner/snack mix-up).
+  useEffect(() => {
+    if (defaultCategory) setModalCategory(defaultCategory);
+  }, [defaultCategory]);
   const [modalDate, setModalDate] = useState<string>(selectedDate || '2026-08-23');
   const [modalTime, setModalTime] = useState<string>(''); // Blank by default as requested!
 
