@@ -379,7 +379,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToCreateFood}
-              className="btn-pill-lime px-3.5 py-1.5 text-xs min-h-[36px]"
+              className="btn-pill-primary px-3.5 py-1.5 text-xs min-h-[36px] font-black cursor-pointer shadow-[0_2px_14px_rgba(255,255,255,0.25)]"
             >
               <Plus size={14} strokeWidth={2.5} />
               <span>Create Food</span>
@@ -459,7 +459,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                 : 'text-zinc-400 hover:text-white font-medium hover:bg-white/[0.05]'
             }`}
           >
-            <Flame size={13} className={activeTab === 'quick-add' ? 'text-black fill-black' : 'text-amber-400'} />
+            <Flame size={13} className={activeTab === 'quick-add' ? 'text-black fill-black' : 'text-white'} />
             <span>Quick</span>
           </button>
         </div>
@@ -495,7 +495,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between pb-1 px-1">
               <span className="text-[11px] sm:text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles size={12} className="text-amber-400" />
+                <Sparkles size={12} className="text-white" />
                 {searchQuery ? `Search Results (${filteredFoods.length})` : 'Frequently Eaten Foods'}
               </span>
               <span className="hidden sm:inline text-[11px] text-zinc-500 font-medium">Tap to adjust serving</span>
@@ -552,7 +552,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                         e.stopPropagation();
                         handleOpenDetail(food);
                       }}
-                      className="btn-circle-cta-lime w-9 h-9 sm:w-10 sm:h-10 shadow-[0_4px_16px_rgba(205,255,80,0.35)]"
+                      className="btn-circle-cta-white w-9 h-9 sm:w-10 sm:h-10 shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
                       title="Add food (adjust portion)"
                     >
                       <Plus size={18} strokeWidth={2.5} />
@@ -570,7 +570,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                   <button
                     type="button"
                     onClick={onNavigateToCreateFood}
-                    className="btn-pill-lime mt-4 px-5 py-2 text-xs"
+                    className="btn-pill-primary mt-4 px-5 py-2 text-xs font-black cursor-pointer"
                   >
                     Create Custom Food
                   </button>
@@ -658,7 +658,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                           e.stopPropagation();
                           handleOpenDetail(food);
                         }}
-                        className="btn-circle-cta-lime w-9 h-9 sm:w-10 sm:h-10 shadow-[0_4px_16px_rgba(205,255,80,0.35)]"
+                        className="btn-circle-cta-white w-9 h-9 sm:w-10 sm:h-10 shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
                         title="Add food (adjust portion)"
                       >
                         <Plus size={18} strokeWidth={2.5} />
@@ -720,7 +720,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                     <button
                       type="button"
                       onClick={() => handleLogCombo(combo)}
-                      className="btn-pill-lime px-4 py-2 text-xs min-h-[36px]"
+                      className="btn-pill-primary px-4 py-2 text-xs min-h-[36px] font-black cursor-pointer shadow-[0_2px_14px_rgba(255,255,255,0.2)]"
                     >
                       <Plus size={13} strokeWidth={2.5} /> Log
                     </button>
@@ -902,7 +902,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
               <button
                 type="submit"
                 disabled={!quickCalories || Number(quickCalories) <= 0}
-                className="btn-pill-lime w-full mt-2 py-3.5 text-xs sm:text-sm font-bold disabled:opacity-40 cursor-pointer shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
+                className="btn-pill-primary w-full mt-2 py-3.5 text-xs sm:text-sm font-bold disabled:opacity-40 cursor-pointer shadow-[0_4px_18px_rgba(255,255,255,0.2)]"
               >
                 Log Calories to {quickCategory.charAt(0).toUpperCase() + quickCategory.slice(1)}
               </button>
@@ -1206,7 +1206,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
             <button
               type="button"
               onClick={handleConfirmLogFromDetail}
-              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+              className="btn-pill-primary w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(255,255,255,0.25)] flex items-center justify-center gap-2 cursor-pointer"
             >
               <Check size={18} strokeWidth={2.5} />
               <span>

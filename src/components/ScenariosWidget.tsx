@@ -40,8 +40,8 @@ export const ScenariosWidget: React.FC<ScenariosWidgetProps> = ({ onApplyScenari
       sublabel: 'Keto / Low Carb',
       style:
         activeScenario === 'OCEAN'
-          ? 'bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-300 text-black shadow-lg font-black'
-          : 'bg-[#12131A] text-cyan-300 hover:text-white border border-cyan-500/30 hover:border-cyan-500/60',
+          ? 'bg-white text-black shadow-lg font-black'
+          : 'bg-[#12131A] text-zinc-300 hover:text-white border border-white/20',
       data: { name: 'Ocean (Low Carb)', proteinGoal: 140, carbsGoal: 50, fatGoal: 85 },
     },
     {

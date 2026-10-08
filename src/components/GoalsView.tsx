@@ -139,7 +139,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                   type="number"
                   value={calorieGoal}
                   onChange={(e) => setCalorieGoal(e.target.value)}
-                  className="w-full px-4 py-3 rounded-2xl bg-black/60 border border-white/15 text-[#CDFF50] font-mono font-black text-xl focus:outline-none focus:border-[#CDFF50]/50"
+                  className="w-full px-4 py-3 rounded-2xl bg-black/60 border border-white/15 text-white font-mono font-black text-xl focus:outline-none focus:border-white/50"
                 />
               </div>
 
@@ -204,7 +204,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                     </span>
                   </div>
 
-                  <span className={Math.abs(diff) <= 25 ? 'text-emerald-400 font-semibold' : 'text-amber-400'}>
+                  <span className={Math.abs(diff) <= 25 ? 'text-white font-semibold' : 'text-zinc-400'}>
                     {Math.abs(diff) <= 25 ? '✓ Balanced' : diff > 0 ? `+${diff} kcal` : `${diff} kcal`}
                   </span>
                 </div>
@@ -391,7 +391,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
           <div className="pt-2 max-w-md mx-auto w-full lg:max-w-none">
             <button
               type="submit"
-              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] cursor-pointer flex items-center justify-center gap-2"
+              className="btn-pill-primary w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(255,255,255,0.25)] cursor-pointer flex items-center justify-center gap-2"
             >
               <Check size={18} strokeWidth={2.5} />
               <span>Save Goals</span>

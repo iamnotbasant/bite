@@ -31,7 +31,7 @@ export const DaySelector: React.FC<DaySelectorProps> = ({
               onClick={() => onSelectDate(day.date)}
               className={`relative transition-all duration-300 ease-out cursor-pointer flex items-center justify-center ${
                 isSelected
-                  ? 'px-4 sm:px-5 py-2 rounded-full font-black text-sm sm:text-base shadow-[0_0_16px_rgba(205,255,80,0.4)] scale-105 z-10 bg-[#CDFF50] text-black border border-[#CDFF50]'
+                  ? 'px-4 sm:px-5 py-2 rounded-full font-black text-sm sm:text-base shadow-[0_0_16px_rgba(255,255,255,0.25)] scale-105 z-10 bg-white text-black border border-white'
                   : 'w-9 h-9 sm:w-11 sm:h-11 rounded-full text-xs sm:text-sm font-semibold btn-pill-glass text-zinc-400 hover:text-white'
               }`}
             >
@@ -39,7 +39,7 @@ export const DaySelector: React.FC<DaySelectorProps> = ({
 
               {/* Dot indicator if day has logged meals */}
               {!isSelected && day.meals.length > 0 && (
-                <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-[#CDFF50] shadow-[0_0_6px_rgba(205,255,80,0.8)]" />
+                <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)]" />
               )}
             </button>
           );

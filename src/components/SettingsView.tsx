@@ -142,7 +142,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <Scale size={16} className="text-[#CDFF50]" />
+                <Scale size={16} className="text-white" />
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-200">
                   Serving Units (Servings)
                 </span>
@@ -160,7 +160,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   setUnitForm({ label: '', defaultQty: '1', defaultEq: '100', eqUnit: 'g' });
                   setIsFormOpen(true);
                 }}
-                className="btn-pill-lime px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-[0_0_16px_rgba(205,255,80,0.35)]"
+                className="btn-pill-primary px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-[0_0_16px_rgba(255,255,255,0.2)] cursor-pointer"
               >
                 <Plus size={14} strokeWidth={3} />
                 <span>Add Unit</span>
@@ -208,7 +208,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     value={unitForm.label}
                     onChange={(e) => setUnitForm({ ...unitForm, label: e.target.value })}
                     placeholder="e.g. katori, scoop"
-                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-[#CDFF50]/60 placeholder:text-zinc-600"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-white/60 placeholder:text-zinc-600"
                   />
                 </div>
 
@@ -223,7 +223,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     step="0.5"
                     value={unitForm.defaultQty}
                     onChange={(e) => setUnitForm({ ...unitForm, defaultQty: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#CDFF50]/60"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-white/60"
                   />
                 </div>
 
@@ -237,7 +237,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     min="1"
                     value={unitForm.defaultEq}
                     onChange={(e) => setUnitForm({ ...unitForm, defaultEq: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#CDFF50]/60"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-white/60"
                   />
                 </div>
 
@@ -252,7 +252,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                       onClick={() => setUnitForm({ ...unitForm, eqUnit: 'g' })}
                       className={`py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         unitForm.eqUnit === 'g'
-                          ? 'bg-[#CDFF50] text-black shadow-sm font-black'
+                          ? 'bg-white text-black shadow-sm font-black'
                           : 'text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -263,7 +263,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                       onClick={() => setUnitForm({ ...unitForm, eqUnit: 'ml' })}
                       className={`py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         unitForm.eqUnit === 'ml'
-                          ? 'bg-[#CDFF50] text-black shadow-sm font-black'
+                          ? 'bg-white text-black shadow-sm font-black'
                           : 'text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -288,7 +288,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                 <button
                   type="button"
                   onClick={handleSaveUnitForm}
-                  className="btn-pill-lime px-4 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-[0_0_16px_rgba(205,255,80,0.35)]"
+                  className="btn-pill-primary px-4 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-[0_0_16px_rgba(255,255,255,0.2)]"
                 >
                   <Save size={13} />
                   <span>{editingUnit ? 'Save Changes' : 'Add Unit'}</span>
@@ -348,7 +348,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   key={u.id}
                   className={`px-2.5 py-1 rounded-xl text-xs font-semibold ${
                     idx === 0
-                      ? 'bg-[#CDFF50] text-black font-extrabold shadow-[0_0_12px_rgba(205,255,80,0.3)]'
+                      ? 'bg-white text-black font-extrabold shadow-[0_0_12px_rgba(255,255,255,0.25)]'
                       : 'bg-black/60 border border-white/10 text-zinc-400'
                   }`}
                 >

@@ -148,7 +148,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                     <button
                       type="button"
                       onClick={() => onAddMealClick(cat.key)}
-                      className="btn-circle-cta-lime w-8 h-8"
+                      className="btn-circle-cta-white w-8 h-8 shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
                       title={`Add ${cat.title} item`}
                     >
                       <Plus size={15} strokeWidth={2.5} />
@@ -255,7 +255,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                   <button
                     type="button"
                     onClick={() => onAddMealClick(cat.key)}
-                    className="btn-circle-cta-lime w-9 h-9 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
+                    className="btn-circle-cta-white w-9 h-9 shadow-[0_4px_18px_rgba(255,255,255,0.2)]"
                     title={`Add ${cat.title} item`}
                   >
                     <Plus size={18} strokeWidth={2.5} />

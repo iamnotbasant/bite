@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
                 onClick={() => navigate(item.path)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs transition-all cursor-pointer ${
                   item.isActive
-                    ? 'font-black bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)]'
+                    ? 'font-black bg-white text-black shadow-[0_2px_14px_rgba(255,255,255,0.25)]'
                     : 'font-medium text-zinc-400 hover:text-white hover:bg-white/[0.08]'
                 }`}
               >
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
             onClick={() => navigate('/settings')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs transition-all cursor-pointer min-h-[36px] ${
               isSettings
-                ? 'bg-[#CDFF50] text-black border-[#CDFF50] font-black shadow-[0_2px_14px_rgba(205,255,80,0.38)]'
+                ? 'bg-white text-black border-white font-black shadow-[0_2px_14px_rgba(255,255,255,0.25)]'
                 : 'bg-white/[0.06] hover:bg-white/[0.12] text-zinc-200 hover:text-white border-white/[0.12] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]'
             }`}
             title="App Settings"

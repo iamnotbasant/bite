@@ -171,7 +171,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
           {/* Progress Bar */}
           <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden mt-1">
             <div
-              className="h-full rounded-full bg-[#CDFF50] shadow-[0_0_8px_rgba(205,255,80,0.6)] transition-all duration-500"
+              className="h-full rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all duration-500"
               style={{ width: `${progressPct}%` }}
             />
           </div>

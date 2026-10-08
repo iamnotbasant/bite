@@ -48,7 +48,7 @@ export const RotaryDialWidget: React.FC<RotaryDialWidgetProps> = ({
         <div
           className={`absolute w-36 h-36 rounded-full blur-xl pointer-events-none ${
             theme === 'emerald'
-              ? 'bg-emerald-400/30'
+              ? 'bg-white/20'
               : 'bg-rose-600/30'
           }`}
         />
@@ -114,7 +114,7 @@ export const RotaryDialWidget: React.FC<RotaryDialWidgetProps> = ({
           onClick={() => onQuickLog(dialValue)}
           className={`flex-1 py-2.5 px-4 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 cursor-pointer ${
             theme === 'emerald'
-              ? 'bg-white text-emerald-900 hover:bg-white/95'
+              ? 'bg-white text-black hover:bg-white/95'
               : 'bg-rose-500 hover:bg-rose-600 text-white'
           }`}
         >

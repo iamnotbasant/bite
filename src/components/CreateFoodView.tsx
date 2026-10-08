@@ -316,7 +316,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleNext}
               disabled={!foodName.trim()}
-              className="btn-pill-lime px-4 py-1.5 text-xs min-h-[36px]"
+              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px] font-bold cursor-pointer"
             >
               Next
             </button>
@@ -325,7 +325,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleAttemptSave}
               disabled={!calories || Number(calories) <= 0}
-              className="btn-pill-lime px-4 py-1.5 text-xs min-h-[36px]"
+              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px] font-bold cursor-pointer"
             >
               Save
             </button>
@@ -697,7 +697,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleNext}
               disabled={!foodName.trim()}
-              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
+              className="btn-pill-primary w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(255,255,255,0.25)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
             >
               <span>Next</span>
               <span>→</span>
@@ -761,7 +761,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleAttemptSave}
               disabled={!calories || Number(calories) <= 0}
-              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
+              className="btn-pill-primary w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(255,255,255,0.25)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
             >
               <Check size={18} strokeWidth={2.5} />
               <span>{isEditing ? 'Update Custom Food' : 'Save Custom Food'}</span>
@@ -792,7 +792,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               <button
                 type="button"
                 onClick={() => setShowNutrientPrompt(false)}
-                className="text-[#CDFF50] hover:text-[#d8ff66] cursor-pointer uppercase tracking-wider font-bold"
+                className="text-white hover:text-zinc-200 cursor-pointer uppercase tracking-wider font-bold"
               >
                 Add Details
               </button>

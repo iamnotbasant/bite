@@ -71,7 +71,7 @@ export const StatsView: React.FC<StatsViewProps> = ({
               onClick={() => setTimeRange(range)}
               className={`px-2.5 sm:px-3 py-1 rounded-lg capitalize transition-all cursor-pointer ${
                 timeRange === range
-                  ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_10px_rgba(205,255,80,0.35)]'
+                  ? 'bg-white text-black font-black shadow-[0_2px_10px_rgba(255,255,255,0.25)]'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -99,7 +99,7 @@ export const StatsView: React.FC<StatsViewProps> = ({
                 onClick={() => setActiveSection(cat.id as StatsSection)}
                 className={`px-3 py-1 sm:py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
                   isSelected
-                    ? 'bg-[#CDFF50] text-black shadow-[0_2px_12px_rgba(205,255,80,0.35)] font-black'
+                    ? 'bg-white text-black shadow-[0_2px_12px_rgba(255,255,255,0.25)] font-black'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -119,7 +119,7 @@ export const StatsView: React.FC<StatsViewProps> = ({
               onClick={() => setTimeRange(range)}
               className={`px-3 py-1 rounded-lg capitalize transition-all cursor-pointer ${
                 timeRange === range
-                  ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_10px_rgba(205,255,80,0.35)]'
+                  ? 'bg-white text-black font-black shadow-[0_2px_10px_rgba(255,255,255,0.25)]'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >

@@ -179,8 +179,8 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
 
       {/* 2. Today's Fuel Target Card (Matching the Reference "PENDING" card with glowing badge) */}
       <div className="relative overflow-hidden rounded-2xl p-4 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.35)] text-white space-y-3 group">
-        {/* Subtle warm glow at bottom right */}
-        <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+        {/* Subtle white glow at bottom right */}
+        <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-white/5 rounded-full blur-2xl pointer-events-none" />
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

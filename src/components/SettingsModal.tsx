@@ -248,7 +248,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="btn-pill-lime px-6 py-2 rounded-full text-xs font-black shadow-[0_0_16px_rgba(205,255,80,0.35)] cursor-pointer"
+            className="btn-pill-primary px-6 py-2 rounded-full text-xs font-black shadow-[0_0_16px_rgba(255,255,255,0.2)] cursor-pointer"
           >
             Done
           </button>

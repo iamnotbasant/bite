@@ -120,7 +120,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
         <button
           type="button"
           onClick={onQuickLogClick || (() => navigate('/food'))}
-          className="btn-pill-lime w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-full font-black text-xs cursor-pointer shadow-[0_0_16px_rgba(255,255,255,0.2)] min-h-[40px]"
+          className="btn-pill-primary w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-full font-black text-xs cursor-pointer shadow-[0_0_16px_rgba(255,255,255,0.2)] min-h-[40px]"
         >
           <Plus size={14} strokeWidth={3} />
           <span>Quick Log</span>
@@ -132,10 +132,10 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
           className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-white/15 transition-all cursor-pointer flex items-center justify-between group"
         >
           <div className="flex items-center gap-2">
-            <Flame size={15} className="text-amber-400 fill-amber-400/20" />
+            <Flame size={15} className="text-white fill-white/20" />
             <span className="text-xs font-semibold text-white">8 Days Streak</span>
           </div>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 font-bold">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-white font-bold">
             Active
           </span>
         </div>
