@@ -720,13 +720,13 @@
 }
 
 .macro-column-track {
-  background-color: #EDF1F7;
-  border-radius: 20px;
+  background-color: #F0F4FA;
+  border-radius: 22px;
 }
 
 .macro-column-fill {
-  background: linear-gradient(180deg, #D8E6FD 0%, #C9DCFC 100%);
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  background: linear-gradient(180deg, #D9E8FD 0%, #CFE2FB 100%);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
