@@ -37,18 +37,46 @@
 /* Hero Frosted White Glass Card matching "$8,700.46" hero card in ref-fintech-dark (Round 4)
    Top ~50% is a broad, soft milky-white frosted translucent layer (16-20% white at top,
    melting smoothly down into deep black #050506), with crisp bright 1px top-edge rim light */
+/* Hero Thick Liquid Frosted Glass Card matching ref-hero-closeup.jpg (Round 5)
+   Deep squircle corner curves (~34-36px), wide low proportions.
+   Thick-glass look:
+   - Luminous bright white rim wraps the top edge and top curves, brightest at top-center/left.
+   - Physical depth: inner glow just inside top rim, delicate glass edge outline.
+   - Frosted translucent upper ~60% (soft milky wash with organic sweep) melting into deep black lower ~40%.
+*/
 .card-fintech-hero {
   position: relative;
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.04) 40%, transparent 52%),
-    radial-gradient(ellipse 95% 50% at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 42%, transparent 72%),
-    #050506;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-top-color: rgba(255, 255, 255, 0.68);
+    /* Specular light sweep & glint near top-right */
+    radial-gradient(ellipse 50% 25% at 85% 6%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 32%, transparent 62%),
+    /* Organic light sweep from top-left/center */
+    radial-gradient(ellipse 92% 55% at 30% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 36%, rgba(255, 255, 255, 0.02) 60%, transparent 75%),
+    /* Frosted translucent upper ~60% */
+    linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.22) 0%, 
+      rgba(255, 255, 255, 0.15) 24%, 
+      rgba(255, 255, 255, 0.07) 44%, 
+      rgba(255, 255, 255, 0.02) 58%, 
+      transparent 64%
+    ),
+    /* Deep black lower body */
+    #050507;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.88);
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.72),
-    0 24px 56px -10px rgba(0, 0, 0, 0.98);
-  border-radius: 28px;
+    /* Bright white rim along top edge */
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.92),
+    /* Inner luminous glow giving thick-glass depth */
+    inset 0 4px 18px 0 rgba(255, 255, 255, 0.22),
+    /* Subtle inner boundary */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    /* Deep drop shadow */
+    0 24px 60px -10px rgba(0, 0, 0, 0.98),
+    /* Subtle outer ambient glass halo */
+    0 0 24px -4px rgba(255, 255, 255, 0.06);
+  border-radius: 34px;
   overflow: hidden;
 }
 
@@ -56,19 +84,24 @@
   display: none;
 }
 
-/* Softer Frosted-White Top Large Card (Round 4: white ~10% at top, fading by ~40% into #050506) */
+/* Frosted-White Top Large Card (Macro cards, large panels) - Round 5
+   Generous squircle radius (~30px), luminous top rim with inner glow,
+   white-dominant frost upper ~50% melting into #050506 deep black */
 .card-fintech-gloss {
   position: relative;
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
-    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 22%, rgba(255, 255, 255, 0.02) 40%, transparent 52%),
+    radial-gradient(ellipse 90% 48% at 45% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 38%, transparent 68%),
     #050506;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.70);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.55),
-    0 16px 36px -4px rgba(0, 0, 0, 0.95);
-  border-radius: 24px;
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.80),
+    inset 0 3px 12px 0 rgba(255, 255, 255, 0.14),
+    0 20px 42px -4px rgba(0, 0, 0, 0.95);
+  border-radius: 30px;
   overflow: hidden;
 }
 
@@ -81,35 +114,41 @@
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-fintech-interactive:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  border-top-color: rgba(255, 255, 255, 0.60);
+  border-color: rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.82);
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 22%, transparent 44%),
-    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.10) 24%, transparent 50%),
+    radial-gradient(ellipse 90% 50% at 45% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 70%),
     #07080c;
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.65),
-    0 22px 44px -4px rgba(0, 0, 0, 0.98);
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.88),
+    inset 0 3px 14px 0 rgba(255, 255, 255, 0.18),
+    0 24px 48px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
 .card-fintech-interactive:active {
   transform: translateY(0) scale(0.99);
 }
 
-/* History List Panel matching ref-fintech-dark "History" list panel (Round 4)
-   Softer frosted-white top (white ~11% at top, fading by ~40%) melting into #050506 deep black body */
+/* History List Panel matching ref-fintech-dark "History" list panel (Round 5)
+   Generous squircle radius (~34px), luminous top rim with inner glow,
+   milky white frost upper ~50% melting into #050506 deep black body */
 .panel-fintech-history {
   position: relative;
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
-    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 22%, rgba(255, 255, 255, 0.02) 42%, transparent 54%),
+    radial-gradient(ellipse 90% 50% at 35% 0%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 38%, transparent 68%),
     #050506;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top-color: rgba(255, 255, 255, 0.72);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.85),
+    inset 0 3px 14px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
     0 24px 56px -8px rgba(0, 0, 0, 0.98);
-  border-radius: 28px;
+  border-radius: 34px;
   overflow: hidden;
 }
 
@@ -219,8 +258,12 @@
   transform: translateY(0) scale(0.97);
 }
 
-/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer" (Round 4)
-   Stadium-shaped glossy pill with strengthened WHITE top-rim glow fading into black toward the bottom */
+/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer" (Round 5)
+   Perfect stadium capsule shape with:
+   - Bright WHITE top rim light
+   - Gradient down into deep black at the bottom
+   - SUBTLE OUTER GLOW hugging each pill
+   - Equal width, white typography */
 .btn-pill-glass {
   position: relative;
   display: inline-flex;
@@ -228,29 +271,56 @@
   justify-content: center;
   gap: 0.5rem;
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 25%, transparent 50%),
-    radial-gradient(ellipse 85% 65% at 50% -10%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 75%),
+    linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.32) 0%, 
+      rgba(255, 255, 255, 0.14) 28%, 
+      rgba(255, 255, 255, 0.03) 52%, 
+      transparent 65%
+    ),
+    radial-gradient(ellipse 90% 70% at 50% -15%, 
+      rgba(255, 255, 255, 0.38) 0%, 
+      rgba(255, 255, 255, 0.08) 45%, 
+      transparent 80%
+    ),
     #050508;
   color: #ffffff;
   font-weight: 600;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-top-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.88);
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.75),
-    0 8px 24px rgba(0, 0, 0, 0.85);
+    /* Bright white top rim light */
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.90),
+    /* Inner top-light glow */
+    inset 0 3px 10px 0 rgba(255, 255, 255, 0.16),
+    /* Subtle outer glow hugging the pill */
+    0 0 16px -1px rgba(255, 255, 255, 0.14),
+    /* Dark drop shadow */
+    0 8px 24px rgba(0, 0, 0, 0.90);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 44px;
+  min-height: 46px;
+  height: 46px;
 }
 .btn-pill-glass:hover {
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.12) 28%, transparent 55%),
-    radial-gradient(ellipse 85% 65% at 50% -10%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.10) 35%, transparent 75%),
-    #0a0b10;
-  border-color: rgba(255, 255, 255, 0.26);
-  border-top-color: rgba(255, 255, 255, 0.88);
+    linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.40) 0%, 
+      rgba(255, 255, 255, 0.18) 30%, 
+      rgba(255, 255, 255, 0.04) 55%, 
+      transparent 68%
+    ),
+    radial-gradient(ellipse 90% 70% at 50% -15%, 
+      rgba(255, 255, 255, 0.48) 0%, 
+      rgba(255, 255, 255, 0.12) 45%, 
+      transparent 80%
+    ),
+    #090a10;
+  border-color: rgba(255, 255, 255, 0.28);
+  border-top-color: #ffffff;
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.85),
+    inset 0 1.5px 0.5px 0 #ffffff,
+    inset 0 3px 12px 0 rgba(255, 255, 255, 0.22),
+    0 0 22px 0 rgba(255, 255, 255, 0.22),
     0 12px 28px rgba(0, 0, 0, 0.95);
   transform: translateY(-1px);
 }

@@ -342,7 +342,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3.5 bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_25%,transparent_75%)] bg-[#050506] border border-white/[0.12] border-t-white/[0.45] hover:border-white/[0.25] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[122px] sm:min-h-[140px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`rounded-[26px] sm:rounded-[30px] p-2.5 sm:p-3.5 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.06)_24%,transparent_48%),radial-gradient(ellipse_85%_50%_at_50%_0%,rgba(255,255,255,0.14)_0%,transparent_65%)] bg-[#050506] border border-white/[0.14] border-t-white/[0.65] hover:border-white/[0.28] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.78),inset_0_3px_10px_rgba(255,255,255,0.12)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[122px] sm:min-h-[140px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Tap to view ${macro.label} on radar arc`}
           >
             {/* Top: Label on Left + Circular Glossy Icon Chip on Right (matching reference circular badges) */}
@@ -405,7 +405,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`group relative rounded-[28px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_25%,transparent_75%)] bg-[#050506] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`group relative rounded-[32px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.14] border-t-white/[0.68] bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.06)_24%,transparent_48%),radial-gradient(ellipse_85%_50%_at_50%_0%,rgba(255,255,255,0.14)_0%,transparent_65%)] bg-[#050506] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.80),inset_0_3px_12px_rgba(255,255,255,0.14)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Click to view ${macro.label} on radar arc`}
           >
             {/* Left: Circular Glossy Icon Chip + Label & Lime Values */}

@@ -20,7 +20,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
 }) => {
   // SVG Dimensions & Geometry matching Reference 1 (media_1791288938978.jpg)
   const width = 380;
-  const height = 280;
+  const height = 236;
   const cx = 190;
   const cy = 190;
   const r = 145; // Centerline radius
@@ -217,12 +217,16 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero rounded-[28px] p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.72)] border-t-[rgba(255,255,255,0.68)]">
-      {/* Crisp 1px bright top-edge rim light */}
-      <div className="absolute top-0 inset-x-6 h-[1px] bg-gradient-to-r from-transparent via-white/95 to-transparent pointer-events-none z-10" />
+    <div className="relative card-fintech-hero rounded-[34px] sm:rounded-[36px] pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_60px_-10px_rgba(0,0,0,0.98),0_0_24px_-4px_rgba(255,255,255,0.06),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.92),inset_0_4px_18px_0_rgba(255,255,255,0.22)] border-t-[rgba(255,255,255,0.88)]">
+      {/* Luminous bright rim wrapping top edge and curves */}
+      <div className="absolute top-0 inset-x-4 sm:inset-x-6 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-20 opacity-90" />
+      {/* Specular corner reflection flare in top-right catching glass curve */}
+      <div className="absolute top-1.5 right-6 w-14 h-6 bg-gradient-to-bl from-white/25 via-white/5 to-transparent blur-[2px] rounded-full pointer-events-none z-20" />
+      {/* Inner frosted top sheen diffusion giving thick glass slab depth */}
+      <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-white/12 via-white/[0.03] to-transparent pointer-events-none rounded-t-[34px] sm:rounded-t-[36px] z-10" />
 
       {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
-      <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">
+      <div className="w-full flex items-center justify-between px-1 mb-0.5 relative z-10">
         <span className="text-xs sm:text-sm font-medium text-zinc-400 font-sans tracking-tight">
           {metricLabel === 'Calories' ? 'Energy consumed' : `${metricLabel} consumed`}
         </span>
@@ -239,11 +243,11 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
         </button>
       </div>
 
-      {/* 2. TWO-TONE calorie number matching "$8,700.46" (Fix 2: bright WHITE & significantly larger digits, clearly smaller & DIMMER gray unit) */}
-      <div className="w-full px-1 pt-1.5 pb-2 relative z-10">
+      {/* 2. TWO-TONE calorie number matching "$8,700.46" (bright WHITE & larger digits, clearly smaller & DIMMER gray unit) */}
+      <div className="w-full px-1 pt-0.5 pb-1 relative z-10">
         <div className="flex items-baseline justify-between">
           <div className="flex items-baseline gap-1.5 tracking-tight">
-            <span className="text-5xl sm:text-6xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_24px_rgba(255,255,255,0.35)] leading-none">
+            <span className="text-5xl sm:text-6xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_24px_rgba(255,255,255,0.4)] leading-none">
               {Math.round(animValue).toLocaleString()}
             </span>
             <span className="text-base sm:text-lg font-semibold text-zinc-500 font-mono tracking-tight self-baseline">
@@ -264,10 +268,10 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
         </div>
       </div>
 
-      {/* 3. The arc gauge below the huge white number */}
-      <div className="relative w-full aspect-[380/260] flex items-center justify-center z-10 -mt-1">
+      {/* 3. The arc gauge below the huge white number — wide low proportions */}
+      <div className="relative w-full aspect-[380/236] flex items-center justify-center z-10 -mt-1 sm:-mt-2">
         <svg
-          viewBox={`0 0 ${width} ${height}`}
+          viewBox={`0 22 ${width} ${height}`}
           className="w-full h-full overflow-visible"
         >
           <defs>

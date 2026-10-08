@@ -260,14 +260,14 @@ export function App() {
                     />
 
                     {/* Twin Pill Buttons matching reference (+ add money / transfer) */}
-                    <div className="w-full max-w-[360px] sm:max-w-[400px] grid grid-cols-2 gap-3 mt-3 sm:mt-4 px-1">
+                    <div className="w-full max-w-[370px] sm:max-w-[410px] grid grid-cols-2 gap-3 sm:gap-3.5 mt-3 sm:mt-4 px-0.5">
                       <button
                         type="button"
                         onClick={() => openLogForCategory(activeLogCategory)}
                         className="btn-pill-glass w-full"
                       >
-                        <Plus size={16} strokeWidth={2.5} className="text-[#CDFF50]" />
-                        <span>Log Food</span>
+                        <Plus size={16} strokeWidth={2.5} className="text-[#CDFF50] shrink-0" />
+                        <span className="text-white font-semibold text-sm tracking-tight">Log Food</span>
                       </button>
 
                       <button
@@ -275,8 +275,8 @@ export function App() {
                         onClick={() => navigate('/goals')}
                         className="btn-pill-glass w-full"
                       >
-                        <Target size={16} strokeWidth={2} className="text-[#CDFF50]" />
-                        <span>Goals</span>
+                        <Target size={16} strokeWidth={2.2} className="text-[#CDFF50] shrink-0" />
+                        <span className="text-white font-semibold text-sm tracking-tight">Goals</span>
                       </button>
                     </div>
                   </div>
