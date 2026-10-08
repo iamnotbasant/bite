@@ -34,18 +34,19 @@
   background-size: 20px 20px;
 }
 
-/* Hero Glossy Glass Card matching "$8,700.46" hero card in ref-fintech-dark
-   Organic elliptical radial highlight: soft white radial glow positioned just above top-center,
-   melting outward into deep-black #050506 body with crisp 1px top-edge rim light */
+/* Hero Frosted White Glass Card matching "$8,700.46" hero card in ref-fintech-dark (Round 4)
+   Top ~50% is a broad, soft milky-white frosted translucent layer (16-20% white at top,
+   melting smoothly down into deep black #050506), with crisp bright 1px top-edge rim light */
 .card-fintech-hero {
   position: relative;
   background: 
-    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.015) 50%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.04) 40%, transparent 52%),
+    radial-gradient(ellipse 95% 50% at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 42%, transparent 72%),
     #050506;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.68);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.72),
     0 24px 56px -10px rgba(0, 0, 0, 0.98);
   border-radius: 28px;
   overflow: hidden;
@@ -55,16 +56,17 @@
   display: none;
 }
 
-/* Standard Obsidian Glossy Glass Card (Deep obsidian #050506 with organic elliptical sheen) */
+/* Softer Frosted-White Top Large Card (Round 4: white ~10% at top, fading by ~40% into #050506) */
 .card-fintech-gloss {
   position: relative;
   background: 
-    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 25%, rgba(255, 255, 255, 0.01) 50%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
+    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
     #050506;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.45);
+  border-top-color: rgba(255, 255, 255, 0.48);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.50),
+    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.55),
     0 16px 36px -4px rgba(0, 0, 0, 0.95);
   border-radius: 24px;
   overflow: hidden;
@@ -82,10 +84,11 @@
   border-color: rgba(255, 255, 255, 0.22);
   border-top-color: rgba(255, 255, 255, 0.60);
   background: 
-    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.07) 25%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 22%, transparent 44%),
+    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 68%),
     #07080c;
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.60),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.65),
     0 22px 44px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
@@ -93,17 +96,18 @@
   transform: translateY(0) scale(0.99);
 }
 
-/* History List Panel matching ref-fintech-dark "History" list panel
-   Deep black body #050506 with organic elliptical highlight */
+/* History List Panel matching ref-fintech-dark "History" list panel (Round 4)
+   Softer frosted-white top (white ~11% at top, fading by ~40%) melting into #050506 deep black body */
 .panel-fintech-history {
   position: relative;
   background: 
-    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.01) 50%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
+    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
     #050506;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-top-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.48);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.50),
+    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.55),
     0 24px 56px -8px rgba(0, 0, 0, 0.98);
   border-radius: 28px;
   overflow: hidden;
@@ -215,8 +219,8 @@
   transform: translateY(0) scale(0.97);
 }
 
-/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer"
-   High-gloss deep black with narrow bright liquid rim highlight */
+/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer" (Round 4)
+   Stadium-shaped glossy pill with strengthened WHITE top-rim glow fading into black toward the bottom */
 .btn-pill-glass {
   position: relative;
   display: inline-flex;
@@ -224,27 +228,29 @@
   justify-content: center;
   gap: 0.5rem;
   background: 
-    radial-gradient(ellipse 75% 60% at 50% -10%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.05) 35%, transparent 75%),
-    #07070a;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 25%, transparent 50%),
+    radial-gradient(ellipse 85% 65% at 50% -10%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 75%),
+    #050508;
   color: #ffffff;
   font-weight: 600;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-top-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.75);
   box-shadow: 
-    inset 0 1.2px 0.5px 0 rgba(255, 255, 255, 0.60),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.75),
     0 8px 24px rgba(0, 0, 0, 0.85);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-pill-glass:hover {
   background: 
-    radial-gradient(ellipse 75% 60% at 50% -10%, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 75%),
-    #0c0d12;
-  border-color: rgba(255, 255, 255, 0.24);
-  border-top-color: rgba(255, 255, 255, 0.75);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.12) 28%, transparent 55%),
+    radial-gradient(ellipse 85% 65% at 50% -10%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.10) 35%, transparent 75%),
+    #0a0b10;
+  border-color: rgba(255, 255, 255, 0.26);
+  border-top-color: rgba(255, 255, 255, 0.88);
   box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.85),
     0 12px 28px rgba(0, 0, 0, 0.95);
   transform: translateY(-1px);
 }
@@ -322,23 +328,27 @@
 .glass-obsidian-surface,
 .card-stealth-dark {
   background: 
-    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 25%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
+    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
     #050506;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.45);
+  border-top-color: rgba(255, 255, 255, 0.48);
   box-shadow: 
-    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.50),
+    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.55),
     0 16px 36px rgba(0, 0, 0, 0.95);
 }
 .glass-emerald-card-interactive {
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-emerald-card-interactive:hover {
-  background: #08090d;
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 22%, transparent 44%),
+    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 68%),
+    #08090d;
   border-color: rgba(255, 255, 255, 0.22);
   border-top-color: rgba(255, 255, 255, 0.6);
   box-shadow: 
-    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.60),
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.65),
     0 20px 42px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
@@ -350,12 +360,13 @@
 .card-ambient-rose,
 .card-ambient-cyan {
   background: 
-    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 25%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
+    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
     #050506;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.45);
+  border-top-color: rgba(255, 255, 255, 0.48);
   box-shadow: 
-    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.50),
+    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.55),
     0 16px 36px rgba(0, 0, 0, 0.95);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }

@@ -217,9 +217,9 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.2px_0.5px_0_rgba(255,255,255,0.65)] border-t-[rgba(255,255,255,0.55)]">
+    <div className="relative card-fintech-hero rounded-[28px] p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.72)] border-t-[rgba(255,255,255,0.68)]">
       {/* Crisp 1px bright top-edge rim light */}
-      <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 inset-x-6 h-[1px] bg-gradient-to-r from-transparent via-white/95 to-transparent pointer-events-none z-10" />
 
       {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
       <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">
@@ -239,14 +239,14 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
         </button>
       </div>
 
-      {/* 2. ONE HUGE calorie number in white matching "$8,700.46" */}
+      {/* 2. TWO-TONE calorie number matching "$8,700.46" (Fix 2: bright WHITE & significantly larger digits, clearly smaller & DIMMER gray unit) */}
       <div className="w-full px-1 pt-1.5 pb-2 relative z-10">
         <div className="flex items-baseline justify-between">
-          <div className="flex items-baseline gap-1.5 text-white tracking-tight">
-            <span className="text-4xl sm:text-5xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_18px_rgba(255,255,255,0.25)]">
+          <div className="flex items-baseline gap-1.5 tracking-tight">
+            <span className="text-5xl sm:text-6xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_24px_rgba(255,255,255,0.35)] leading-none">
               {Math.round(animValue).toLocaleString()}
             </span>
-            <span className="text-base sm:text-lg font-bold text-zinc-400 font-mono">
+            <span className="text-base sm:text-lg font-semibold text-zinc-500 font-mono tracking-tight self-baseline">
               {unit}
             </span>
           </div>

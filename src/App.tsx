@@ -275,7 +275,7 @@ export function App() {
                         onClick={() => navigate('/goals')}
                         className="btn-pill-glass w-full"
                       >
-                        <Target size={16} strokeWidth={2} className="text-zinc-300" />
+                        <Target size={16} strokeWidth={2} className="text-[#CDFF50]" />
                         <span>Goals</span>
                       </button>
                     </div>
