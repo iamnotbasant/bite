@@ -204,7 +204,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
       </div>
 
       {/* Hero Streak Card utilizing full desktop width */}
-      <div className="relative overflow-hidden rounded-3xl bg-[#0c0d12] p-5 sm:p-7 md:p-8 shadow-2xl border border-white/[0.08] text-white">
+      <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] p-5 sm:p-7 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1.5px_1.5px_rgba(255,255,255,0.45)] border border-white/[0.12] border-t-white/[0.42] text-white">
         {/* Subtle ambient warm glow */}
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent blur-3xl pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.05),transparent_70%)] pointer-events-none" />
@@ -222,7 +222,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* ================= LEFT COLUMN: STREAK ENGINE ================= */}
-          <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-between gap-5 p-5 rounded-2xl bg-[#12131b] border border-white/[0.06] shadow-inner">
+          <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-between gap-5 p-5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.28] shadow-[inset_0_1px_1px_rgba(255,255,255,0.20)]">
             
             {/* Top: Flame Orb & Huge Streak Counter */}
             <div className="flex items-start justify-between gap-4">

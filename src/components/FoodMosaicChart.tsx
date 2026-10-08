@@ -311,7 +311,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
   }, [aggregatedFoods, metricMode]);
 
   return (
-    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[#0c0d12] border border-white/[0.08] shadow-2xl space-y-6 select-none">
+    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] space-y-6 select-none">
       {/* Header with Title and Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
@@ -324,13 +324,13 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
         </div>
 
         {/* Metric Selector Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-black/60 border border-white/10 self-start sm:self-auto">
+        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-black/70 border border-white/10 self-start sm:self-auto shadow-inner">
           <button
             type="button"
             onClick={() => setMetricMode('calories')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'calories'
-                ? 'bg-white text-black shadow-sm'
+                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -341,7 +341,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
             onClick={() => setMetricMode('protein')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'protein'
-                ? 'bg-white text-black shadow-sm'
+                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -352,7 +352,7 @@ export const FoodMosaicChart: React.FC<FoodMosaicChartProps> = ({
             onClick={() => setMetricMode('servings')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               metricMode === 'servings'
-                ? 'bg-white text-black shadow-sm'
+                ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_12px_rgba(205,255,80,0.35)]'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >

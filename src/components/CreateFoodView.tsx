@@ -293,7 +293,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[85vh] select-none bg-black text-white">
       {/* ----------------- TOP NAVBAR (Mobile Only) ----------------- */}
-      <div className="lg:hidden border border-white/[0.1] bg-gradient-to-b from-white/[0.07] via-[#090a0e] to-[#040406] shadow-[0_12px_32px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.2)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
+      <div className="lg:hidden border border-white/[0.12] border-t-white/[0.38] bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
         <div className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -316,7 +316,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleNext}
               disabled={!foodName.trim()}
-              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px]"
+              className="btn-pill-lime px-4 py-1.5 text-xs min-h-[36px]"
             >
               Next
             </button>
@@ -325,7 +325,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleAttemptSave}
               disabled={!calories || Number(calories) <= 0}
-              className="btn-pill-primary px-4 py-1.5 text-xs min-h-[36px]"
+              className="btn-pill-lime px-4 py-1.5 text-xs min-h-[36px]"
             >
               Save
             </button>
@@ -697,7 +697,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleNext}
               disabled={!foodName.trim()}
-              className="w-full py-4 rounded-2xl bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all active:scale-[0.98] disabled:opacity-40 cursor-pointer shadow-lg flex items-center justify-center gap-2"
+              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
             >
               <span>Next</span>
               <span>→</span>
@@ -736,7 +736,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             {NUTRIENT_ROWS.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.08] bg-[#050505] hover:bg-white/[0.03] transition-colors shadow-sm"
+                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.1] border-t-white/[0.25] bg-[radial-gradient(110%_80%_at_50%_-10%,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_40%,transparent_75%),linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(0,0,0,0.7)_80%)] bg-[#050608] hover:bg-[#0a0b10] transition-colors shadow-sm"
               >
                 <label className="text-sm font-semibold text-white tracking-wide">
                   {item.label}
@@ -761,9 +761,9 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               type="button"
               onClick={handleAttemptSave}
               disabled={!calories || Number(calories) <= 0}
-              className="w-full py-4 rounded-2xl bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all active:scale-[0.98] disabled:opacity-40 cursor-pointer shadow-xl flex items-center justify-center gap-2"
+              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] disabled:opacity-40 cursor-pointer flex items-center justify-center gap-2"
             >
-              <Check size={18} />
+              <Check size={18} strokeWidth={2.5} />
               <span>{isEditing ? 'Update Custom Food' : 'Save Custom Food'}</span>
             </button>
           </div>
@@ -773,7 +773,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
       {/* ----------------- MISSING NUTRIENT PROMPT MODAL (Exact match to reference) ----------------- */}
       {showNutrientPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-sm rounded-[24px] bg-[#1a1b24] border border-white/15 p-6 shadow-2xl text-white animate-scale-in">
+          <div className="w-full max-w-sm rounded-[28px] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.8)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.14] border-t-white/[0.42] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_1px_rgba(255,255,255,0.4)] text-white animate-scale-in">
             <h3 className="text-base font-bold text-white tracking-tight mb-2">
               Add Nutrient Information
             </h3>
@@ -785,14 +785,14 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
               <button
                 type="button"
                 onClick={executeSave}
-                className="text-sky-400 hover:text-sky-300 cursor-pointer uppercase tracking-wider"
+                className="text-zinc-400 hover:text-white cursor-pointer uppercase tracking-wider"
               >
                 No Thanks
               </button>
               <button
                 type="button"
                 onClick={() => setShowNutrientPrompt(false)}
-                className="text-sky-400 hover:text-sky-300 cursor-pointer uppercase tracking-wider font-bold"
+                className="text-[#CDFF50] hover:text-[#d8ff66] cursor-pointer uppercase tracking-wider font-bold"
               >
                 Add Details
               </button>

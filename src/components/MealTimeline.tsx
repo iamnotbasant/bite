@@ -106,13 +106,13 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
           return (
             <div
               key={cat.key}
-              className="rounded-[26px] sm:rounded-[32px] p-4 sm:p-5 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.09] shadow-[0_16px_36px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] bg-gradient-to-b from-white/[0.06] via-[#08090d] to-[#040406]"
+              className="rounded-[26px] sm:rounded-[32px] p-4 sm:p-5 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608]"
             >
               <div>
                 {/* Category Header */}
                 <div className="flex items-center justify-between mb-3.5 sm:mb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/10 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]`}>
+                    <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/15 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]`}>
                       <cat.icon size={16} strokeWidth={2} />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
@@ -125,14 +125,14 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
 
                   <div className="flex items-center gap-2.5">
                     {categoryKcal > 0 && (
-                      <span className="text-xs font-mono text-zinc-400 font-bold">
+                      <span className="text-xs font-mono text-zinc-300 font-bold">
                         {categoryKcal} kcal
                       </span>
                     )}
                     <button
                       type="button"
                       onClick={() => onAddMealClick(cat.key)}
-                      className="w-10 h-10 rounded-full bg-gradient-to-b from-white to-zinc-200 hover:brightness-95 text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
+                      className="btn-circle-cta-lime w-10 h-10 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
                       title={`Add ${cat.title} item`}
                     >
                       <Plus size={18} strokeWidth={2.5} />
@@ -198,12 +198,12 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
           return (
             <div
               key={cat.key}
-              className="rounded-3xl p-5 sm:p-6 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.09] shadow-[0_20px_48px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.18)] bg-gradient-to-b from-white/[0.06] via-[#08090d] to-[#040406]"
+              className="rounded-3xl p-5 sm:p-6 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.12] border-t-white/[0.38] shadow-[0_24px_52px_rgba(0,0,0,0.96),inset_0_1.5px_1px_rgba(255,255,255,0.40)] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608]"
             >
               {/* Header: Title + Category Icon + Count / Total Kcal + Circular Plus button */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/10 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]`}>
+                  <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/15 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]`}>
                     <cat.icon size={20} strokeWidth={2} />
                   </div>
                   <div className="flex items-center gap-2.5">
@@ -218,14 +218,14 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
 
                 <div className="flex items-center gap-3">
                   {categoryKcal > 0 && (
-                    <span className="text-sm font-mono text-zinc-400 font-bold">
+                    <span className="text-sm font-mono text-zinc-300 font-bold">
                       {categoryKcal} kcal
                     </span>
                   )}
                   <button
                     type="button"
                     onClick={() => onAddMealClick(cat.key)}
-                    className="w-10 h-10 rounded-full bg-gradient-to-b from-white to-zinc-200 hover:brightness-95 text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
+                    className="btn-circle-cta-lime w-10 h-10 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
                     title={`Add ${cat.title} item`}
                   >
                     <Plus size={19} strokeWidth={2.5} />
@@ -239,7 +239,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                   <div
                     key={meal.id}
                     onClick={() => onSelectMeal?.(meal)}
-                    className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] p-3.5 bg-gradient-to-b from-white/[0.07] via-[#08090d] to-[#030406] hover:from-white/[0.12] hover:via-[#0c0d12] hover:to-[#050608] border border-white/[0.09] hover:border-white/[0.24] shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] flex flex-col items-center justify-between text-center shrink-0 group relative transition-all cursor-pointer card-fintech-interactive"
+                    className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] p-3.5 bg-[radial-gradient(100%_50%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_45%,transparent_80%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_40%,rgba(0,0,0,0.8)_100%)] bg-[#050608] hover:bg-[#0a0b10] border border-white/[0.12] border-t-white/[0.38] hover:border-white/[0.3] hover:border-t-white/[0.55] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_1px_rgba(255,255,255,0.35)] hover:shadow-[0_18px_36px_rgba(0,0,0,0.98),inset_0_1.5px_1px_rgba(255,255,255,0.5)] flex flex-col items-center justify-between text-center shrink-0 group relative transition-all cursor-pointer card-fintech-interactive"
                   >
                     {/* Delete action on card hover */}
                     <button
@@ -272,7 +272,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                     </h4>
 
                     {/* Nutrition: Calories + Carbs, Protein, Fat */}
-                    <div className="w-full pt-1.5 border-t border-white/[0.07]">
+                    <div className="w-full pt-1.5 border-t border-white/[0.08]">
                       <div className="text-xs font-bold text-white font-mono">
                         {meal.calories} kcal
                       </div>
@@ -290,10 +290,10 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                 {/* "+ More Food" Squircle Card */}
                 <div
                   onClick={() => onAddMealClick(cat.key)}
-                  className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] border border-dashed border-white/20 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/35 transition-all flex flex-col items-center justify-center gap-3 shrink-0 cursor-pointer group shadow-[0_8px_20px_rgba(0,0,0,0.4)]"
+                  className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] border border-dashed border-white/20 hover:border-[#CDFF50]/50 bg-white/[0.02] hover:bg-[#CDFF50]/[0.05] transition-all flex flex-col items-center justify-center gap-3 shrink-0 cursor-pointer group shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
                   title={`Add more ${cat.title} food`}
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/[0.08] group-hover:bg-white/[0.16] text-white flex items-center justify-center transition-all group-hover:scale-105 shadow-md border border-white/15">
+                  <div className="w-12 h-12 rounded-full bg-white/[0.08] group-hover:bg-[#CDFF50] text-zinc-300 group-hover:text-black flex items-center justify-center transition-all group-hover:scale-105 shadow-md border border-white/15 group-hover:border-[#CDFF50]">
                     <Plus size={22} />
                   </div>
                   <span className="text-xs sm:text-sm font-bold text-zinc-400 group-hover:text-white transition-colors">

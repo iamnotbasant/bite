@@ -217,30 +217,40 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero p-4 sm:p-5 w-full max-w-[340px] sm:max-w-[390px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_20px_48px_rgba(0,0,0,0.95)]">
+    <div className="relative card-fintech-hero p-4 sm:p-5 w-full max-w-[340px] sm:max-w-[390px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_1.5px_0_rgba(255,255,255,0.55)] border-t-[rgba(255,255,255,0.5)]">
+      {/* Showpiece Specular Liquid Sheen Overlay (fintech $8,700.46 liquid gloss) */}
+      <div className="absolute top-0 left-0 right-0 h-[48%] pointer-events-none rounded-t-[28px] overflow-hidden z-0">
+        <div className="w-full h-full bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.30)_0%,rgba(255,255,255,0.10)_42%,transparent_100%)]" />
+      </div>
+
       {/* Top Header Pill Row matching Fintech card ("Your money ...8887 ▾") */}
-      <div className="w-full flex items-center justify-between px-1 mb-1">
-        <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+      <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">
+        <span className="text-xs font-bold uppercase tracking-wider text-zinc-300">
           {metricLabel === 'Calories' ? 'Energy Consumed' : `${metricLabel} Metric`}
         </span>
         <button
           type="button"
           onClick={onEditGoal}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.07] hover:bg-white/[0.12] border border-white/[0.14] text-[11px] font-semibold text-zinc-200 hover:text-white transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 hover:bg-black/90 border border-white/[0.18] hover:border-white/30 text-[11px] font-bold text-[#CDFF50] transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.25),0_2px_8px_rgba(0,0,0,0.7)]"
           title="Edit target goal"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>{goalKcal} {unit}</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#CDFF50] animate-pulse"></span>
+          <span className="font-mono tracking-tight text-[#CDFF50]">{goalKcal} {unit} ▾</span>
         </button>
       </div>
 
       {/* SVG Container */}
-      <div className="relative w-full aspect-[380/280] flex items-center justify-center">
+      <div className="relative w-full aspect-[380/280] flex items-center justify-center z-10">
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="w-full h-full overflow-visible"
         >
           <defs>
+            {/* Soft lime glow for hero number */}
+            <filter id="limeValueGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#CDFF50" floodOpacity="0.28" />
+            </filter>
+
             {/* Diagonal Cross-Line Pattern (Pure White stripes with subtle dark background) */}
             <pattern
               id="refStripes"
@@ -369,7 +379,8 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
                   y={cy - 12}
                   textAnchor="middle"
                   dominantBaseline="central"
-                  fill="#FFFFFF"
+                  fill="#CDFF50"
+                  filter="url(#limeValueGlow)"
                   className="font-sans"
                   style={{
                     fontSize: '52px',
@@ -409,7 +420,8 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
                   y={cy - 28}
                   textAnchor="middle"
                   dominantBaseline="central"
-                  fill="#FFFFFF"
+                  fill="#CDFF50"
+                  filter="url(#limeValueGlow)"
                   className="font-sans"
                   style={{
                     fontSize: '56px',

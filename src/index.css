@@ -24,7 +24,7 @@
 }
 
 /* =========================================================================
-   PURE OLED FINTECH & PROTON DESIGN SYSTEM (Unified Black Theme)
+   PURE OLED FINTECH & PROTON DESIGN SYSTEM V2 (Liquid Gloss Black Theme)
    ========================================================================= */
 
 /* Subtle dot-matrix grid on OLED black background matching fintech reference */
@@ -34,26 +34,67 @@
   background-size: 20px 20px;
 }
 
-/* Hero Glossy Glass Card matching "$8,700.46" hero card in ref-fintech-dark */
+/* Hero Glossy Glass Card matching "$8,700.46" hero card in ref-fintech-dark
+   BOLD, wide liquid highlight sweeping across top edge, melting into deep black */
 .card-fintech-hero {
   position: relative;
-  background: radial-gradient(ellipse 90% 55% at 50% -10%, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(0, 0, 0, 0.7) 100%), #08090d;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: 
+    radial-gradient(110% 75% at 50% -8%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 32%, rgba(255, 255, 255, 0.02) 65%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 30%, rgba(0, 0, 0, 0.75) 75%, rgba(0, 0, 0, 0.98) 100%),
+    #050507;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.48);
   box-shadow: 
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28),
-    0 20px 48px -10px rgba(0, 0, 0, 0.95);
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 10px 26px -4px rgba(255, 255, 255, 0.18),
+    0 24px 56px -10px rgba(0, 0, 0, 0.98);
   border-radius: 28px;
+  overflow: hidden;
 }
 
-/* Standard Obsidian Glossy Glass Card */
+.card-fintech-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: radial-gradient(ellipse 95% 100% at 50% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.07) 45%, transparent 100%);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Standard Obsidian Glossy Glass Card (Deep obsidian #050608 with brilliant rim light) */
 .card-fintech-gloss {
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: 
+    radial-gradient(110% 60% at 50% -5%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 35%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
+    #050608;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.35);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
-    0 14px 32px -4px rgba(0, 0, 0, 0.85);
+    inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.40),
+    inset 0 6px 18px -4px rgba(255, 255, 255, 0.08),
+    0 16px 36px -4px rgba(0, 0, 0, 0.92);
   border-radius: 24px;
+  overflow: hidden;
+}
+
+.card-fintech-gloss::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: radial-gradient(ellipse 90% 100% at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 100%);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Interactive Card Hover & Press with Specular Flare */
@@ -61,11 +102,16 @@
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-fintech-interactive:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 50%, rgba(0, 0, 0, 0.45) 100%), #0d0e14;
+  border-color: rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  background: 
+    radial-gradient(110% 60% at 50% -5%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 35%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 35%, rgba(0, 0, 0, 0.65) 75%, rgba(0, 0, 0, 0.95) 100%),
+    #090a0e;
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
-    0 20px 40px -4px rgba(0, 0, 0, 0.95);
+    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.50),
+    inset 0 8px 20px -4px rgba(255, 255, 255, 0.12),
+    0 22px 44px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
 .card-fintech-interactive:active {
@@ -78,64 +124,138 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #eaeaf0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #ebebf2 100%);
   color: #000000;
   font-weight: 700;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.18), inset 0 1.2px 0 rgba(255, 255, 255, 1);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-pill-primary:hover {
-  filter: brightness(0.96);
+  filter: brightness(0.97);
   transform: scale(1.01);
 }
 .btn-pill-primary:active {
   transform: scale(0.97);
 }
 
-/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer" */
-.btn-pill-glass {
+/* Vivid Lime Primary Pill Button matching Fintech green accents */
+.btn-pill-lime {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%), #101117;
+  background: linear-gradient(180deg, #e0ff7a 0%, #CDFF50 45%, #bbf038 100%);
+  color: #000000;
+  font-weight: 800;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-top-color: #ffffff;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.85),
+    0 4px 20px rgba(205, 255, 80, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+}
+.btn-pill-lime:hover {
+  filter: brightness(1.04);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
+    0 6px 26px rgba(205, 255, 80, 0.5);
+  transform: translateY(-1px) scale(1.01);
+}
+.btn-pill-lime:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Dark Glass Pill Button matching Fintech "+ add money" / "transfer"
+   High-gloss black with bright liquid rim highlight */
+.btn-pill-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: 
+    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 60%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.6) 100%),
+    #0c0d12;
   color: #ffffff;
   font-weight: 600;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 6px 16px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
+    0 6px 18px rgba(0, 0, 0, 0.7);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-pill-glass:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%), #151620;
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.32), 0 8px 20px rgba(0, 0, 0, 0.7);
+  background: 
+    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.05) 60%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.45) 100%),
+    #13141c;
+  border-color: rgba(255, 255, 255, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
+    0 10px 24px rgba(0, 0, 0, 0.85);
   transform: translateY(-1px);
 }
 .btn-pill-glass:active {
   transform: translateY(0) scale(0.98);
 }
 
+/* Vivid Lime Circular Action CTA */
+.btn-circle-cta-lime {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #e0ff7a 0%, #CDFF50 45%, #bbf038 100%);
+  color: #000000;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-top-color: #ffffff;
+  box-shadow: 
+    inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.85),
+    0 4px 18px rgba(205, 255, 80, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-circle-cta-lime:hover {
+  filter: brightness(1.05);
+  box-shadow: 
+    inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.95),
+    0 6px 24px rgba(205, 255, 80, 0.5);
+  transform: scale(1.05);
+}
+.btn-circle-cta-lime:active {
+  transform: scale(0.94);
+}
+
 /* Floating Navigation Dock matching Proton / Fintech mobile dock */
 .floating-dock-glass {
-  background: rgba(10, 11, 15, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(6, 7, 10, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top-color: rgba(255, 255, 255, 0.38);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
-    0 16px 40px rgba(0, 0, 0, 0.95);
-  border-radius: 24px;
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+    0 20px 48px rgba(0, 0, 0, 0.98);
+  border-radius: 26px;
 }
 
 /* Sleek Dark Glass Capsule Input */
 .input-fintech-glass {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(4, 4, 6, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.22);
   border-radius: 16px;
   color: #ffffff;
   transition: all 0.2s ease;
@@ -143,36 +263,41 @@
 }
 .input-fintech-glass:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.38);
-  background: rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  border-color: rgba(205, 255, 80, 0.6);
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 0 1px rgba(205, 255, 80, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* Legacy utility aliases mapped to unified system */
+/* Legacy utility aliases mapped to unified obsidian system */
 .bg-signature-emerald {
-  background: linear-gradient(180deg, #08080a 0%, #000000 100%);
+  background: linear-gradient(180deg, #050608 0%, #000000 100%);
 }
 .bg-signature-emerald-subtle {
-  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
 }
 .glass-emerald-card,
 .glass-obsidian-surface,
 .card-stealth-dark {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: 
+    radial-gradient(110% 55% at 50% -5%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 35%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
+    #050608;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.35);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.18),
-    0 14px 32px rgba(0, 0, 0, 0.85);
+    inset 0 1.2px 1px rgba(255, 255, 255, 0.38),
+    0 16px 36px rgba(0, 0, 0, 0.92);
 }
 .glass-emerald-card-interactive {
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-emerald-card-interactive:hover {
-  background: #0e0f14;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #0a0b10;
+  border-color: rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.5);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 16px 36px -4px rgba(0, 0, 0, 0.95);
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+    0 20px 42px -4px rgba(0, 0, 0, 0.98);
   transform: translateY(-2px);
 }
 .card-black-gradient,
@@ -182,12 +307,27 @@
 .card-ambient-lavender,
 .card-ambient-rose,
 .card-ambient-cyan {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.45) 100%), #090a0e;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: 
+    radial-gradient(110% 55% at 50% -5%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 35%, transparent 75%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 35%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.96) 100%),
+    #050608;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.32);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.18),
-    0 16px 36px rgba(0, 0, 0, 0.9);
+    inset 0 1.2px 1px rgba(255, 255, 255, 0.35),
+    0 16px 36px rgba(0, 0, 0, 0.92);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-black-gradient:hover,
+.card-ambient-champagne:hover,
+.card-ambient-coral:hover,
+.card-ambient-graphite:hover,
+.card-ambient-lavender:hover,
+.card-ambient-rose:hover,
+.card-ambient-cyan:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 .card-black-gradient:hover,
 .card-ambient-champagne:hover,

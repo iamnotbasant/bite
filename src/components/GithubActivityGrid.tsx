@@ -173,7 +173,7 @@ export const GithubActivityGrid: React.FC<GithubActivityGridProps> = ({
   const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
 
   return (
-    <div className="w-full rounded-3xl p-4 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-xl space-y-4 select-none">
+    <div className="w-full rounded-3xl p-4 sm:p-6 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] space-y-4 select-none">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex items-center gap-2">

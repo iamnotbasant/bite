@@ -110,7 +110,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
   return (
     <div className="w-full flex flex-col min-h-[82vh] select-none relative bg-black text-white">
       {/* Top Navbar */}
-      <div className="px-4 sm:px-6 py-3.5 border border-white/[0.08] rounded-2xl flex items-center justify-between shrink-0 bg-[#0c0d12]/90 backdrop-blur-md mb-4 shadow-md">
+      <div className="px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.38] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] mb-4 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.40)]">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -128,7 +128,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
         <button
           type="button"
           onClick={handleReset}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer"
+          className="btn-pill-glass flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white"
         >
           <RotateCcw size={13} />
           <span>Reset</span>
@@ -138,16 +138,16 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
       {/* Settings Options */}
       <div className="flex-1 overflow-y-auto no-scrollbar p-1 sm:p-2 pb-32 space-y-5 max-w-5xl xl:max-w-6xl mx-auto w-full">
         {/* Section: Serving Units Manager (Servings Base Units) */}
-        <div className="p-4 sm:p-5 rounded-3xl bg-[#14151e] border border-white/[0.06] space-y-4">
+        <div className="p-4 sm:p-6 rounded-3xl bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.04)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.42] shadow-[0_24px_60px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1.5px_1.5px_rgba(255,255,255,0.45)] space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <Scale size={16} className="text-white" />
-                <span className="text-xs font-bold uppercase tracking-wider text-zinc-300">
+                <Scale size={16} className="text-[#CDFF50]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-zinc-200">
                   Serving Units (Servings)
                 </span>
               </div>
-              <p className="text-[11px] text-zinc-500 mt-0.5">
+              <p className="text-[11px] text-zinc-400 mt-0.5">
                 Edit, delete, or create custom base units for food logging (e.g. roti, bowl, glass, katori).
               </p>
             </div>
@@ -160,7 +160,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   setUnitForm({ label: '', defaultQty: '1', defaultEq: '100', eqUnit: 'g' });
                   setIsFormOpen(true);
                 }}
-                className="px-3 py-1.5 rounded-xl bg-white text-black hover:bg-zinc-200 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm active:scale-95"
+                className="btn-pill-lime px-3.5 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-[0_0_16px_rgba(205,255,80,0.35)]"
               >
                 <Plus size={14} strokeWidth={3} />
                 <span>Add Unit</span>
@@ -169,7 +169,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
               <button
                 type="button"
                 onClick={handleResetUnits}
-                className="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white text-xs font-semibold flex items-center gap-1 transition-all cursor-pointer"
+                className="btn-pill-glass px-2.5 py-1.5 rounded-full text-zinc-300 hover:text-white text-xs font-semibold flex items-center gap-1"
                 title="Reset serving units to default"
               >
                 <RotateCcw size={12} />
@@ -180,7 +180,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
 
           {/* Add / Edit Inline Form Modal */}
           {isFormOpen && (
-            <div className="p-4 rounded-2xl bg-black/70 border border-white/15 space-y-3.5 animate-fade-in shadow-xl">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#07080b] border border-white/[0.14] border-t-white/[0.40] space-y-3.5 animate-fade-in shadow-[0_20px_50px_rgba(0,0,0,0.9),inset_0_1.5px_1px_rgba(255,255,255,0.40)]">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-white uppercase tracking-wider">
                   {editingUnit ? `Edit "${editingUnit.label}" Unit` : 'Add New Serving Unit'}
@@ -208,7 +208,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     value={unitForm.label}
                     onChange={(e) => setUnitForm({ ...unitForm, label: e.target.value })}
                     placeholder="e.g. katori, scoop"
-                    className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-white/40 placeholder:text-zinc-600"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-medium focus:outline-none focus:border-[#CDFF50]/60 placeholder:text-zinc-600"
                   />
                 </div>
 
@@ -223,7 +223,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     step="0.5"
                     value={unitForm.defaultQty}
                     onChange={(e) => setUnitForm({ ...unitForm, defaultQty: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-white/40"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#CDFF50]/60"
                   />
                 </div>
 
@@ -237,7 +237,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     min="1"
                     value={unitForm.defaultEq}
                     onChange={(e) => setUnitForm({ ...unitForm, defaultEq: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-white/40"
+                    className="w-full px-3 py-2 rounded-xl bg-black/70 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#CDFF50]/60"
                   />
                 </div>
 
@@ -246,13 +246,13 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   <label className="block text-[11px] font-semibold text-zinc-400 mb-1">
                     Scale Unit
                   </label>
-                  <div className="grid grid-cols-2 gap-1 bg-black/60 p-0.5 rounded-xl border border-white/15">
+                  <div className="grid grid-cols-2 gap-1 bg-black/70 p-0.5 rounded-xl border border-white/15">
                     <button
                       type="button"
                       onClick={() => setUnitForm({ ...unitForm, eqUnit: 'g' })}
                       className={`py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         unitForm.eqUnit === 'g'
-                          ? 'bg-white text-black shadow-sm'
+                          ? 'bg-[#CDFF50] text-black shadow-sm font-black'
                           : 'text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -263,7 +263,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                       onClick={() => setUnitForm({ ...unitForm, eqUnit: 'ml' })}
                       className={`py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         unitForm.eqUnit === 'ml'
-                          ? 'bg-white text-black shadow-sm'
+                          ? 'bg-[#CDFF50] text-black shadow-sm font-black'
                           : 'text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -281,14 +281,14 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                     setIsFormOpen(false);
                     setEditingUnit(null);
                   }}
-                  className="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 text-zinc-300 hover:text-white text-xs font-semibold cursor-pointer"
+                  className="btn-pill-glass px-3.5 py-1.5 text-zinc-300 hover:text-white text-xs font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleSaveUnitForm}
-                  className="px-4 py-1.5 rounded-xl bg-white text-black hover:bg-zinc-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-md active:scale-95 transition-all"
+                  className="btn-pill-lime px-4 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-[0_0_16px_rgba(205,255,80,0.35)]"
                 >
                   <Save size={13} />
                   <span>{editingUnit ? 'Save Changes' : 'Add Unit'}</span>
@@ -302,7 +302,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
             {servingUnits.map((u) => (
               <div
                 key={u.id}
-                className="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between gap-2.5 group"
+                className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.28] shadow-[inset_0_1px_1px_rgba(255,255,255,0.22)] hover:border-white/25 transition-all flex flex-col justify-between gap-2.5 group"
               >
                 <div className="flex items-start justify-between gap-1">
                   <div>
@@ -315,7 +315,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-end gap-1.5 pt-1 border-t border-white/5">
+                <div className="flex items-center justify-end gap-1.5 pt-1.5 border-t border-white/5">
                   <button
                     type="button"
                     onClick={() => handleStartEditUnit(u)}
@@ -348,7 +348,7 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
                   key={u.id}
                   className={`px-2.5 py-1 rounded-xl text-xs font-semibold ${
                     idx === 0
-                      ? 'bg-white text-black'
+                      ? 'bg-[#CDFF50] text-black font-extrabold shadow-[0_0_12px_rgba(205,255,80,0.3)]'
                       : 'bg-black/60 border border-white/10 text-zinc-400'
                   }`}
                 >

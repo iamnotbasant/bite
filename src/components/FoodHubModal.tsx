@@ -23,7 +23,7 @@ export const FoodHubModal: React.FC<FoodHubModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/85 backdrop-blur-xl animate-fade-in select-none">
-      <div className="relative w-full max-w-xl max-h-[92vh] sm:max-h-[88vh] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.98),inset_0_1px_1.5px_rgba(255,255,255,0.28)] border border-white/[0.14] bg-black text-white flex flex-col transition-all">
+      <div className="relative w-full max-w-xl max-h-[92vh] sm:max-h-[88vh] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] border border-white/[0.14] border-t-white/[0.45] bg-[#050608] text-white flex flex-col transition-all">
         <FoodHubView
           isModal={true}
           onCloseModal={onClose}

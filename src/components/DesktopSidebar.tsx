@@ -61,7 +61,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
   ];
 
   return (
-    <aside className="hidden lg:flex flex-col justify-between w-60 h-screen bg-[#07080a] border-r border-white/[0.08] p-4 select-none shrink-0 z-30">
+    <aside className="hidden lg:flex flex-col justify-between w-60 h-screen bg-[#050507] border-r border-white/[0.08] p-4 select-none shrink-0 z-30">
       {/* Top: Brand Header & Navigation Links */}
       <div className="space-y-4">
         {/* Brand identity (Clean, NO subheading, with sidebar toggle icon) */}
@@ -70,8 +70,8 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
             onClick={() => navigate('/dashboard')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#14151e] border border-white/10 text-white shadow-sm group-hover:scale-105 transition-transform">
-              <Flame size={16} className="fill-white text-white" />
+            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#090a0f] border border-white/10 text-[#CDFF50] shadow-sm group-hover:scale-105 transition-transform">
+              <Flame size={16} className="fill-[#CDFF50] text-[#CDFF50]" />
             </div>
 
             <span className="text-sm font-bold tracking-wider text-white">
@@ -98,14 +98,14 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
                 onClick={() => navigate(item.path)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs transition-all cursor-pointer ${
                   item.isActive
-                    ? 'bg-white/[0.08] text-white font-semibold'
+                    ? 'bg-[#CDFF50] text-black font-black shadow-[0_2px_14px_rgba(205,255,80,0.35)]'
                     : 'text-zinc-400 hover:text-white hover:bg-white/[0.04] font-medium'
                 }`}
               >
                 <Icon
                   size={16}
-                  strokeWidth={item.isActive ? 2 : 1.75}
-                  className={item.isActive ? 'text-white' : 'text-zinc-400'}
+                  strokeWidth={item.isActive ? 2.5 : 1.75}
+                  className={item.isActive ? 'text-black' : 'text-zinc-400'}
                 />
                 <span>{item.label}</span>
               </button>
@@ -120,9 +120,9 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ onQuickLogClick 
         <button
           type="button"
           onClick={onQuickLogClick || (() => navigate('/food'))}
-          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition-all active:scale-95 cursor-pointer shadow-sm"
+          className="btn-pill-lime w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-full font-black text-xs cursor-pointer shadow-[0_0_16px_rgba(205,255,80,0.35)] min-h-[40px]"
         >
-          <Plus size={14} strokeWidth={2.5} />
+          <Plus size={14} strokeWidth={3} />
           <span>Quick Log</span>
         </button>
 

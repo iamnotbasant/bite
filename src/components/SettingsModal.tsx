@@ -29,10 +29,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in select-none">
-      <div className="relative w-full max-w-lg rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-[#0e0f14] text-white flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-xl animate-fade-in select-none">
+      <div className="relative w-full max-w-lg rounded-[32px] overflow-hidden shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] border border-white/[0.14] border-t-white/[0.45] bg-[#050608] text-white flex flex-col max-h-[90vh]">
+        {/* Specular sheen dome overlay */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-24 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.20),transparent_70%)] pointer-events-none" />
+
         {/* Header */}
-        <div className="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-black/30">
+        <div className="relative z-10 p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-black/30">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-zinc-800 border border-white/10 flex items-center justify-center text-white">
               <Settings size={20} />
@@ -245,7 +248,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2 rounded-full bg-white text-black font-bold text-xs shadow-md hover:bg-white/90 transition-all active:scale-95 cursor-pointer"
+            className="btn-pill-lime px-6 py-2 rounded-full text-xs font-black shadow-[0_0_16px_rgba(205,255,80,0.35)] cursor-pointer"
           >
             Done
           </button>

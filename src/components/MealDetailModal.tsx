@@ -105,10 +105,12 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-xl animate-fade-in">
-      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-gradient-to-b from-white/[0.08] via-[#090a0e] to-[#040405] border border-white/[0.14] shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1px_1.5px_rgba(255,255,255,0.28)] overflow-hidden flex flex-col max-h-[90vh] text-white">
+      <div className="relative w-full max-w-lg rounded-[32px] sm:rounded-[36px] bg-[#050608] border border-white/[0.14] border-t-white/[0.45] shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] overflow-hidden flex flex-col max-h-[90vh] text-white">
+        {/* Specular sheen dome overlay */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-28 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.22),transparent_70%)] pointer-events-none" />
         
         {/* Top Header Bar with Close Button */}
-        <div className="px-5 sm:px-6 pt-5 pb-3.5 flex items-center justify-between border-b border-white/[0.08] bg-black/50 shrink-0">
+        <div className="relative z-10 px-5 sm:px-6 pt-5 pb-3.5 flex items-center justify-between border-b border-white/[0.08] bg-black/40 shrink-0">
           <div className="flex items-center gap-2">
             <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-white border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
               {categoryTitles[category]}
@@ -252,7 +254,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
             {/* 4 Macro Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {/* Calories */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
+              <div className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.12] border-t-white/[0.35] shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Energy</span>
                   <FuelIconBadge name="energy" size="sm" />
@@ -262,10 +264,10 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     type="number"
                     value={calories}
                     onChange={(e) => setCalories(Number(e.target.value) || 0)}
-                    className="w-full text-lg font-black font-mono text-white bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
+                    className="w-full text-lg font-black font-mono text-[#CDFF50] bg-black/60 rounded-xl px-2 py-1 border border-white/20 focus:outline-none"
                   />
                 ) : (
-                  <div className="text-xl font-black font-mono text-white">
+                  <div className="text-xl font-black font-mono text-[#CDFF50] drop-shadow-[0_0_12px_rgba(205,255,80,0.35)]">
                     {calories}
                     <span className="text-[10px] font-normal text-zinc-400 ml-1">kcal</span>
                   </div>
@@ -273,7 +275,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               </div>
 
               {/* Protein */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
+              <div className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.25] shadow-[inset_0_1px_1px_rgba(255,255,255,0.20)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Protein</span>
                   <FuelIconBadge name="protein" size="sm" />
@@ -294,7 +296,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               </div>
 
               {/* Carbs */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
+              <div className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.25] shadow-[inset_0_1px_1px_rgba(255,255,255,0.20)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Carbs</span>
                   <FuelIconBadge name="carbs" size="sm" />
@@ -315,7 +317,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               </div>
 
               {/* Fat */}
-              <div className="p-3 rounded-2xl bg-gradient-to-b from-white/[0.08] via-[#090a0d] to-[#040405] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
+              <div className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.10] border-t-white/[0.25] shadow-[inset_0_1px_1px_rgba(255,255,255,0.20)]">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Fat</span>
                   <FuelIconBadge name="fat" size="sm" />
@@ -339,7 +341,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
 
           {/* Quick Serving Multiplier Scaler (When not editing raw fields) */}
           {!isEditing && (
-            <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-2">
+            <div className="p-3.5 rounded-2xl bg-[#07080b] border border-white/[0.08] space-y-2">
               <div className="flex items-center justify-between text-xs text-zinc-400">
                 <span className="font-semibold text-zinc-300 flex items-center gap-1.5">
                   <Scale size={13} className="text-zinc-300" />
@@ -355,7 +357,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     onClick={() => applyMultiplier(m)}
                     className={`py-2 rounded-full text-xs font-mono font-bold transition-all cursor-pointer border min-h-[40px] flex items-center justify-center ${
                       multiplier === m
-                        ? 'bg-gradient-to-b from-white to-zinc-200 text-black border-white shadow-[0_2px_10px_rgba(255,255,255,0.2)] font-extrabold'
+                        ? 'bg-[#CDFF50] text-black border-[#CDFF50] shadow-[0_0_14px_rgba(205,255,80,0.35)] font-black'
                         : 'bg-white/[0.05] text-zinc-300 border-white/10 hover:text-white hover:bg-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]'
                     }`}
                   >
@@ -393,7 +395,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
         </div>
 
         {/* Modal Bottom Action Footer */}
-        <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-black/70 shrink-0 flex items-center justify-between gap-3">
+        <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-black/80 shrink-0 flex items-center justify-between gap-3">
           {/* Delete Action (Red) */}
           {isConfirmingDelete ? (
             <div className="flex items-center gap-2 w-full">
@@ -408,7 +410,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
               <button
                 type="button"
                 onClick={() => setIsConfirmingDelete(false)}
-                className="px-4 py-2.5 rounded-full bg-white/10 text-zinc-300 font-bold text-xs cursor-pointer min-h-[44px]"
+                className="btn-pill-glass px-4 py-2.5 text-zinc-300 font-bold text-xs cursor-pointer min-h-[44px]"
               >
                 Cancel
               </button>
@@ -431,14 +433,14 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setIsEditing(false)}
-                      className="px-4 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-zinc-300 font-bold text-xs transition-all cursor-pointer border border-white/10 min-h-[44px]"
+                      className="btn-pill-glass px-4 py-2.5 text-zinc-300 font-bold text-xs transition-all cursor-pointer min-h-[44px]"
                     >
                       Cancel
                     </button>
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="btn-pill-primary px-5 py-2.5 text-xs min-h-[44px]"
+                      className="btn-pill-lime px-5 py-2.5 text-xs font-black min-h-[44px]"
                     >
                       <Check size={14} />
                       <span>Save Changes</span>
@@ -449,7 +451,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setIsEditing(true)}
-                      className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] text-white font-bold text-xs transition-all cursor-pointer border border-white/15 min-h-[44px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+                      className="btn-pill-glass flex items-center gap-1.5 px-4 py-2.5 text-white font-bold text-xs transition-all cursor-pointer min-h-[44px]"
                     >
                       <Edit3 size={14} />
                       <span>Edit</span>
@@ -457,7 +459,7 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                     <button
                       type="button"
                       onClick={onClose}
-                      className="btn-pill-primary px-6 py-2.5 text-xs min-h-[44px]"
+                      className="btn-pill-lime px-6 py-2.5 text-xs font-black min-h-[44px]"
                     >
                       Done
                     </button>

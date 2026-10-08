@@ -108,7 +108,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[82vh] select-none relative bg-black text-white">
       {/* Top Navbar (Mobile Only) */}
-      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.08] rounded-2xl flex items-center justify-between shrink-0 bg-[#0c0d12]/90 backdrop-blur-md mb-4 shadow-md">
+      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.38] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] mb-4 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.40)]">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -131,7 +131,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
             {/* Left Column: Calorie Target + Hydration Target */}
             <div className="space-y-5">
               {/* Calorie Card */}
-              <div className="p-4 sm:p-5 rounded-3xl bg-[#14151e] border border-white/[0.06] space-y-2 shadow-sm">
+              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
                   Daily Calorie Target (kcal)
                 </label>
@@ -139,12 +139,12 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                   type="number"
                   value={calorieGoal}
                   onChange={(e) => setCalorieGoal(e.target.value)}
-                  className="w-full px-4 py-3 rounded-2xl bg-black/40 border border-white/15 text-white font-mono font-bold text-base focus:outline-none focus:border-white/40"
+                  className="w-full px-4 py-3 rounded-2xl bg-black/60 border border-white/15 text-[#CDFF50] font-mono font-black text-xl focus:outline-none focus:border-[#CDFF50]/50"
                 />
               </div>
 
               {/* Hydration Card */}
-              <div className="p-4 sm:p-5 rounded-3xl bg-[#14151e] border border-white/[0.06] space-y-2 shadow-sm">
+              <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-2 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
                   Daily Water Target (ml)
                 </label>
@@ -152,13 +152,13 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                   type="number"
                   value={waterGoal}
                   onChange={(e) => setWaterGoal(e.target.value)}
-                  className="w-full px-4 py-3 rounded-2xl bg-black/40 border border-white/15 text-white font-mono font-bold text-base focus:outline-none focus:border-white/40"
+                  className="w-full px-4 py-3 rounded-2xl bg-black/60 border border-white/15 text-white font-mono font-bold text-base focus:outline-none focus:border-white/40"
                 />
               </div>
             </div>
 
             {/* Right Column: Macro Distribution Card with live ratio balancer */}
-            <div className="p-4 sm:p-5 rounded-3xl bg-[#14151e] border border-white/[0.06] space-y-4 shadow-sm">
+            <div className="p-4 sm:p-5 rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] space-y-4 shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.2px_1px_rgba(255,255,255,0.35)]">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-300 block">
                   Macro Distribution
@@ -391,9 +391,9 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
           <div className="pt-2 max-w-md mx-auto w-full lg:max-w-none">
             <button
               type="submit"
-              className="w-full py-4 rounded-2xl bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all active:scale-[0.98] cursor-pointer shadow-xl flex items-center justify-center gap-2"
+              className="btn-pill-lime w-full py-4 text-sm font-black shadow-[0_4px_22px_rgba(205,255,80,0.4)] cursor-pointer flex items-center justify-center gap-2"
             >
-              <Check size={18} />
+              <Check size={18} strokeWidth={2.5} />
               <span>Save Goals</span>
             </button>
           </div>

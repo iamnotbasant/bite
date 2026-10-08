@@ -185,7 +185,7 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
   const gapDeg = 3.5; // Gap between petals
 
   return (
-    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[#0c0d12] border border-white/[0.08] shadow-2xl space-y-6 select-none">
+    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] space-y-6 select-none">
       {/* Header with Title and Active Nutrient Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
@@ -389,8 +389,8 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
                 onClick={() => setSelectedPetalIndex(idx)}
                 className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-3 ${
                   isSelected
-                    ? 'bg-[#181926] border-white/30 shadow-[0_8px_24px_rgba(0,0,0,0.6)] scale-[1.01]'
-                    : 'bg-[#101118] hover:bg-[#141520] border-white/[0.06] hover:border-white/15'
+                    ? 'bg-[#08090e] border-[#CDFF50]/50 border-t-[#CDFF50]/80 shadow-[0_8px_24px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(205,255,80,0.3)] scale-[1.01]'
+                    : 'bg-[#07080b] hover:bg-[#0b0c10] border-white/[0.08] border-t-white/[0.22] hover:border-white/20'
                 }`}
               >
                 {/* Header row: Icon, Label, Percentage */}
@@ -407,7 +407,7 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
                   <span
                     className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-full ${
                       isSelected
-                        ? 'bg-white text-black'
+                        ? 'bg-[#CDFF50] text-black shadow-sm'
                         : 'bg-white/10 text-zinc-300'
                     }`}
                   >
@@ -417,7 +417,7 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
 
                 {/* Main value display */}
                 <div className="flex items-baseline justify-between">
-                  <span className="text-xl sm:text-2xl font-black text-white tracking-tight font-sans">
+                  <span className={`text-xl sm:text-2xl font-black tracking-tight font-sans ${isSelected ? 'text-[#CDFF50]' : 'text-white'}`}>
                     {item.valueDisplay}
                   </span>
                   <span className="text-[11px] font-mono text-zinc-400">
@@ -429,7 +429,7 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
                 <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
-                      isSelected ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-zinc-400'
+                      isSelected ? 'bg-[#CDFF50] shadow-[0_0_8px_rgba(205,255,80,0.8)]' : 'bg-zinc-400'
                     }`}
                     style={{ width: `${Math.min(100, item.score)}%` }}
                   />

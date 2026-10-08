@@ -51,25 +51,28 @@ export const GoalModal: React.FC<GoalModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl animate-fade-in">
       <div
-        className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border bg-[#14151C] border-white/10 text-white transition-all"
+        className="relative w-full max-w-md rounded-[32px] overflow-hidden shadow-[0_32px_100px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.06),inset_0_1.5px_1px_rgba(255,255,255,0.45)] border border-white/[0.14] border-t-white/[0.45] bg-[#050608] text-white transition-all"
       >
-        <div className="p-5 border-b border-white/10 flex items-center justify-between">
+        {/* Specular sheen dome overlay */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-24 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.20),transparent_70%)] pointer-events-none" />
+
+        <div className="relative z-10 p-5 border-b border-white/10 flex items-center justify-between bg-black/30">
           <div className="flex items-center gap-2">
-            <Target size={20} className="text-amber-300" />
+            <Target size={20} className="text-[#CDFF50]" />
             <h3 className="text-lg font-bold tracking-tight">Adjust Daily Goals</h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
           >
             <X size={18} />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-5 space-y-4">
+        <form onSubmit={handleSubmit} className="relative z-10 p-5 space-y-4">
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">
               Daily Calorie Target (kcal)
@@ -78,7 +81,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
               type="number"
               value={calorieGoal}
               onChange={(e) => setCalorieGoal(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-2xl bg-black/30 border border-white/15 text-white font-extrabold text-xl focus:outline-none focus:ring-2 focus:ring-white/40"
+              className="w-full px-4 py-2.5 rounded-2xl bg-black/70 border border-white/15 text-[#CDFF50] font-black text-2xl focus:outline-none focus:border-[#CDFF50]/60"
             />
           </div>
 
@@ -91,7 +94,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
                 type="number"
                 value={proteinGoal}
                 onChange={(e) => setProteinGoal(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/15 text-white text-sm focus:outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-white/40"
               />
             </div>
             <div>
@@ -102,7 +105,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
                 type="number"
                 value={carbsGoal}
                 onChange={(e) => setCarbsGoal(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/15 text-white text-sm focus:outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-white/40"
               />
             </div>
             <div>
@@ -113,7 +116,7 @@ export const GoalModal: React.FC<GoalModalProps> = ({
                 type="number"
                 value={fatGoal}
                 onChange={(e) => setFatGoal(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/15 text-white text-sm focus:outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-white/40"
               />
             </div>
           </div>
@@ -126,16 +129,16 @@ export const GoalModal: React.FC<GoalModalProps> = ({
               type="number"
               value={waterGoal}
               onChange={(e) => setWaterGoal(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-black/30 border border-white/15 text-white text-sm focus:outline-none"
+              className="w-full px-3.5 py-2 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-white/40"
             />
           </div>
 
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3 rounded-2xl font-bold bg-white text-zinc-950 shadow-lg hover:bg-white/95 transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+              className="btn-pill-lime w-full py-3 rounded-2xl font-black text-black shadow-[0_0_20px_rgba(205,255,80,0.35)] transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[46px]"
             >
-              <Check size={18} />
+              <Check size={18} strokeWidth={2.5} />
               <span>Save Target Goals</span>
             </button>
           </div>

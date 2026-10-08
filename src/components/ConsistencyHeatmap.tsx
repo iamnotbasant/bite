@@ -43,7 +43,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
   return (
     <div className="w-full space-y-4 select-none">
       {/* 1. Top Heatmap Card */}
-      <div className="rounded-[32px] p-5 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-2xl overflow-hidden">
+      <div className="rounded-[32px] p-5 sm:p-6 bg-[radial-gradient(120%_65%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_38%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.38)] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2.5">
@@ -61,7 +61,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
         </div>
 
         {/* Squircle Heatmap Grid */}
-        <div className="bg-[#101117] rounded-2xl p-3 sm:p-4 border border-white/5">
+        <div className="bg-[#07080b] rounded-2xl p-3 sm:p-4 border border-white/10">
           <div className="flex gap-2">
             {/* Days Labels (M T W T F S S) */}
             <div className="flex flex-col justify-between py-0.5 text-[10px] font-mono text-zinc-500 font-bold">
@@ -110,7 +110,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
       {/* 2. Four Stealth Metric Cards */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4">
         {/* Card 1: Streak */}
-        <div className="rounded-[28px] p-5 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-xl flex flex-col justify-between min-h-[145px]">
+        <div className="rounded-[28px] p-5 sm:p-6 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.32] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.30)] flex flex-col justify-between min-h-[145px]">
           <div className="flex items-center gap-2 text-xs font-bold text-zinc-400">
             <Flame size={15} className="text-zinc-300" />
             <span>Streak</span>
@@ -126,7 +126,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
         </div>
 
         {/* Card 2: Total Check-Ins */}
-        <div className="rounded-[28px] p-5 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-xl flex flex-col justify-between min-h-[145px]">
+        <div className="rounded-[28px] p-5 sm:p-6 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.32] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.30)] flex flex-col justify-between min-h-[145px]">
           <div className="flex items-center gap-2 text-xs font-bold text-zinc-400">
             <CheckSquare size={15} className="text-zinc-300" />
             <span>Total Check-Ins</span>
@@ -142,7 +142,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
         </div>
 
         {/* Card 3: Avg. Log Time */}
-        <div className="rounded-[28px] p-5 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-xl flex flex-col justify-between min-h-[145px]">
+        <div className="rounded-[28px] p-5 sm:p-6 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.32] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.30)] flex flex-col justify-between min-h-[145px]">
           <div className="flex items-center gap-2 text-xs font-bold text-zinc-400">
             <Clock size={15} className="text-zinc-300" />
             <span>Avg. Log Time</span>
@@ -158,7 +158,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
         </div>
 
         {/* Card 4: Goal Progress */}
-        <div className="rounded-[28px] p-5 sm:p-6 bg-[#0c0d12] border border-white/[0.06] shadow-xl flex flex-col justify-between min-h-[145px]">
+        <div className="rounded-[28px] p-5 sm:p-6 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.32] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.30)] flex flex-col justify-between min-h-[145px]">
           <div className="flex items-center gap-2 text-xs font-bold text-zinc-400">
             <Trophy size={15} className="text-zinc-300" />
             <span>Goal Progress</span>
@@ -171,7 +171,7 @@ export const ConsistencyHeatmap: React.FC<ConsistencyHeatmapProps> = ({ currentK
           {/* Progress Bar */}
           <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden mt-1">
             <div
-              className="h-full rounded-full bg-white transition-all duration-500"
+              className="h-full rounded-full bg-[#CDFF50] shadow-[0_0_8px_rgba(205,255,80,0.6)] transition-all duration-500"
               style={{ width: `${progressPct}%` }}
             />
           </div>

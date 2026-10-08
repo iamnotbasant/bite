@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
 
   return (
     <header className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 xl:px-10 pt-3 sm:pt-4 pb-2 z-30 select-none">
-      <div className="w-full h-14 sm:h-16 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#090a0e] to-[#040406] border border-white/[0.1] px-3.5 sm:px-5 flex items-center justify-between shadow-[0_12px_32px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.2)]">
+      <div className="w-full h-14 sm:h-16 rounded-2xl sm:rounded-3xl bg-[radial-gradient(110%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] px-3.5 sm:px-5 flex items-center justify-between shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)]">
         {/* Brand identity (Clean, pure-black glossy aesthetic) */}
         <div
           onClick={() => navigate('/dashboard')}
@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
         </div>
 
         {/* Center: Top Navigation Bar (>= sm screens) */}
-        <nav className="hidden sm:flex items-center gap-1.5 bg-black/60 p-1 rounded-full border border-white/[0.08] shadow-inner">
+        <nav className="hidden sm:flex items-center gap-1.5 bg-black/70 p-1 rounded-full border border-white/[0.1] shadow-inner">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -79,11 +79,11 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
                 onClick={() => navigate(item.path)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs transition-all cursor-pointer ${
                   item.isActive
-                    ? 'font-bold bg-gradient-to-b from-white to-zinc-200 text-black shadow-[0_2px_10px_rgba(255,255,255,0.2)]'
+                    ? 'font-black bg-[#CDFF50] text-black shadow-[0_2px_14px_rgba(205,255,80,0.38)]'
                     : 'font-medium text-zinc-400 hover:text-white hover:bg-white/[0.08]'
                 }`}
               >
-                <Icon size={14} strokeWidth={item.isActive ? 2.2 : 1.75} />
+                <Icon size={14} strokeWidth={item.isActive ? 2.5 : 1.75} />
                 <span>{item.label}</span>
               </button>
             );
@@ -93,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
         {/* Right: Date Badge & Settings Button */}
         <div className="flex items-center gap-2 sm:gap-2.5">
           {/* Active Date Indicator */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.1] text-zinc-300 text-xs font-medium shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 border border-white/[0.14] text-zinc-300 text-xs font-medium shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]">
             <Calendar size={13} className="text-zinc-400" />
             <span className="hidden md:inline text-zinc-400">Today,</span>
             <span className="text-white font-semibold">{displayDate}</span>
@@ -103,15 +103,15 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
           <button
             type="button"
             onClick={() => navigate('/settings')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-all cursor-pointer min-h-[36px] ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs transition-all cursor-pointer min-h-[36px] ${
               isSettings
-                ? 'bg-white text-black border-white font-bold shadow-[0_2px_10px_rgba(255,255,255,0.2)]'
-                : 'bg-white/[0.05] hover:bg-white/[0.1] text-zinc-300 hover:text-white border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]'
+                ? 'bg-[#CDFF50] text-black border-[#CDFF50] font-black shadow-[0_2px_14px_rgba(205,255,80,0.38)]'
+                : 'bg-white/[0.06] hover:bg-white/[0.12] text-zinc-200 hover:text-white border-white/[0.12] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)]'
             }`}
             title="App Settings"
           >
-            <Settings size={14} />
-            <span className="hidden md:inline">Settings</span>
+            <Settings size={14} strokeWidth={isSettings ? 2.4 : 1.8} />
+            <span className="hidden md:inline font-semibold">Settings</span>
           </button>
         </div>
       </div>

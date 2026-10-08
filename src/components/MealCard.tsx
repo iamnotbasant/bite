@@ -20,13 +20,13 @@ export const MealCard: React.FC<MealCardProps> = ({ meal, onClick }) => {
       onClick={() => onClick?.(meal)}
       role="button"
       tabIndex={0}
-      className="group relative rounded-[22px] sm:rounded-[26px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 bg-gradient-to-r from-white/[0.06] via-[#090a0e] to-[#040406] hover:from-white/[0.1] hover:via-[#0e0f14] hover:to-[#060608] border border-white/[0.09] hover:border-white/[0.24] shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.18)] transition-all duration-300 flex items-center justify-between gap-2.5 sm:gap-3.5 text-white select-none card-fintech-interactive cursor-pointer min-h-[56px]"
+      className="group relative rounded-[22px] sm:rounded-[26px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 bg-[radial-gradient(110%_80%_at_20%_-10%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.03)_45%,transparent_75%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_40%,rgba(0,0,0,0.75)_80%,rgba(0,0,0,0.98)_100%)] bg-[#050608] hover:bg-[#0a0b10] border border-white/[0.12] border-t-white/[0.38] hover:border-white/[0.28] hover:border-t-white/[0.55] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_1px_rgba(255,255,255,0.38)] transition-all duration-300 flex items-center justify-between gap-2.5 sm:gap-3.5 text-white select-none card-fintech-interactive cursor-pointer min-h-[56px]"
       title="Tap to view full nutrition details & edit/delete"
     >
       {/* Left: Circular Dish Plate Image + Name & Macros */}
       <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1">
         {/* Circular Food Image matching reference plate */}
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shrink-0 flex items-center justify-center bg-black border-2 border-white/15 shadow-[0_4px_14px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-300">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shrink-0 flex items-center justify-center bg-black border-2 border-white/20 shadow-[0_4px_14px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-300">
           <img
             src={imgSrc}
             alt={meal.name}

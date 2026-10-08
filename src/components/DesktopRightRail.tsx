@@ -116,7 +116,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
   const goalWater = currentDay?.waterGoal || 2500;
 
   return (
-    <aside className="hidden xl:flex flex-col w-80 h-screen bg-[#07080a] border-l border-white/[0.08] p-5 select-none shrink-0 overflow-y-auto no-scrollbar space-y-6 z-30">
+    <aside className="hidden xl:flex flex-col w-80 h-screen bg-[#050507] border-l border-white/[0.08] p-5 select-none shrink-0 overflow-y-auto no-scrollbar space-y-6 z-30">
       {/* 1. Mini Calendar (Matching Reference Image Style) */}
       <div className="space-y-3">
         {/* Month Header with navigation arrows */}
@@ -161,7 +161,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
               onClick={() => onSelectDate(cell.dateStr)}
               className={`relative h-8 w-8 mx-auto rounded-full flex flex-col items-center justify-center text-xs font-mono transition-all cursor-pointer ${
                 cell.isSelected
-                  ? 'bg-white text-black font-extrabold shadow-md scale-105'
+                  ? 'bg-[#CDFF50] text-black font-black shadow-[0_0_12px_rgba(205,255,80,0.4)] scale-105'
                   : cell.isCurrentMonth
                   ? 'text-zinc-200 hover:bg-white/10'
                   : 'text-zinc-600 hover:text-zinc-400'
@@ -178,7 +178,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
       </div>
 
       {/* 2. Today's Fuel Target Card (Matching the Reference "PENDING" card with glowing badge) */}
-      <div className="relative overflow-hidden rounded-2xl p-4 bg-[#0e0f14] border border-white/[0.08] shadow-lg text-white space-y-3 group">
+      <div className="relative overflow-hidden rounded-2xl p-4 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.38] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.35)] text-white space-y-3 group">
         {/* Subtle warm glow at bottom right */}
         <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -199,7 +199,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
 
         <div>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl font-black font-mono text-white tracking-tight">
+            <span className="text-2xl font-black font-mono text-[#CDFF50] tracking-tight drop-shadow-[0_0_12px_rgba(205,255,80,0.35)]">
               {totalKcal}
             </span>
             <span className="text-xs text-zinc-400 font-mono">
@@ -215,13 +215,13 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
         <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
           <div
             style={{ width: `${progressPct}%` }}
-            className="h-full bg-white rounded-full transition-all duration-300"
+            className="h-full bg-[#CDFF50] rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(205,255,80,0.6)]"
           />
         </div>
       </div>
 
       {/* 3. Hydration Quick Tracker */}
-      <div className="rounded-2xl p-4 bg-[#0e0f14] border border-white/[0.08] text-white space-y-3">
+      <div className="rounded-2xl p-4 bg-[radial-gradient(120%_60%_at_50%_-5%,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0.02)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.01)_35%,rgba(4,4,6,0.92)_80%,#050608_100%)] bg-[#050608] border border-white/[0.12] border-t-white/[0.35] shadow-[0_16px_36px_rgba(0,0,0,0.92),inset_0_1.5px_1px_rgba(255,255,255,0.30)] text-white space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-lg bg-sky-500/15 border border-sky-500/20 text-sky-400 flex items-center justify-center">
@@ -235,7 +235,7 @@ export const DesktopRightRail: React.FC<DesktopRightRailProps> = ({
           <button
             type="button"
             onClick={() => onQuickAddWater?.(250)}
-            className="flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold transition-all active:scale-95 cursor-pointer"
+            className="btn-pill-glass flex items-center gap-1 px-2.5 py-1 text-white text-[11px] font-bold"
             title="Log +250ml water"
           >
             <Plus size={11} strokeWidth={3} />
