@@ -1,0 +1,64 @@
+import React from 'react';
+import type { DayLog } from '../types';
+
+interface DaySelectorProps {
+  logs: DayLog[];
+  selectedDate: string;
+  onSelectDate: (date: string) => void;
+  theme: 'emerald' | 'obsidian' | 'pure-black';
+}
+
+export const DaySelector: React.FC<DaySelectorProps> = ({
+  logs,
+  selectedDate,
+  onSelectDate,
+  theme,
+}) => {
+  const selectedLog = logs.find((l) => l.date === selectedDate) || logs[0];
+
+  return (
+    <div className="flex flex-col items-center justify-center w-full py-2 select-none">
+      {/* Horizontal Day Buttons Row (Su, Mo, Tu, Today, Th, Fr, Sa) */}
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 max-w-full overflow-x-auto no-scrollbar px-2 py-1">
+        {logs.map((day) => {
+          const isSelected = day.date === selectedDate;
+          const label = day.isToday ? 'Today' : day.dayLabel;
+
+          return (
+            <button
+              key={day.date}
+              type="button"
+              onClick={() => onSelectDate(day.date)}
+              className={`relative transition-all duration-300 ease-out cursor-pointer flex items-center justify-center ${
+                isSelected
+                  ? 'px-4 sm:px-5 py-2 rounded-full font-bold text-sm sm:text-base shadow-lg scale-105 z-10 bg-white text-black ring-2 ring-white/80 shadow-black/60'
+                  : 'w-9 h-9 sm:w-11 sm:h-11 rounded-full text-xs sm:text-sm font-semibold ' +
+                    (theme === 'pure-black' || theme === 'emerald'
+                      ? 'bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-white/10'
+                      : 'bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white backdrop-blur-md border border-white/5')
+              }`}
+            >
+              <span>{label}</span>
+
+              {/* Dot indicator if day has logged meals */}
+              {!isSelected && day.meals.length > 0 && (
+                <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-white shadow-sm" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Date Subtitle (e.g. "23 Aug" directly below active day as shown in Reference 1) */}
+      <div className="mt-1.5 text-center">
+        <span
+          className={`text-xs sm:text-sm font-medium tracking-wide ${
+            theme === 'emerald' ? 'text-white/90 drop-shadow-sm' : 'text-zinc-400'
+          }`}
+        >
+          {selectedLog.displayDate}
+        </span>
+      </div>
+    </div>
+  );
+};
