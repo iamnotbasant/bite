@@ -217,36 +217,64 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero p-4 sm:p-5 w-full max-w-[340px] sm:max-w-[390px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_1.5px_0_rgba(255,255,255,0.55)] border-t-[rgba(255,255,255,0.5)]">
+    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_1.5px_0_rgba(255,255,255,0.55)] border-t-[rgba(255,255,255,0.5)]">
       {/* Showpiece Specular Liquid Sheen Overlay (fintech $8,700.46 liquid gloss) */}
       <div className="absolute top-0 left-0 right-0 h-[48%] pointer-events-none rounded-t-[28px] overflow-hidden z-0">
-        <div className="w-full h-full bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.30)_0%,rgba(255,255,255,0.10)_42%,transparent_100%)]" />
+        <div className="w-full h-full bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.32)_0%,rgba(255,255,255,0.11)_42%,transparent_100%)]" />
+        <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
       </div>
 
-      {/* Top Header Pill Row matching Fintech card ("Your money ...8887 ▾") */}
+      {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
       <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">
-        <span className="text-xs font-bold uppercase tracking-wider text-zinc-300">
-          {metricLabel === 'Calories' ? 'Energy Consumed' : `${metricLabel} Metric`}
+        <span className="text-xs sm:text-sm font-medium text-zinc-400 font-sans tracking-tight">
+          {metricLabel === 'Calories' ? 'Energy consumed' : `${metricLabel} consumed`}
         </span>
         <button
           type="button"
           onClick={onEditGoal}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 hover:bg-black/90 border border-white/[0.18] hover:border-white/30 text-[11px] font-bold text-[#CDFF50] transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.25),0_2px_8px_rgba(0,0,0,0.7)]"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 hover:bg-black/95 border border-white/20 hover:border-white/35 text-[11px] sm:text-xs font-semibold text-[#CDFF50] transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.3),0_2px_8px_rgba(0,0,0,0.7)] active:scale-95 group"
           title="Edit target goal"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#CDFF50] animate-pulse"></span>
-          <span className="font-mono tracking-tight text-[#CDFF50]">{goalKcal} {unit} ▾</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#CDFF50] animate-pulse" />
+          <span className="font-mono tracking-tight text-[#CDFF50] group-hover:brightness-110">
+            {goalKcal} {unit} ▾
+          </span>
         </button>
       </div>
 
-      {/* SVG Container */}
-      <div className="relative w-full aspect-[380/280] flex items-center justify-center z-10">
+      {/* 2. ONE HUGE calorie number in white matching "$8,700.46" */}
+      <div className="w-full px-1 pt-1.5 pb-2 relative z-10">
+        <div className="flex items-baseline justify-between">
+          <div className="flex items-baseline gap-1.5 text-white tracking-tight">
+            <span className="text-4xl sm:text-5xl font-black font-sans tracking-tight text-white drop-shadow-[0_2px_18px_rgba(255,255,255,0.25)]">
+              {Math.round(animValue).toLocaleString()}
+            </span>
+            <span className="text-base sm:text-lg font-bold text-zinc-400 font-mono">
+              {unit}
+            </span>
+          </div>
+
+          {metricLabel !== 'Calories' && (
+            <button
+              type="button"
+              onClick={onResetToCalories}
+              className="text-[11px] font-mono text-[#CDFF50] hover:text-white underline cursor-pointer px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15"
+              title="Return to Calories"
+            >
+              ← Calories
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* 3. The arc gauge below the huge white number */}
+      <div className="relative w-full aspect-[380/260] flex items-center justify-center z-10 -mt-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="w-full h-full overflow-visible"
         >
           <defs>
-            {/* Soft lime glow for hero number */}
+            {/* Soft lime glow for gauge accents */}
             <filter id="limeValueGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#CDFF50" floodOpacity="0.28" />
             </filter>
@@ -346,8 +374,7 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             />
           )}
 
-          {/* Center Typography: Rendered natively inside SVG with ample clearance */}
-          {/* Supports dynamic spotlight metric (Calories, Protein, Carbs, Fat) */}
+          {/* Center Typography inside Arc: Percentage + Remaining status */}
           <g
             key={metricLabel}
             className={`select-none transition-opacity duration-300 ${
@@ -355,102 +382,46 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
             }`}
             onClick={metricLabel !== 'Calories' ? onResetToCalories : undefined}
           >
-            {metricLabel !== 'Calories' ? (
-              <>
-                {/* Metric label: PROTEIN / CARBS / FAT with plenty of clearance from apex */}
-                <text
-                  x={cx}
-                  y={cy - 48}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fill="rgba(255, 255, 255, 0.7)"
-                  className="font-sans font-bold"
-                  style={{
-                    fontSize: '12px',
-                    letterSpacing: '0.12em',
-                  }}
-                >
-                  {metricLabel.toUpperCase()}
-                </text>
+            {/* Percentage Display */}
+            <text
+              x={cx}
+              y={cy - 12}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="#CDFF50"
+              filter="url(#limeValueGlow)"
+              className="font-sans"
+              style={{
+                fontSize: '44px',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+              }}
+            >
+              {Math.round(ratio * 100)}%
+            </text>
 
-                {/* Main Value */}
-                <text
-                  x={cx}
-                  y={cy - 12}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fill="#CDFF50"
-                  filter="url(#limeValueGlow)"
-                  className="font-sans"
-                  style={{
-                    fontSize: '52px',
-                    fontWeight: 800,
-                    letterSpacing: '-0.04em',
-                  }}
-                >
-                  {Math.round(animValue)}{unit === 'g' ? 'g' : ''}
-                </text>
-
-                {/* Subtitle */}
-                <text
-                  x={cx}
-                  y={cy + 24}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fill="rgba(255, 255, 255, 0.85)"
-                  className="font-sans pointer-events-auto cursor-pointer"
-                  style={{
-                    fontSize: '15px',
-                    fontWeight: 500,
-                    letterSpacing: '-0.01em',
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onEditGoal?.();
-                  }}
-                >
-                  of {goalKcal}{unit} {metricLabel.toLowerCase()}
-                </text>
-              </>
-            ) : (
-              <>
-                {/* Main Calorie Value */}
-                <text
-                  x={cx}
-                  y={cy - 28}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fill="#CDFF50"
-                  filter="url(#limeValueGlow)"
-                  className="font-sans"
-                  style={{
-                    fontSize: '56px',
-                    fontWeight: 800,
-                    letterSpacing: '-0.04em',
-                  }}
-                >
-                  {Math.round(animValue)}
-                </text>
-
-                {/* Subtitle */}
-                <text
-                  x={cx}
-                  y={cy + 20}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fill="rgba(255, 255, 255, 0.9)"
-                  className="font-sans pointer-events-auto cursor-pointer"
-                  style={{
-                    fontSize: '16px',
-                    fontWeight: 500,
-                    letterSpacing: '-0.01em',
-                  }}
-                  onClick={onEditGoal}
-                >
-                  of {goalKcal}{unit}
-                </text>
-              </>
-            )}
+            {/* Subtitle / Remaining info */}
+            <text
+              x={cx}
+              y={cy + 26}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="rgba(255, 255, 255, 0.8)"
+              className="font-sans pointer-events-auto cursor-pointer"
+              style={{
+                fontSize: '13px',
+                fontWeight: 500,
+                letterSpacing: '-0.01em',
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEditGoal?.();
+              }}
+            >
+              {isCompleted
+                ? 'Daily Goal Achieved'
+                : `${Math.max(0, goalKcal - Math.round(animValue)).toLocaleString()} ${unit} remaining`}
+            </text>
           </g>
         </svg>
       </div>

@@ -118,6 +118,66 @@
   transform: translateY(0) scale(0.99);
 }
 
+/* History List Panel matching ref-fintech-dark "History" list panel
+   Slightly lighter dark panel with deeply rounded top (~28-32px), subtle liquid rim light */
+.panel-fintech-history {
+  position: relative;
+  background: 
+    radial-gradient(120% 50% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 65%),
+    linear-gradient(180deg, #0e0f14 0%, #090a0e 35%, #040406 100%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-top-color: rgba(255, 255, 255, 0.36);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 8px 24px -4px rgba(255, 255, 255, 0.05),
+    0 24px 56px -8px rgba(0, 0, 0, 0.98);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+/* History row inside panel matching Fintech "Useless Ozon - 6.86$" rows:
+   Circular icon left, 2-line text, right-aligned amount */
+.row-fintech-history {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-fintech-history:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+.row-fintech-history:active {
+  transform: scale(0.99);
+}
+
+/* Circular Glossy Chip matching Fintech circular badges ("Up to 20% cashback", "Save for later") */
+.chip-circular-gloss {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: 
+    radial-gradient(100% 70% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.75) 100%),
+    #0f1016;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.60),
+    0 6px 16px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
 /* Primary High-Contrast Pill Button matching Proton "Get Started" / "Enable" */
 .btn-pill-primary {
   display: inline-flex;
@@ -179,32 +239,32 @@
   justify-content: center;
   gap: 0.5rem;
   background: 
-    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 60%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.6) 100%),
-    #0c0d12;
+    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 60%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.7) 100%),
+    #0a0b10;
   color: #ffffff;
   font-weight: 600;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-top-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.55);
   box-shadow: 
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
-    0 6px 18px rgba(0, 0, 0, 0.7);
+    inset 0 1.5px 1.2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.85);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-pill-glass:hover {
   background: 
-    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.05) 60%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.45) 100%),
-    #13141c;
-  border-color: rgba(255, 255, 255, 0.28);
-  border-top-color: rgba(255, 255, 255, 0.65);
+    radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.07) 60%, transparent 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.55) 100%),
+    #13141e;
+  border-color: rgba(255, 255, 255, 0.32);
+  border-top-color: rgba(255, 255, 255, 0.75);
   box-shadow: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
-    0 10px 24px rgba(0, 0, 0, 0.85);
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.7),
+    0 12px 28px rgba(0, 0, 0, 0.95);
   transform: translateY(-1px);
 }
 .btn-pill-glass:active {

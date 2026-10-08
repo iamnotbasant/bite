@@ -1,8 +1,7 @@
 import React from 'react';
-import { Plus, Trash2, Sunrise, Utensils, Moon, Apple } from 'lucide-react';
+import { Plus, Sunrise, Utensils, Moon, Apple } from 'lucide-react';
 import type { MealItem, MealCategory } from '../types';
 import { MealCard } from './MealCard';
-import { getFoodImage, FALLBACK_FOOD_IMAGE } from '../utils/foodImages';
 
 interface MealTimelineProps {
   meals: MealItem[];
@@ -63,10 +62,12 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
     (cat) => !meals.some((m) => m.category === cat.key)
   );
 
+  const totalDayKcal = meals.reduce((sum, m) => sum + (m.calories || 0), 0);
+
   // Empty state when nothing has been logged yet for the day
   const renderEmptyState = () => (
-    <div className="rounded-[28px] p-6 sm:p-8 card-fintech-gloss border border-white/[0.1] shadow-2xl text-center flex flex-col items-center justify-center select-none bg-gradient-to-b from-white/[0.06] via-[#08090d] to-[#040406]">
-      <div className="w-14 h-14 rounded-2xl bg-white/[0.08] border border-white/15 flex items-center justify-center mb-3 text-zinc-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+    <div className="panel-fintech-history p-6 sm:p-8 text-center flex flex-col items-center justify-center select-none">
+      <div className="chip-circular-gloss w-14 h-14 mb-3 text-zinc-300">
         <Utensils size={24} />
       </div>
       <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
@@ -81,7 +82,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
             key={cat.key}
             type="button"
             onClick={() => onAddMealClick(cat.key)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 hover:border-white/30 text-xs sm:text-sm font-semibold text-white transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] active:scale-95 min-h-[44px]"
+            className="btn-pill-glass px-4 py-2 text-xs sm:text-sm"
           >
             <cat.icon size={15} className={cat.accentColor} />
             <span>+ Log {cat.title}</span>
@@ -91,57 +92,72 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
     </div>
   );
 
-  // 1. Mobile View: Stacked horizontal pill rows with rich gradient black cards (Only logged categories)
+  // 1. Mobile View: History list panel matching Fintech reference
   const renderMobileView = () => {
     if (loggedCategories.length === 0) {
       return renderEmptyState();
     }
 
     return (
-      <div className="w-full flex flex-col gap-4 select-none">
-        {loggedCategories.map((cat) => {
-          const categoryMeals = meals.filter((m) => m.category === cat.key);
-          const categoryKcal = categoryMeals.reduce((sum, m) => sum + (m.calories || 0), 0);
+      <div className="w-full panel-fintech-history p-4 sm:p-5 select-none space-y-4">
+        {/* Panel Header matching Fintech "History / Today" */}
+        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+          <div>
+            <h3 className="text-lg sm:text-xl font-black tracking-tight text-white font-sans">
+              History
+            </h3>
+            <p className="text-xs font-mono text-zinc-400">
+              Today
+            </p>
+          </div>
+          <div className="text-right">
+            <span className="text-sm sm:text-base font-bold font-mono text-[#CDFF50]">
+              {totalDayKcal} kcal
+            </span>
+          </div>
+        </div>
 
-          return (
-            <div
-              key={cat.key}
-              className="rounded-[26px] sm:rounded-[32px] p-4 sm:p-5 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.12] border-t-white/[0.38] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_1px_rgba(255,255,255,0.40)] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608]"
-            >
-              <div>
+        {/* Meal Categories inside History Panel */}
+        <div className="space-y-4">
+          {loggedCategories.map((cat) => {
+            const categoryMeals = meals.filter((m) => m.category === cat.key);
+            const categoryKcal = categoryMeals.reduce((sum, m) => sum + (m.calories || 0), 0);
+
+            return (
+              <div key={cat.key} className="space-y-2">
                 {/* Category Header */}
-                <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                  <div className="flex items-center gap-2.5">
-                    <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/15 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]`}>
-                      <cat.icon size={16} strokeWidth={2} />
+                <div className="flex items-center justify-between px-1">
+                  <div className="flex items-center gap-2">
+                    <div className="chip-circular-gloss w-7 h-7 text-white shrink-0">
+                      <cat.icon size={14} className={cat.accentColor} strokeWidth={2} />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
+                    <h4 className="text-sm sm:text-base font-bold tracking-tight text-white font-sans">
                       {cat.title}
-                    </h3>
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-zinc-300 font-semibold shadow-inner">
+                    </h4>
+                    <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-white/10 text-zinc-300 font-semibold">
                       {categoryMeals.length}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     {categoryKcal > 0 && (
-                      <span className="text-xs font-mono text-zinc-300 font-bold">
+                      <span className="text-xs font-mono text-zinc-400 font-bold">
                         {categoryKcal} kcal
                       </span>
                     )}
                     <button
                       type="button"
                       onClick={() => onAddMealClick(cat.key)}
-                      className="btn-circle-cta-lime w-10 h-10 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
+                      className="btn-circle-cta-lime w-8 h-8"
                       title={`Add ${cat.title} item`}
                     >
-                      <Plus size={18} strokeWidth={2.5} />
+                      <Plus size={15} strokeWidth={2.5} />
                     </button>
                   </div>
                 </div>
 
-                {/* Meals List (Horizontal Pill Cards) */}
-                <div className="space-y-2.5 sm:space-y-3">
+                {/* History Rows for this category */}
+                <div className="space-y-1.5">
                   {categoryMeals.map((meal) => (
                     <MealCard
                       key={meal.id}
@@ -153,23 +169,23 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                   ))}
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
 
         {/* Quick Log button for unlogged categories */}
         {unloggedCategories.length > 0 && (
-          <div className="pt-1 px-1">
+          <div className="pt-3 border-t border-white/[0.08]">
+            <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+              Log Meal:
+            </span>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mr-1">
-                Log meal:
-              </span>
               {unloggedCategories.map((cat) => (
                 <button
                   key={cat.key}
                   type="button"
                   onClick={() => onAddMealClick(cat.key)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.12] hover:border-white/[0.22] text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)] active:scale-95 min-h-[38px]"
+                  className="btn-pill-glass text-xs py-1.5 px-3.5 min-h-[38px]"
                 >
                   <cat.icon size={13} strokeWidth={2} className={cat.accentColor} />
                   <span>+ {cat.title}</span>
@@ -182,35 +198,49 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
     );
   };
 
-  // 2. Desktop View: Spacious full-width rows with squircle dish cards & horizontal scroll (Only logged categories)
+  // 2. Desktop View: History panel with clean 2-column history rows
   const renderDesktopView = () => {
     if (loggedCategories.length === 0) {
       return renderEmptyState();
     }
 
     return (
-      <div className="w-full flex flex-col gap-6 select-none">
+      <div className="w-full panel-fintech-history p-6 select-none space-y-6">
+        {/* Panel Header matching Fintech "History / Today" */}
+        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
+              History
+            </h3>
+            <p className="text-xs font-mono text-zinc-400">
+              Today
+            </p>
+          </div>
+          <div className="text-right">
+            <span className="text-base font-bold font-mono text-[#CDFF50]">
+              {totalDayKcal} kcal total
+            </span>
+          </div>
+        </div>
+
         {loggedCategories.map((cat) => {
           const categoryMeals = meals.filter((m) => m.category === cat.key);
           const totalCount = categoryMeals.length;
           const categoryKcal = categoryMeals.reduce((sum, m) => sum + (m.calories || 0), 0);
 
           return (
-            <div
-              key={cat.key}
-              className="rounded-3xl p-5 sm:p-6 transition-all duration-200 text-white flex flex-col justify-between border border-white/[0.12] border-t-white/[0.38] shadow-[0_24px_52px_rgba(0,0,0,0.96),inset_0_1.5px_1px_rgba(255,255,255,0.40)] bg-[radial-gradient(110%_50%_at_50%_-5%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.03)_35%,transparent_70%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_35%,rgba(0,0,0,0.75)_75%,rgba(0,0,0,0.98)_100%)] bg-[#050608]"
-            >
-              {/* Header: Title + Category Icon + Count / Total Kcal + Circular Plus button */}
-              <div className="flex items-center justify-between mb-4">
+            <div key={cat.key} className="space-y-3">
+              {/* Header */}
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-xl bg-white/[0.08] border border-white/15 ${cat.accentColor} shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]`}>
-                    <cat.icon size={20} strokeWidth={2} />
+                  <div className="chip-circular-gloss w-9 h-9 text-white shrink-0">
+                    <cat.icon size={18} strokeWidth={2} className={cat.accentColor} />
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
+                    <h4 className="text-lg sm:text-xl font-black tracking-tight text-white font-sans">
                       {cat.title}
-                    </h3>
-                    <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-zinc-300 font-semibold shadow-inner">
+                    </h4>
+                    <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-300 font-semibold">
                       {totalCount} {totalCount === 1 ? 'item' : 'items'}
                     </span>
                   </div>
@@ -225,81 +255,25 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                   <button
                     type="button"
                     onClick={() => onAddMealClick(cat.key)}
-                    className="btn-circle-cta-lime w-10 h-10 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
+                    className="btn-circle-cta-lime w-9 h-9 shadow-[0_4px_18px_rgba(205,255,80,0.35)]"
                     title={`Add ${cat.title} item`}
                   >
-                    <Plus size={19} strokeWidth={2.5} />
+                    <Plus size={18} strokeWidth={2.5} />
                   </button>
                 </div>
               </div>
 
-              {/* Landscape Row: Modern Squircle Meal Cards + More Food Button */}
-              <div className="flex items-center gap-3.5 overflow-x-auto pb-2 no-scrollbar pt-1">
+              {/* Rows */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                 {categoryMeals.map((meal) => (
-                  <div
+                  <MealCard
                     key={meal.id}
-                    onClick={() => onSelectMeal?.(meal)}
-                    className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] p-3.5 bg-[radial-gradient(100%_50%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_45%,transparent_80%),linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.015)_40%,rgba(0,0,0,0.8)_100%)] bg-[#050608] hover:bg-[#0a0b10] border border-white/[0.12] border-t-white/[0.38] hover:border-white/[0.3] hover:border-t-white/[0.55] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_1px_rgba(255,255,255,0.35)] hover:shadow-[0_18px_36px_rgba(0,0,0,0.98),inset_0_1.5px_1px_rgba(255,255,255,0.5)] flex flex-col items-center justify-between text-center shrink-0 group relative transition-all cursor-pointer card-fintech-interactive"
-                  >
-                    {/* Delete action on card hover */}
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onDeleteMeal(meal.id);
-                      }}
-                      className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 p-1.5 rounded-full bg-black/80 hover:bg-rose-500/20 text-zinc-400 hover:text-rose-400 transition-all cursor-pointer z-10 border border-white/10"
-                      title="Delete meal"
-                    >
-                      <Trash2 size={12} />
-                    </button>
-
-                    {/* Circular Dish Image - Clean, Zero Tick / Checkmark */}
-                    <div className="w-[85px] h-[85px] rounded-full overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.8)] border-2 border-white/20 bg-black mt-1 shrink-0">
-                      <img
-                        src={meal.imageUrl || getFoodImage(meal.name)}
-                        alt={meal.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src = FALLBACK_FOOD_IMAGE;
-                        }}
-                      />
-                    </div>
-
-                    {/* Food Name */}
-                    <h4 className="font-bold text-sm text-white tracking-tight leading-snug line-clamp-2 px-1 mt-1">
-                      {meal.name}
-                    </h4>
-
-                    {/* Nutrition: Calories + Carbs, Protein, Fat */}
-                    <div className="w-full pt-1.5 border-t border-white/[0.08]">
-                      <div className="text-xs font-bold text-white font-mono">
-                        {meal.calories} kcal
-                      </div>
-                      <div className="text-[11px] font-mono text-zinc-400 mt-0.5 flex items-center justify-center gap-1 leading-tight whitespace-nowrap">
-                        <span>{meal.protein || 0}g P</span>
-                        <span className="text-zinc-600">·</span>
-                        <span>{meal.carbs || 0}g C</span>
-                        <span className="text-zinc-600">·</span>
-                        <span>{meal.fat || 0}g F</span>
-                      </div>
-                    </div>
-                  </div>
+                    meal={meal}
+                    theme={theme}
+                    onDelete={onDeleteMeal}
+                    onClick={onSelectMeal}
+                  />
                 ))}
-
-                {/* "+ More Food" Squircle Card */}
-                <div
-                  onClick={() => onAddMealClick(cat.key)}
-                  className="w-[165px] sm:w-[175px] min-h-[220px] rounded-[24px] border border-dashed border-white/20 hover:border-[#CDFF50]/50 bg-white/[0.02] hover:bg-[#CDFF50]/[0.05] transition-all flex flex-col items-center justify-center gap-3 shrink-0 cursor-pointer group shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
-                  title={`Add more ${cat.title} food`}
-                >
-                  <div className="w-12 h-12 rounded-full bg-white/[0.08] group-hover:bg-[#CDFF50] text-zinc-300 group-hover:text-black flex items-center justify-center transition-all group-hover:scale-105 shadow-md border border-white/15 group-hover:border-[#CDFF50]">
-                    <Plus size={22} />
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-zinc-400 group-hover:text-white transition-colors">
-                    More Food
-                  </span>
-                </div>
               </div>
             </div>
           );
@@ -307,7 +281,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
 
         {/* Quick Log button for unlogged categories */}
         {unloggedCategories.length > 0 && (
-          <div className="pt-2 px-1 flex items-center gap-2.5 flex-wrap">
+          <div className="pt-3 border-t border-white/[0.08] flex items-center gap-2.5 flex-wrap">
             <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mr-1">
               Log meal:
             </span>
@@ -316,7 +290,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
                 key={cat.key}
                 type="button"
                 onClick={() => onAddMealClick(cat.key)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.12] hover:border-white/[0.22] text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer shadow-[inset_0_1px_1px_rgba(255,255,255,0.18)] active:scale-95"
+                className="btn-pill-glass text-xs py-1.5 px-4 min-h-[38px]"
               >
                 <cat.icon size={14} className={cat.accentColor} />
                 <span>+ Add {cat.title}</span>

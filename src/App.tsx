@@ -28,6 +28,7 @@ import {
   LayoutGrid,
   Utensils,
   PlusCircle,
+  Plus,
   BarChart2,
   Target,
   Flame,
@@ -246,7 +247,7 @@ export function App() {
               <div className="space-y-5 sm:space-y-7 animate-fade-in">
                 {/* Top Section: Arc Gauge & Macro Cards Grid directly on pure black canvas */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center py-2 sm:py-4">
-                  {/* Left: Dynamic Spotlight Arc Gauge (Calories / Protein / Carbs / Fat) */}
+                  {/* Left: Dynamic Spotlight Arc Gauge + Twin Pill Buttons */}
                   <div className="flex flex-col items-center justify-center w-full">
                     <CalorieArcGauge
                       currentKcal={currentSpotlight.current}
@@ -257,6 +258,27 @@ export function App() {
                       onEditGoal={() => navigate('/goals')}
                       onResetToCalories={() => setSpotlightMetric('calories')}
                     />
+
+                    {/* Twin Pill Buttons matching reference (+ add money / transfer) */}
+                    <div className="w-full max-w-[360px] sm:max-w-[400px] grid grid-cols-2 gap-3 mt-3 sm:mt-4 px-1">
+                      <button
+                        type="button"
+                        onClick={() => openLogForCategory(activeLogCategory)}
+                        className="btn-pill-glass w-full"
+                      >
+                        <Plus size={16} strokeWidth={2.5} className="text-[#CDFF50]" />
+                        <span>Log Food</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => navigate('/goals')}
+                        className="btn-pill-glass w-full"
+                      >
+                        <Target size={16} strokeWidth={2} className="text-zinc-300" />
+                        <span>Goals</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* Right: Macro Cards Grid with interactive swapping */}
