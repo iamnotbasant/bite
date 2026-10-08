@@ -204,7 +204,7 @@ export const FuelStreakWidget: React.FC<FuelStreakWidgetProps> = ({
       </div>
 
       {/* Hero Streak Card utilizing full desktop width */}
-      <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.25)_0%,rgba(255,255,255,0.06)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] p-5 sm:p-7 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] border border-white/[0.12] border-t-white/[0.45] text-white">
+      <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.26)_0%,rgba(255,255,255,0.08)_25%,rgba(255,255,255,0.015)_50%,transparent_75%)] bg-[#050506] p-5 sm:p-7 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.55)] border border-white/[0.12] border-t-white/[0.48] text-white">
         {/* Subtle ambient glow */}
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-br from-[#CDFF50]/5 via-white/[0.02] to-transparent blur-3xl pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.05),transparent_70%)] pointer-events-none" />

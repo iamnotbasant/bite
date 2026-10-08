@@ -217,12 +217,9 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   const pinInY = cy + pinInRadius * ny;
 
   return (
-    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_0_rgba(255,255,255,0.65)] border-t-[rgba(255,255,255,0.55)]">
-      {/* Showpiece Specular Liquid Sheen Overlay (fintech $8,700.46 liquid gloss) */}
-      <div className="absolute top-0 left-0 right-0 h-[22%] pointer-events-none rounded-t-[28px] overflow-hidden z-0">
-        <div className="w-full h-full bg-[radial-gradient(ellipse_75%_100%_at_50%_0%,rgba(255,255,255,0.28)_0%,rgba(255,255,255,0.05)_40%,transparent_100%)]" />
-        <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent" />
-      </div>
+    <div className="relative card-fintech-hero p-5 sm:p-6 w-full max-w-[360px] sm:max-w-[400px] mx-auto flex flex-col items-center justify-center select-none shadow-[0_24px_56px_-10px_rgba(0,0,0,0.98),inset_0_1.2px_0.5px_0_rgba(255,255,255,0.65)] border-t-[rgba(255,255,255,0.55)]">
+      {/* Crisp 1px bright top-edge rim light */}
+      <div className="absolute top-0 inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-10" />
 
       {/* 1. Top Header Row: small muted label top-left, lime pill badge top-right (...8887 ▾) */}
       <div className="w-full flex items-center justify-between px-1 mb-1 relative z-10">

@@ -45,7 +45,7 @@ export const StatsView: React.FC<StatsViewProps> = ({
   return (
     <div className="w-full max-w-full overflow-x-hidden flex flex-col select-none relative bg-black text-white">
       {/* ----------------- TOP NAVBAR (Mobile Only) ----------------- */}
-      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.45] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] gap-3 mb-3 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)]">
+      <div className="lg:hidden px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.45] rounded-2xl flex items-center justify-between shrink-0 bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] gap-3 mb-3 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)]">
         <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <button
             type="button"

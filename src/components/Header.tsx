@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedDate = '2026-08-23' }) =
 
   return (
     <header className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 xl:px-10 pt-3 sm:pt-4 pb-2 z-30 select-none">
-      <div className="w-full h-14 sm:h-16 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.48] px-3.5 sm:px-5 flex items-center justify-between shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)]">
+      <div className="w-full h-14 sm:h-16 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] border border-white/[0.12] border-t-white/[0.48] px-3.5 sm:px-5 flex items-center justify-between shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)]">
         {/* Brand identity (Clean, pure-black glossy aesthetic) */}
         <div
           onClick={() => navigate('/dashboard')}

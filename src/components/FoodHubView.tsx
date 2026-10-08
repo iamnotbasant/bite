@@ -355,7 +355,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
   return (
     <div className={`w-full flex flex-col ${isModal ? 'max-h-[92vh] sm:max-h-[88vh]' : 'min-h-[82vh]'} select-none relative bg-black`}>
       {/* ----------------- TOP NAVBAR ----------------- */}
-      <div className={`${!isModal ? 'lg:hidden ' : ''}px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.45] ${isModal ? 'rounded-t-3xl' : 'rounded-2xl sm:rounded-3xl'} flex items-center justify-between shrink-0 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] mb-3`}>
+      <div className={`${!isModal ? 'lg:hidden ' : ''}px-4 sm:px-6 py-3.5 border border-white/[0.12] border-t-white/[0.45] ${isModal ? 'rounded-t-3xl' : 'rounded-2xl sm:rounded-3xl'} flex items-center justify-between shrink-0 bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] mb-3`}>
         <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             type="button"
@@ -506,7 +506,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                 <div
                   key={food.id}
                   onClick={() => handleOpenDetail(food)}
-                  className="group p-3.5 sm:p-4 rounded-[22px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:bg-[#090a0e] border border-white/[0.10] border-t-white/[0.35] hover:border-white/[0.22] hover:border-t-white/[0.50] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.38)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
+                  className="group p-3.5 sm:p-4 rounded-[22px] bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_6%)] bg-[#000000] hover:bg-[#050508] border border-white/[0.08] border-t-white/[0.28] hover:border-white/[0.18] hover:border-t-white/[0.45] shadow-[0_8px_20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.25)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
                 >
                   <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 pr-2">
                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-black shrink-0 shadow-md group-hover:scale-105 transition-transform">
@@ -596,7 +596,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
                   <div
                     key={food.id}
                     onClick={() => handleOpenDetail(food)}
-                    className="group p-3.5 sm:p-4 rounded-[22px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:bg-[#090a0e] border border-white/[0.10] border-t-white/[0.35] hover:border-white/[0.22] hover:border-t-white/[0.50] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.38)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
+                    className="group p-3.5 sm:p-4 rounded-[22px] bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_6%)] bg-[#000000] hover:bg-[#050508] border border-white/[0.08] border-t-white/[0.28] hover:border-white/[0.18] hover:border-t-white/[0.45] shadow-[0_8px_20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.25)] flex items-center justify-between cursor-pointer transition-all active:scale-[0.99] card-fintech-interactive min-h-[58px]"
                   >
                     <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 pr-2">
                       <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-black shrink-0 shadow-md">
@@ -699,7 +699,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
               {PRESET_COMBOS.map((combo) => (
                 <div
                   key={combo.id}
-                  className="p-3.5 sm:p-4.5 rounded-[24px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.42] flex items-center justify-between gap-3 shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.45)] card-fintech-interactive"
+                  className="p-3.5 sm:p-4.5 rounded-[24px] bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_6%)] bg-[#000000] hover:bg-[#050508] border border-white/[0.08] border-t-white/[0.28] hover:border-white/[0.18] hover:border-t-white/[0.45] flex items-center justify-between gap-3 shadow-[0_10px_24px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.25)] card-fintech-interactive"
                 >
                   <div className="min-w-0 flex-1">
                     <h4 className="font-bold text-sm sm:text-base text-white tracking-tight">
@@ -918,7 +918,7 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
           onClick={() => setSelectedFood(null)}
         >
           <div
-            className="w-full max-w-md rounded-[36px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.14] border-t-white/[0.48] p-5 sm:p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] text-white space-y-4 max-h-[92vh] overflow-y-auto no-scrollbar animate-scale-in"
+            className="w-full max-w-md rounded-[36px] bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_25%,transparent_75%)] bg-[#050506] border border-white/[0.14] border-t-white/[0.48] p-5 sm:p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] text-white space-y-4 max-h-[92vh] overflow-y-auto no-scrollbar animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Minimal Header */}

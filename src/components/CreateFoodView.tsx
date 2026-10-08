@@ -293,7 +293,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
   return (
     <div className="w-full flex flex-col min-h-[85vh] select-none bg-black text-white">
       {/* ----------------- TOP NAVBAR (Mobile Only) ----------------- */}
-      <div className="lg:hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
+      <div className="lg:hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] shadow-[0_20px_48px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] rounded-2xl sm:rounded-3xl mb-4 sticky top-0 z-40">
         <div className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -347,7 +347,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </h3>
 
             {/* Food Name (Required) */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_25%,transparent_70%)] bg-[#050506] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Food Name (Required)
               </label>
@@ -362,7 +362,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </div>
 
             {/* Notes / Description (Optional) */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_25%,transparent_70%)] bg-[#050506] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-1.5">
               <label className="block text-xs font-semibold text-zinc-400">
                 Notes / Description (Optional)
               </label>
@@ -376,7 +376,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             </div>
 
             {/* Food Image (Optional) - Local Upload OR URL */}
-            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-3">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.04)_25%,transparent_70%)] bg-[#050506] border border-white/[0.10] border-t-white/[0.38] shadow-[0_12px_28px_rgba(0,0,0,0.9),inset_0_1.2px_0.5px_rgba(255,255,255,0.40)] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div>
                   <label className="block text-xs font-semibold text-zinc-300">
@@ -736,7 +736,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
             {NUTRIENT_ROWS.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.1] border-t-white/[0.30] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.03)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:bg-[#090a0e] transition-colors shadow-sm"
+                className="flex items-center justify-between py-3.5 px-4 sm:px-5 rounded-2xl border border-white/[0.08] border-t-white/[0.28] hover:border-white/[0.18] hover:border-t-white/[0.42] bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_6%)] bg-[#000000] hover:bg-[#050508] transition-colors shadow-sm"
               >
                 <label className="text-sm font-semibold text-white tracking-wide">
                   {item.label}
@@ -773,7 +773,7 @@ export const CreateFoodView: React.FC<CreateFoodViewProps> = ({
       {/* ----------------- MISSING NUTRIENT PROMPT MODAL (Exact match to reference) ----------------- */}
       {showNutrientPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-sm rounded-[28px] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.14] border-t-white/[0.45] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] text-white animate-scale-in">
+          <div className="w-full max-w-sm rounded-[28px] bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] border border-white/[0.14] border-t-white/[0.45] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.98),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] text-white animate-scale-in">
             <h3 className="text-base font-bold text-white tracking-tight mb-2">
               Add Nutrient Information
             </h3>

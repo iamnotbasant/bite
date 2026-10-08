@@ -301,8 +301,8 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
       current: protein,
       goal: proteinGoal,
       unit: 'g',
-      icon: <Dumbbell size={15} className="text-white" />,
-      desktopIcon: <Dumbbell size={22} className="text-white" />,
+      icon: <Dumbbell size={18} className="text-white" strokeWidth={2.2} />,
+      desktopIcon: <Dumbbell size={26} className="text-white" strokeWidth={2.2} />,
     },
     {
       id: 'carbs',
@@ -310,8 +310,8 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
       current: carbs,
       goal: carbsGoal,
       unit: 'g',
-      icon: <Wheat size={15} className="text-white" />,
-      desktopIcon: <Wheat size={22} className="text-white" />,
+      icon: <Wheat size={18} className="text-white" strokeWidth={2.2} />,
+      desktopIcon: <Wheat size={26} className="text-white" strokeWidth={2.2} />,
     },
     {
       id: 'fat',
@@ -319,8 +319,8 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
       current: fat,
       goal: fatGoal,
       unit: 'g',
-      icon: <Droplets size={15} className="text-white" />,
-      desktopIcon: <Droplets size={22} className="text-white" />,
+      icon: <Droplets size={18} className="text-white" strokeWidth={2.2} />,
+      desktopIcon: <Droplets size={26} className="text-white" strokeWidth={2.2} />,
     },
   ];
 
@@ -342,7 +342,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3.5 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.45] hover:border-white/[0.25] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[118px] sm:min-h-[136px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3.5 bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_25%,transparent_75%)] bg-[#050506] border border-white/[0.12] border-t-white/[0.45] hover:border-white/[0.25] shadow-[0_16px_36px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] flex flex-col justify-between transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer select-none min-h-[122px] sm:min-h-[140px] group ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Tap to view ${macro.label} on radar arc`}
           >
             {/* Top: Label on Left + Circular Glossy Icon Chip on Right (matching reference circular badges) */}
@@ -350,7 +350,7 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
               <span className="text-[11px] sm:text-xs font-bold text-zinc-300 tracking-tight truncate">
                 {macro.label}
               </span>
-              <div className="chip-circular-gloss w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:scale-110 transition-transform shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.5),0_4px_10px_rgba(0,0,0,0.7)] shrink-0">
+              <div className="chip-circular-gloss w-9 h-9 sm:w-10 sm:h-10 text-white group-hover:scale-108 transition-transform shadow-[inset_0_1.5px_0.8px_rgba(255,255,255,0.85),0_6px_14px_rgba(0,0,0,0.85)] shrink-0">
                 {macro.icon}
               </div>
             </div>
@@ -405,12 +405,12 @@ export const MacroCardsGrid: React.FC<MacroCardsGridProps> = ({
             onClick={() => onSelectMetric?.(macro.id)}
             role="button"
             tabIndex={0}
-            className={`group relative rounded-[28px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
+            className={`group relative rounded-[28px] p-4 sm:p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden border border-white/[0.12] border-t-white/[0.45] bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.24)_0%,rgba(255,255,255,0.06)_25%,transparent_75%)] bg-[#050506] hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-[0_20px_44px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.50)] ${cardHoverClass} ${staggerClass} card-fintech-interactive`}
             title={`Click to view ${macro.label} on radar arc`}
           >
             {/* Left: Circular Glossy Icon Chip + Label & Lime Values */}
             <div className="flex items-center gap-3.5 min-w-[140px] sm:min-w-[170px]">
-              <div className="chip-circular-gloss w-12 h-12 text-white group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.6),0_6px_16px_rgba(0,0,0,0.85)]">
+              <div className="chip-circular-gloss w-14 h-14 text-white group-hover:scale-105 transition-transform duration-300 shrink-0 shadow-[inset_0_1.5px_0.8px_rgba(255,255,255,0.85),0_6px_16px_rgba(0,0,0,0.85)]">
                 {macro.desktopIcon}
               </div>
 

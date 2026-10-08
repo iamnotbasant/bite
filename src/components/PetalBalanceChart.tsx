@@ -185,7 +185,7 @@ export const PetalBalanceChart: React.FC<PetalBalanceChartProps> = ({
   const gapDeg = 3.5; // Gap between petals
 
   return (
-    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(85%_100%_at_50%_0%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_10%,transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.02)_8%,transparent_20%)] bg-[#050507] border border-white/[0.12] border-t-white/[0.45] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.5px_0.5px_rgba(255,255,255,0.45)] space-y-6 select-none">
+    <div className="w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] border border-white/[0.12] border-t-white/[0.45] shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.45)] space-y-6 select-none">
       {/* Header with Title and Active Nutrient Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
