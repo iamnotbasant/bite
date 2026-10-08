@@ -180,35 +180,91 @@
   overflow: hidden;
 }
 
-/* History row inside panel matching Fintech "Useless Ozon - 6.86$" rows:
-   Small black-glass tile with crisp, thin 1px top-edge light and pure black body */
+.panel-fintech-history::before {
+  display: none;
+}
+
+/* Meal Section Header Row matching macro-card shine (Round 13)
+   Crisp top-edge light, glossy surface, identical border/rim and shine treatment as macro cards */
+.row-fintech-section-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: 
+    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
+    #050506;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.88);
+  box-shadow: 
+    0 20px 44px rgba(0, 0, 0, 0.95),
+    inset 0 2px 2px rgba(255, 255, 255, 0.65),
+    inset 0 2px 1px rgba(255, 255, 255, 0.90),
+    inset 0 4px 16px rgba(255, 255, 255, 0.18),
+    0 0 32px rgba(255, 255, 255, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.row-fintech-section-header::before {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .row-fintech-section-header {
+    padding: 0.75rem 1rem;
+    border-radius: 22px;
+  }
+}
+
+/* History Food Row inside meals matching macro cards glass treatment (Round 13)
+   Glossy black-glass surface with macro-card style top-edge gloss and rim */
 .row-fintech-history {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 0.9rem;
   border-radius: 20px;
+  overflow: hidden;
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 6%),
-    #000000;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top-color: rgba(255, 255, 255, 0.28);
+    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
+    #050506;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.88);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
-    0 4px 12px rgba(0, 0, 0, 0.6);
+    0 20px 44px rgba(0, 0, 0, 0.95),
+    inset 0 2px 2px rgba(255, 255, 255, 0.65),
+    inset 0 2px 1px rgba(255, 255, 255, 0.90),
+    inset 0 4px 16px rgba(255, 255, 255, 0.18),
+    0 0 32px rgba(255, 255, 255, 0.06);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.row-fintech-history::before {
+  display: none;
+}
+
 .row-fintech-history:hover {
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, transparent 8%),
-    #050508;
-  border-color: rgba(255, 255, 255, 0.16);
-  border-top-color: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.95);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.38),
-    0 6px 16px rgba(0, 0, 0, 0.75);
+    0 24px 48px rgba(0, 0, 0, 0.98),
+    inset 0 2px 2px rgba(255, 255, 255, 0.75),
+    inset 0 2px 1px rgba(255, 255, 255, 0.95),
+    inset 0 4px 18px rgba(255, 255, 255, 0.22),
+    0 0 36px rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
 }
+
 .row-fintech-history:active {
   transform: scale(0.99);
 }

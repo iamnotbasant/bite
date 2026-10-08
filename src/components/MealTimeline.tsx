@@ -129,7 +129,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
             return (
               <div key={cat.key} className="space-y-2">
                 {/* Category Header */}
-                <div className="flex items-center justify-between px-1">
+                <div className="row-fintech-section-header">
                   <div className="flex items-center gap-2">
                     <div className="chip-circular-gloss w-7 h-7 text-white shrink-0">
                       <cat.icon size={14} className={cat.accentColor} strokeWidth={2} />
@@ -237,7 +237,7 @@ export const MealTimeline: React.FC<MealTimelineProps> = ({
           return (
             <div key={cat.key} className="space-y-3">
               {/* Header */}
-              <div className="flex items-center justify-between">
+              <div className="row-fintech-section-header">
                 <div className="flex items-center gap-3">
                   <div className="chip-circular-gloss w-9 h-9 text-white shrink-0">
                     <cat.icon size={18} strokeWidth={2} className={cat.accentColor} />
