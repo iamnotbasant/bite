@@ -219,22 +219,11 @@ export const CalorieArcGauge: React.FC<CalorieArcGaugeProps> = ({
   return (
     <div className="hero card-fintech-hero pt-4 sm:pt-4.5 px-5 sm:px-6 pb-3 sm:pb-3.5 w-full max-w-[370px] sm:max-w-[410px] mx-auto flex flex-col items-center justify-center select-none">
 
-      {/* 1. Top Header Row: small muted label top-left, white pill badge top-right (...8887 ▾) */}
+      {/* 1. Top Header Row: small muted label top-left */}
       <div className="w-full flex items-center justify-between px-1 mb-0.5 relative z-10">
         <span className="text-xs sm:text-sm font-medium text-zinc-400 font-sans tracking-tight">
           {metricLabel === 'Calories' ? 'Energy consumed' : `${metricLabel} consumed`}
         </span>
-        <button
-          type="button"
-          onClick={onEditGoal}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 hover:bg-black/95 border border-white/20 hover:border-white/35 text-[11px] sm:text-xs font-semibold text-white transition-all cursor-pointer shadow-[inset_0_1.2px_1px_rgba(255,255,255,0.3),0_2px_8px_rgba(0,0,0,0.7)] active:scale-95 group"
-          title="Edit target goal"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.7)] animate-pulse" />
-          <span className="font-mono tracking-tight text-white group-hover:brightness-110">
-            {goalKcal} {unit} ▾
-          </span>
-        </button>
       </div>
 
       {/* 2. TWO-TONE calorie number matching "$8,700.46" (glossy specular gradient digits, dimmer gray unit) */}
