@@ -74,9 +74,11 @@ export function MoreScreen() {
   const minW = Math.min(...store.weight.map((w) => w.kg), 0);
 
   return (
-    <div className="px-4 pt-6 pb-32 md:max-w-[600px] md:mx-auto">
+    <div className="px-4 pt-6 pb-32 lg:max-w-[920px] lg:mx-auto lg:px-6">
       <h1 className="text-[30px] font-bold text-white mb-4">More</h1>
 
+      <div className="lg:grid lg:grid-cols-2 lg:gap-x-6 lg:items-start">
+      <div>
       {/* Profile */}
       <SectionLabel>Profile</SectionLabel>
       <Card className="!p-4">
@@ -148,7 +150,8 @@ export function MoreScreen() {
           right={<TargetEditor />}
         />
       </Card>
-
+      </div>
+      <div>
       {/* Cloud Sync */}
       <SectionLabel>Cloud Sync</SectionLabel>
       <Card className="!p-4">
@@ -234,7 +237,8 @@ export function MoreScreen() {
           </>
         )}
       </Card>
-
+      </div>
+      <div>
       {/* Weight */}
       <SectionLabel>Weight</SectionLabel>
       <Card className="!p-4">
@@ -269,7 +273,8 @@ export function MoreScreen() {
           </div>
         )}
       </Card>
-
+      </div>
+      <div>
       {/* Backup */}
       <SectionLabel>Backup</SectionLabel>
       <Card className="!p-4">
@@ -292,7 +297,8 @@ export function MoreScreen() {
           </div>
         )}
       </Card>
-
+      </div>
+      <div>
       {/* About */}
       <SectionLabel>About</SectionLabel>
       <Card className="!p-4">
@@ -301,6 +307,8 @@ export function MoreScreen() {
           <span className="text-[12px] text-[#9A9AA5] font-semibold">native jaisa · shared DB</span>
         </div>
       </Card>
+      </div>
+      </div>
       <div className="h-4" />
     </div>
   );

@@ -28,8 +28,12 @@ export interface MealItem {
   fiber?: number;   // in grams
   saturatedFat?: number;
   transFat?: number;
-  sodium?: number;
-  sugar?: number;
+  sodium?: number;    // in mg
+  sugar?: number;     // in grams
+  cholesterol?: number; // in mg
+  potassium?: number;   // in mg
+  calcium?: number;     // in mg
+  iron?: number;        // in mg
   portion: string; // e.g. "1 bowl", "150g"
   category: MealCategory;
   tagId?: string;

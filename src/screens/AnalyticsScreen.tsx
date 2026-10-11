@@ -78,7 +78,7 @@ export function AnalyticsScreen() {
   const balance = estimatedTdee > 0 ? Math.round(today.calories - estimatedTdee) : null;
 
   return (
-    <div className="px-4 pt-6 pb-32 md:max-w-[600px] md:mx-auto">
+    <div className="px-4 pt-6 pb-32 lg:max-w-[920px] lg:mx-auto lg:px-6">
       <h1 className="text-[30px] font-bold text-white mb-4">Analytics</h1>
 
       {/* streak hero */}

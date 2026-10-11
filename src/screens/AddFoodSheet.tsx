@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Heart, Plus, ScanLine, Search, UtensilsCrossed, X, Zap } from 'lucide-react';
 import { useBite } from '../store';
 import { EmptyState, Field, inputCls, Segmented, Sheet } from '../components/ui';
@@ -14,8 +14,22 @@ const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
   { key: 'library', label: 'Library', icon: <UtensilsCrossed size={17} /> },
 ];
 
-function nowTime(): string {
-  const d = new Date();
+/** Food photo thumbnail — hamesha rounded rectangle, kabhi circle nahi. */
+function FoodThumb({ url, size = 56 }: { url?: string; size?: number }) {
+  if (!url) return null;
+  return (
+    <img
+      src={url}
+      alt=""
+      width={size}
+      height={size}
+      className="rounded-[14px] object-cover shrink-0 border border-white/[0.08]"
+      style={{ width: size, height: size }}
+    />
+  );
+}
+
+function nowTime(): string {  const d = new Date();
   let h = d.getHours();
   const ap = h >= 12 ? 'PM' : 'AM';
   h = h % 12 || 12;
@@ -92,13 +106,24 @@ export function AddFoodSheet({
   }, [customFoods, favorites, recentFoods, chip, query]);
 
   const doLog = (food: FoodLibraryItem, quantity: number) => {
+    const sc = (v?: number) => Math.round((v || 0) * quantity * 10) / 10;
     addMeal(date, {
       name: food.name,
       brand: food.brand,
       calories: Math.round(food.calories * quantity),
-      protein: Math.round(food.protein * quantity * 10) / 10,
-      carbs: Math.round(food.carbs * quantity * 10) / 10,
-      fat: Math.round(food.fat * quantity * 10) / 10,
+      protein: sc(food.protein),
+      carbs: sc(food.carbs),
+      fat: sc(food.fat),
+      fiber: sc(food.fiber),
+      sugar: sc(food.sugar),
+      sodium: sc(food.sodium),
+      saturatedFat: sc(food.saturatedFat),
+      transFat: sc(food.transFat),
+      cholesterol: sc(food.cholesterol),
+      potassium: sc(food.potassium),
+      calcium: sc(food.calcium),
+      iron: sc(food.iron),
+      imageUrl: food.imageUrl,
       portion: quantity === 1 ? food.defaultPortion : `${quantity} × ${food.defaultPortion}`,
       category,
       timestamp: nowTime(),
@@ -178,6 +203,7 @@ export function AddFoodSheet({
             <div className="space-y-2">
               {results.map((f) => (
                 <div key={f.id} className="flex items-center gap-3 bg-[#1E1E26] rounded-[16px] p-3.5">
+                  <FoodThumb url={f.imageUrl} />
                   <button type="button" onClick={() => { setLogging(f); setQty('1'); }} className="flex-1 text-left min-w-0 cursor-pointer">
                     <div className="text-[15px] font-semibold text-white truncate">{f.name}</div>
                     <div className="text-[12px] text-[#5E5E6C] truncate">
@@ -253,54 +279,164 @@ export function AddFoodSheet({
   );
 }
 
+function fileToDataUrl(file: File, maxSize = 512): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+      const w = Math.max(1, Math.round(img.width * scale));
+      const h = Math.max(1, Math.round(img.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      canvas.getContext('2d')!.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      // PNG stays PNG (transparency bachti hai), baaki JPEG me compress
+      resolve(file.type === 'image/png' ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('image load failed'));
+    };
+    img.src = url;
+  });
+}
+
+// Har nutrition field jo app track karta hai — form aur nutrition section me same set.
+const NUTRIENT_FIELDS: { key: string; label: string }[] = [
+  { key: 'calories', label: 'Calories (kcal)' },
+  { key: 'protein', label: 'Protein (g)' },
+  { key: 'carbs', label: 'Carbs (g)' },
+  { key: 'fat', label: 'Fat (g)' },
+  { key: 'fiber', label: 'Fiber (g)' },
+  { key: 'sugar', label: 'Sugar (g)' },
+  { key: 'sodium', label: 'Sodium (mg)' },
+  { key: 'saturatedFat', label: 'Saturated fat (g)' },
+  { key: 'transFat', label: 'Trans fat (g)' },
+  { key: 'cholesterol', label: 'Cholesterol (mg)' },
+  { key: 'potassium', label: 'Potassium (mg)' },
+  { key: 'calcium', label: 'Calcium (mg)' },
+  { key: 'iron', label: 'Iron (mg)' },
+];
+
 function CreateFoodForm({ onDone, onCancel }: { onDone: (f: FoodLibraryItem) => void; onCancel: () => void }) {
   const { addCustomFood } = useBite();
   const [name, setName] = useState('');
-  const [calories, setCalories] = useState('');
-  const [protein, setProtein] = useState('');
-  const [carbs, setCarbs] = useState('');
-  const [fat, setFat] = useState('');
+  const [brand, setBrand] = useState('');
   const [portion, setPortion] = useState('1 serving');
+  const [image, setImage] = useState<string | null>(null);
+  const [imgErr, setImgErr] = useState(false);
+  const [n, setN] = useState<Record<string, string>>({});
+  const fileRef = useRef<HTMLInputElement | null>(null);
+
+  const setNum = (k: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setN((prev) => ({ ...prev, [k]: e.target.value }));
+  const num = (k: string) => Number(n[k]) || 0;
+
+  const onFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    e.target.value = '';
+    if (!f) return;
+    setImgErr(false);
+    try {
+      setImage(await fileToDataUrl(f));
+    } catch {
+      setImgErr(true);
+    }
+  };
 
   const save = () => {
     if (!name.trim()) return;
     const food = addCustomFood({
       name: name.trim(),
-      calories: Number(calories) || 0,
-      protein: Number(protein) || 0,
-      carbs: Number(carbs) || 0,
-      fat: Number(fat) || 0,
+      brand: brand.trim() || undefined,
+      calories: num('calories'),
+      protein: num('protein'),
+      carbs: num('carbs'),
+      fat: num('fat'),
+      fiber: num('fiber'),
+      sugar: num('sugar'),
+      sodium: num('sodium'),
+      saturatedFat: num('saturatedFat'),
+      transFat: num('transFat'),
+      cholesterol: num('cholesterol'),
+      potassium: num('potassium'),
+      calcium: num('calcium'),
+      iron: num('iron'),
       defaultPortion: portion.trim() || '1 serving',
       category: 'lunch',
       tagId: 'custom',
+      imageUrl: image || undefined,
     });
     onDone(food);
   };
 
   return (
     <div>
-      <div className="text-[15px] text-[#9A9AA5] mb-4">Apna khud ka food banao — naam aur macros likho</div>
+      <div className="text-[15px] text-[#9A9AA5] mb-4">Apna khud ka food banao — photo, naam aur poora nutrition likho</div>
+
+      {/* Photo — rounded rectangle, kabhi circle nahi */}
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/png,image/jpeg"
+        className="hidden"
+        onChange={onFile}
+      />
+      <div className="mb-4">
+        {image ? (
+          <div className="relative inline-block">
+            <img src={image} alt="Food photo" className="w-28 h-28 rounded-[18px] object-cover border border-white/10" />
+            <button
+              type="button"
+              onClick={() => setImage(null)}
+              className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#F0714F] text-white text-[14px] font-bold cursor-pointer"
+              aria-label="Remove photo"
+            >
+              ×
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="w-full py-4 rounded-[18px] border border-dashed border-[#3a3a48] text-[#9A9AA5] text-[14px] font-semibold cursor-pointer"
+          >
+            + Food photo lagao (PNG / JPG)
+          </button>
+        )}
+        {imgErr && <div className="text-[13px] text-[#F0714F] mt-2">Photo load nahi hui — dobara try karo</div>}
+      </div>
+
       <Field label="Food name">
         <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Dal Tadka" className={inputCls} />
       </Field>
       <div className="grid grid-cols-2 gap-3">
-        <Field label="Calories (kcal)">
-          <input type="number" value={calories} onChange={(e) => setCalories(e.target.value)} placeholder="0" className={inputCls} inputMode="decimal" />
+        <Field label="Brand (optional)">
+          <input value={brand} onChange={(e) => setBrand(e.target.value)} placeholder="e.g. Amul" className={inputCls} />
         </Field>
         <Field label="Serving (e.g. 1 katori)">
           <input value={portion} onChange={(e) => setPortion(e.target.value)} placeholder="1 serving" className={inputCls} />
         </Field>
-        <Field label="Protein (g)">
-          <input type="number" value={protein} onChange={(e) => setProtein(e.target.value)} placeholder="0" className={inputCls} inputMode="decimal" />
-        </Field>
-        <Field label="Carbs (g)">
-          <input type="number" value={carbs} onChange={(e) => setCarbs(e.target.value)} placeholder="0" className={inputCls} inputMode="decimal" />
-        </Field>
-        <Field label="Fat (g)">
-          <input type="number" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="0" className={inputCls} inputMode="decimal" />
-        </Field>
       </div>
-      <div className="flex gap-3 mt-2">
+      <div className="text-[13px] font-bold text-white mt-4 mb-2 tracking-wide">NUTRITION — PER SERVING</div>
+      <div className="grid grid-cols-2 gap-3">
+        {NUTRIENT_FIELDS.map((f) => (
+          <Field key={f.key} label={f.label}>
+            <input
+              type="number"
+              value={n[f.key] || ''}
+              onChange={setNum(f.key)}
+              placeholder="0"
+              className={inputCls}
+              inputMode="decimal"
+              min="0"
+            />
+          </Field>
+        ))}
+      </div>
+      <div className="flex gap-3 mt-4">
         <button type="button" onClick={onCancel} className="flex-1 py-3.5 rounded-full bg-[#1E1E26] text-[#9A9AA5] font-semibold cursor-pointer">
           Cancel
         </button>
@@ -336,10 +472,13 @@ function LogPortionStep({
       <button type="button" onClick={onBack} className="text-[#4F8FF7] text-[14px] font-semibold mb-3 cursor-pointer">
         ‹ Back to results
       </button>
-      <div className="bg-[#1E1E26] rounded-[20px] p-5 mb-4">
-        <div className="text-[18px] font-bold text-white">{food.name}</div>
+      <div className="bg-[#1E1E26] rounded-[20px] p-5 mb-4 flex items-center gap-4">
+        <FoodThumb url={food.imageUrl} size={64} />
+        <div className="min-w-0">
+        <div className="text-[18px] font-bold text-white truncate">{food.name}</div>
         <div className="text-[13px] text-[#9A9AA5] mt-1">
           {food.defaultPortion} · {Math.round(food.calories)} kcal · P {food.protein}g · C {food.carbs}g · F {food.fat}g
+        </div>
         </div>
       </div>
       <Field label="Quantity (servings)">
@@ -468,6 +607,7 @@ function LibraryView({ onEdit }: { onEdit: (f: FoodLibraryItem) => void }) {
         {list.map((f) => (
           <div key={f.id} className="bg-[#1E1E26] rounded-[16px] p-3.5">
             <div className="flex items-center gap-3">
+              <FoodThumb url={f.imageUrl} size={48} />
               <button type="button" onClick={() => onEdit(f)} className="flex-1 text-left min-w-0 cursor-pointer">
                 <div className="text-[15px] font-semibold text-white truncate">{f.name}</div>
                 <div className="text-[12px] text-[#5E5E6C]">

@@ -68,7 +68,7 @@ export function FoodLogScreen() {
   const hasAny = (day?.meals.length || 0) > 0;
 
   return (
-    <div className="pb-40 md:max-w-[600px] md:mx-auto md:px-4">
+    <div className="pb-40 lg:max-w-[920px] lg:mx-auto lg:px-6">
       {/* top bar */}
       <div className="px-4 pt-5 flex items-center justify-between">
         <button type="button" onClick={() => setTab('more')} className="w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Menu">
@@ -129,14 +129,16 @@ export function FoodLogScreen() {
       </div>
 
       {/* meal sections */}
-      <div className="px-4 mt-4 space-y-3">
+      <div className="px-4 mt-4 space-y-3 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-3 lg:px-0 lg:mt-6">
         {!hasAny && (
+          <div className="lg:col-span-2">
           <EmptyState
             icon={<UtensilsCrossed size={52} strokeWidth={1.4} />}
             title="No foods logged yet – tap + to add your first meal"
             actionLabel="+ Add First Meal"
             onAction={() => setSheet({ category: 'lunch' })}
           />
+          </div>
         )}
         {MEALS.map(({ key, label }) => {
           const items = mealsByCat.get(key) || [];
@@ -160,6 +162,13 @@ export function FoodLogScreen() {
               <div className="divide-y divide-white/[0.06]">
                 {items.map((m) => (
                   <div key={m.id} className="flex items-center gap-3 py-2.5">
+                    {m.imageUrl && (
+                      <img
+                        src={m.imageUrl}
+                        alt=""
+                        className="w-11 h-11 rounded-[12px] object-cover shrink-0 border border-white/[0.08]"
+                      />
+                    )}
                     <div className="flex-1 min-w-0">
                       <div className="text-[14.5px] font-semibold text-white truncate">{m.name}</div>
                       <div className="text-[12px] text-[#5E5E6C] truncate">
@@ -185,7 +194,7 @@ export function FoodLogScreen() {
           <button
             type="button"
             onClick={() => setSheet({ category: 'snack' })}
-            className="w-full py-3.5 rounded-[18px] border border-dashed border-[#3a3a48] text-[#9A9AA5] text-[14px] font-semibold cursor-pointer"
+            className="w-full py-3.5 rounded-[18px] border border-dashed border-[#3a3a48] text-[#9A9AA5] text-[14px] font-semibold cursor-pointer lg:col-span-2"
           >
             + Log more food
           </button>

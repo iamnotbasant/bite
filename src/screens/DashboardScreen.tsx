@@ -89,6 +89,8 @@ export function DashboardScreen() {
         </button>
       )}
 
+      <div className="lg:grid lg:grid-cols-3 lg:gap-6 lg:items-start">
+      <div className="lg:col-span-2 lg:min-w-0">
       <Card>
         <h3 className="text-[19px] font-bold text-white mb-4">Daily Nutrition</h3>
         <div className="flex items-center justify-between mb-2">
@@ -125,7 +127,8 @@ export function DashboardScreen() {
         <span>Swipe for {view === 'daily' ? 'Weekly' : 'Daily'} &gt;</span>
       </button>
 
-      <div className="md:grid md:grid-cols-2 md:gap-x-4 md:mt-2">
+      </div>
+      <div className="md:grid md:grid-cols-2 md:gap-x-4 md:mt-2 lg:mt-0 lg:flex lg:flex-col lg:gap-3 lg:min-w-0">
       <div className="md:col-span-2"><SectionHeader title="Insights & Analytics" onClick={() => setTab('analytics')} /></div>
 
       <button type="button" onClick={() => setTab('analytics')} className="w-full text-left cursor-pointer">
@@ -160,6 +163,7 @@ export function DashboardScreen() {
           <ChevronRight size={22} color={C.chevron} />
         </Card>
       </button>
+      </div>
       </div>
     </div>
   );
