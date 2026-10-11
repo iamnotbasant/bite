@@ -68,7 +68,7 @@ export function FoodLogScreen() {
   const hasAny = (day?.meals.length || 0) > 0;
 
   return (
-    <div className="pb-40">
+    <div className="pb-40 md:max-w-[600px] md:mx-auto md:px-4">
       {/* top bar */}
       <div className="px-4 pt-5 flex items-center justify-between">
         <button type="button" onClick={() => setTab('more')} className="w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Menu">

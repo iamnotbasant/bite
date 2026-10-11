@@ -15,7 +15,7 @@ function Shell() {
 
   return (
     <div className="min-h-dvh bg-[#0B0B0F] flex justify-center">
-      <div className="w-full max-w-[480px] min-h-dvh relative bg-[#0B0B0F] sm:border-x sm:border-white/[0.06]">
+      <div className="w-full md:max-w-[960px] min-h-dvh relative bg-[#0B0B0F] md:border-x md:border-white/[0.06]">
         {tab === 'dashboard' && <DashboardScreen />}
         {tab === 'foodlog' && <FoodLogScreen key="foodlog" />}
         {tab === 'analytics' && <AnalyticsScreen />}

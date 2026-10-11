@@ -63,7 +63,7 @@ export function DashboardScreen() {
   const latestWeight = weight.length > 0 ? weight[weight.length - 1] : null;
 
   return (
-    <div className="px-4 pt-5 pb-32">
+    <div className="px-4 pt-5 pb-32 md:px-8">
       <div className="text-[12px] tracking-[0.14em] text-[#9A9AA5] font-medium">{dayLabel(new Date())}</div>
       <div className="flex items-center justify-between mt-1 mb-4">
         <h1 className="text-[30px] font-bold text-white">Dashboard</h1>
@@ -125,7 +125,8 @@ export function DashboardScreen() {
         <span>Swipe for {view === 'daily' ? 'Weekly' : 'Daily'} &gt;</span>
       </button>
 
-      <SectionHeader title="Insights & Analytics" onClick={() => setTab('analytics')} />
+      <div className="md:grid md:grid-cols-2 md:gap-x-4 md:mt-2">
+      <div className="md:col-span-2"><SectionHeader title="Insights & Analytics" onClick={() => setTab('analytics')} /></div>
 
       <button type="button" onClick={() => setTab('analytics')} className="w-full text-left cursor-pointer">
         <Card className="!p-4 flex items-center gap-3 !rounded-[18px]">
@@ -137,7 +138,7 @@ export function DashboardScreen() {
         </Card>
       </button>
 
-      <button type="button" onClick={() => setTab('more')} className="w-full text-left cursor-pointer mt-3">
+      <button type="button" onClick={() => setTab('more')} className="w-full text-left cursor-pointer mt-3 md:mt-0">
         <Card className="!p-4 flex items-center gap-3 !rounded-[18px]">
           <div className="flex-1">
             <div className="text-[17px] font-bold text-white">Body Metrics</div>
@@ -149,7 +150,7 @@ export function DashboardScreen() {
         </Card>
       </button>
 
-      <SectionHeader title="Habits" onClick={() => setTab('analytics')} />
+      <div className="md:col-span-2"><SectionHeader title="Habits" onClick={() => setTab('analytics')} /></div>
       <button type="button" onClick={() => setTab('analytics')} className="w-full text-left cursor-pointer">
         <Card className="!p-4 flex items-center gap-3 !rounded-[18px]">
           <div className="flex-1">
@@ -159,6 +160,7 @@ export function DashboardScreen() {
           <ChevronRight size={22} color={C.chevron} />
         </Card>
       </button>
+      </div>
     </div>
   );
 }

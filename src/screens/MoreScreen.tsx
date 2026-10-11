@@ -74,7 +74,7 @@ export function MoreScreen() {
   const minW = Math.min(...store.weight.map((w) => w.kg), 0);
 
   return (
-    <div className="px-4 pt-6 pb-32">
+    <div className="px-4 pt-6 pb-32 md:max-w-[600px] md:mx-auto">
       <h1 className="text-[30px] font-bold text-white mb-4">More</h1>
 
       {/* Profile */}
