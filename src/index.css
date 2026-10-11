@@ -4,729 +4,82 @@
 
 @layer base {
   :root {
-    --color-primary: #FFFFFF;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --font-secondary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-  
+
+  html {
+    background: #0b0b0f;
+  }
+
   body {
     font-family: var(--font-sans);
+    background: #0b0b0f;
+    color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    user-select: none;
+    overscroll-behavior-y: none;
+  }
+
+  /* thin scrollbars for the app shell */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2a38 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #2a2a38;
+    border-radius: 3px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  input, select, textarea {
+    font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
   }
 }
 
-.font-mono,
-.font-secondary {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-feature-settings: "tnum" 1, "cv02" 1;
+/* numeric tabular figures for the glossy digits */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
-/* =========================================================================
-   PURE OLED FINTECH & PROTON DESIGN SYSTEM V2 (Liquid Gloss Black Theme)
-   ========================================================================= */
-
-/* Subtle dot-matrix grid on OLED black background matching fintech reference */
-.bg-dot-matrix {
-  background-color: #000000;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 20px 20px;
+/* bottom-sheet slide-up */
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.sheet-up {
+  animation: sheet-up 0.28s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Hero Liquid Glass Card matching macro cards glass treatment (Round 12)
-   30px squircle radius, luminous bright top rim with inner specular highlight,
-   defined gloss upper ~50% melting into #050506 deep black body */
-.hero,
-.card-fintech-hero {
-  border-radius: 30px;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
-    #050506;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.88);
-  box-shadow:
-    0 20px 44px rgba(0, 0, 0, 0.95),
-    inset 0 2px 2px rgba(255, 255, 255, 0.65),
-    inset 0 2px 1px rgba(255, 255, 255, 0.90),
-    inset 0 4px 16px rgba(255, 255, 255, 0.18),
-    0 0 32px rgba(255, 255, 255, 0.06);
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fade-in 0.2s ease-out;
 }
 
-.hero::before,
-.card-fintech-hero::before {
-  display: none;
+/* jelly pill slide for the bottom nav indicator */
+.nav-pill {
+  transition: transform 0.32s cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
-/* ============ HERO NUMBER & GLOSSY TYPOGRAPHY (Round 11) ============
-   Ported from glass-lab/hero-card.html (.hero-number .big)
-   Liquid metallic specular gradient, bright at top melting dimmer at bottom */
-.hero-number {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+/* hide number input spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
-
-.hero-number .big,
-.text-glossy-hero {
-  font-size: 64px;
-  font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1;
-  font-family: -apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 45%, #d9d9d9 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.18));
-}
-
-@media (max-width: 380px) {
-  .hero-number .big,
-  .text-glossy-hero {
-    font-size: 52px;
-  }
-}
-
-.hero-number .unit {
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* Subtle glossy text treatment for other large numbers (gauge, history total) */
-.text-glossy-number {
-  font-family: -apple-system, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 45%, #d9d9d9 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.18));
-}
-
-/* Frosted-White Top Large Card matching macro cards glass treatment (Round 12)
-   Generous squircle radius (26px), luminous bright top rim with inner specular highlight,
-   defined gloss upper ~50% melting into #050506 deep black body */
-.card-fintech-gloss {
-  position: relative;
-  background: 
-    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
-    #050506;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 
-    0 20px 44px rgba(0, 0, 0, 0.95),
-    inset 0 2px 2px rgba(255, 255, 255, 0.65),
-    inset 0 2px 1px rgba(255, 255, 255, 0.90),
-    inset 0 4px 16px rgba(255, 255, 255, 0.18),
-    0 0 32px rgba(255, 255, 255, 0.06);
-  border-radius: 26px;
-  overflow: hidden;
-}
-
-.card-fintech-gloss::before {
-  display: none;
-}
-
-/* Interactive Card Hover & Press with Specular Flare */
-.card-fintech-interactive {
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-fintech-interactive:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.82);
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.10) 24%, transparent 50%),
-    radial-gradient(ellipse 90% 50% at 45% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 70%),
-    #07080c;
-  box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.88),
-    inset 0 3px 14px 0 rgba(255, 255, 255, 0.18),
-    0 24px 48px -4px rgba(0, 0, 0, 0.98);
-  transform: translateY(-2px);
-}
-.card-fintech-interactive:active {
-  transform: translateY(0) scale(0.99);
-}
-
-/* History List Panel matching macro cards glass treatment (Round 12)
-   Generous squircle radius (28px), luminous bright top rim with inner specular highlight,
-   defined gloss upper ~50% melting into #050506 deep black body */
-.panel-fintech-history {
-  position: relative;
-  background: 
-    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 38%, transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.04) 22%, rgba(255, 255, 255, 0.01) 40%, transparent 48%),
-    #050506;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 
-    0 20px 44px rgba(0, 0, 0, 0.95),
-    inset 0 2px 2px rgba(255, 255, 255, 0.65),
-    inset 0 2px 1px rgba(255, 255, 255, 0.90),
-    inset 0 4px 16px rgba(255, 255, 255, 0.07),
-    0 0 32px rgba(255, 255, 255, 0.06);
-  border-radius: 28px;
-  overflow: hidden;
-}
-
-.panel-fintech-history::before {
-  display: none;
-}
-
-/* Meal Section Header Row matching macro-card shine (Round 13)
-   Crisp top-edge light, glossy surface, identical border/rim and shine treatment as macro cards */
-.row-fintech-section-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 0.85rem;
-  border-radius: 20px;
-  overflow: hidden;
-  background: 
-    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
-    #050506;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 
-    0 20px 44px rgba(0, 0, 0, 0.95),
-    inset 0 2px 2px rgba(255, 255, 255, 0.65),
-    inset 0 2px 1px rgba(255, 255, 255, 0.90),
-    inset 0 4px 16px rgba(255, 255, 255, 0.18),
-    0 0 32px rgba(255, 255, 255, 0.06);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.row-fintech-section-header::before {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .row-fintech-section-header {
-    padding: 0.75rem 1rem;
-    border-radius: 22px;
-  }
-}
-
-/* History Food Row inside meals matching macro cards glass treatment (Round 13)
-   Glossy black-glass surface with macro-card style top-edge gloss and rim */
-.row-fintech-history {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 0.9rem;
-  border-radius: 20px;
-  overflow: hidden;
-  background: 
-    radial-gradient(ellipse 90% 60% at 35% -10%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.10) 38%, transparent 65%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0.03) 44%, transparent 56%),
-    #050506;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 
-    0 20px 44px rgba(0, 0, 0, 0.95),
-    inset 0 2px 2px rgba(255, 255, 255, 0.65),
-    inset 0 2px 1px rgba(255, 255, 255, 0.90),
-    inset 0 4px 16px rgba(255, 255, 255, 0.18),
-    0 0 32px rgba(255, 255, 255, 0.06);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.row-fintech-history::before {
-  display: none;
-}
-
-.row-fintech-history:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  border-top-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 
-    0 24px 48px rgba(0, 0, 0, 0.98),
-    inset 0 2px 2px rgba(255, 255, 255, 0.75),
-    inset 0 2px 1px rgba(255, 255, 255, 0.95),
-    inset 0 4px 18px rgba(255, 255, 255, 0.22),
-    0 0 36px rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.row-fintech-history:active {
-  transform: scale(0.99);
-}
-
-/* Circular Glossy Chip matching Fintech circular badges ("Up to 20% cashback", "Save for later")
-   Prominent glossy element with vivid specular highlight and 3D depth */
-.chip-circular-gloss {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  background: 
-    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.14) 35%, rgba(255, 255, 255, 0.02) 65%, transparent 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-    #08090d;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-top-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    inset 0 1.5px 0.6px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.80),
-    0 6px 16px rgba(0, 0, 0, 0.85);
-  overflow: hidden;
-}
-
-/* Primary High-Contrast Pill Button matching Proton "Get Started" / "Enable" */
-.btn-pill-primary,
-.btn-pill-lime {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #ebebf2 100%);
-  color: #000000;
-  font-weight: 800;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.18), inset 0 1.2px 0 rgba(255, 255, 255, 1);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 44px;
-}
-.btn-pill-primary:hover,
-.btn-pill-lime:hover {
-  filter: brightness(0.97);
-  box-shadow: 0 6px 22px rgba(255, 255, 255, 0.25), inset 0 1.2px 0 rgba(255, 255, 255, 1);
-  transform: translateY(-1px) scale(1.01);
-}
-.btn-pill-primary:active,
-.btn-pill-lime:active {
-  transform: translateY(0) scale(0.97);
-}
-
-/* Twin Pills ported from glass-lab/hero-card.html (.pill) - Round 6 */
-.pill {
-  flex: 1;
-  border-radius: 999px;
-  padding: 16px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 17px;
-  font-weight: 600;
-  color: #fff;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 45%, rgba(0,0,0,0.35) 100%),
-    #0b0b0d;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow:
-    inset 0 1.5px 1px rgba(255,255,255,0.5),
-    inset 0 -1px 1px rgba(0,0,0,0.6),
-    0 6px 20px rgba(0,0,0,0.5),
-    0 0 24px rgba(255,255,255,0.05);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-.pill:hover {
-  background: 
-    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 45%, rgba(0,0,0,0.30) 100%),
-    #0e0e12;
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    inset 0 1.5px 1px rgba(255,255,255,0.65),
-    inset 0 -1px 1px rgba(0,0,0,0.6),
-    0 8px 24px rgba(0,0,0,0.55),
-    0 0 28px rgba(255,255,255,0.08);
-  transform: translateY(-1px);
-}
-.pill:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.btn-pill-glass {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: 
-    linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 45%, rgba(0,0,0,0.35) 100%),
-    #0b0b0d;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 9999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 
-    inset 0 1.5px 1px rgba(255,255,255,0.5),
-    inset 0 -1px 1px rgba(0,0,0,0.6),
-    0 6px 20px rgba(0,0,0,0.5),
-    0 0 24px rgba(255,255,255,0.05);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 44px;
-}
-.btn-pill-glass:hover {
-  background: 
-    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 45%, rgba(0,0,0,0.30) 100%),
-    #0e0e12;
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    inset 0 1.5px 1px rgba(255,255,255,0.65),
-    inset 0 -1px 1px rgba(0,0,0,0.6),
-    0 8px 24px rgba(0,0,0,0.55),
-    0 0 28px rgba(255,255,255,0.08);
-  transform: translateY(-1px);
-}
-.btn-pill-glass:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* White Glossy Circular Action CTA */
-.btn-circle-cta-lime,
-.btn-circle-cta-white {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #ffffff 0%, #ebebf2 100%);
-  color: #000000;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    inset 0 1.2px 1px 0 rgba(255, 255, 255, 1),
-    0 4px 18px rgba(255, 255, 255, 0.2);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-.btn-circle-cta-lime:hover,
-.btn-circle-cta-white:hover {
-  filter: brightness(0.97);
-  box-shadow: 
-    inset 0 1.2px 1px 0 rgba(255, 255, 255, 1),
-    0 6px 24px rgba(255, 255, 255, 0.28);
-  transform: scale(1.05);
-}
-.btn-circle-cta-lime:active,
-.btn-circle-cta-white:active {
-  transform: scale(0.94);
-}
-
-/* Floating Navigation Dock matching Proton / Fintech mobile dock */
-.floating-dock-glass {
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 12%, transparent 22%),
-    rgba(5, 5, 7, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 
-    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.50),
-    0 20px 48px rgba(0, 0, 0, 0.98);
-  border-radius: 26px;
-}
-
-/* Sleek Dark Glass Capsule Input */
-.input-fintech-glass {
-  background: rgba(4, 4, 6, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.22);
-  border-radius: 16px;
-  color: #ffffff;
-  transition: all 0.2s ease;
-  min-height: 44px;
-}
-.input-fintech-glass:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.6);
-  background: rgba(0, 0, 0, 0.9);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-/* Legacy utility aliases mapped to unified obsidian system */
-.bg-signature-emerald {
-  background: linear-gradient(180deg, #050608 0%, #000000 100%);
-}
-.bg-signature-emerald-subtle {
-  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-}
-.glass-emerald-card,
-.glass-obsidian-surface,
-.card-stealth-dark {
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
-    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
-    #050506;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.48);
-  box-shadow: 
-    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.55),
-    0 16px 36px rgba(0, 0, 0, 0.95);
-}
-.glass-emerald-card-interactive {
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-emerald-card-interactive:hover {
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 22%, transparent 44%),
-    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 68%),
-    #08090d;
-  border-color: rgba(255, 255, 255, 0.22);
-  border-top-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 
-    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.65),
-    0 20px 42px -4px rgba(0, 0, 0, 0.98);
-  transform: translateY(-2px);
-}
-.card-black-gradient,
-.card-ambient-champagne,
-.card-ambient-coral,
-.card-ambient-graphite,
-.card-ambient-lavender,
-.card-ambient-rose,
-.card-ambient-cyan {
-  background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.01) 32%, transparent 42%),
-    radial-gradient(ellipse 85% 42% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
-    #050506;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.48);
-  box-shadow: 
-    inset 0 1.2px 0.5px rgba(255, 255, 255, 0.55),
-    0 16px 36px rgba(0, 0, 0, 0.95);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-black-gradient:hover,
-.card-ambient-champagne:hover,
-.card-ambient-coral:hover,
-.card-ambient-graphite:hover,
-.card-ambient-lavender:hover,
-.card-ambient-rose:hover,
-.card-ambient-cyan:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  border-top-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Reference 5: Custom Pill Tag System */
-.pill-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
-/* Hide scrollbar on mobile horizontal chips */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* =========================================================================
-   PREMIUM MOTION & ANIMATION SUITE
-   ========================================================================= */
-
-@keyframes slideUpFade {
-  0% {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(1.5deg);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 6px rgba(255, 102, 0, 0.4));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 16px rgba(255, 102, 0, 0.85));
-  }
-}
-
-@keyframes popSpring {
-  0% {
-    transform: scale(0.92);
-  }
-  45% {
-    transform: scale(1.08);
-  }
-  75% {
-    transform: scale(0.98);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes flameFlicker {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 8px rgba(255, 120, 0, 0.6));
-  }
-  25% {
-    transform: scale(1.06) rotate(-2deg);
-    filter: drop-shadow(0 0 14px rgba(255, 80, 0, 0.8));
-  }
-  75% {
-    transform: scale(0.96) rotate(2deg);
-    filter: drop-shadow(0 0 10px rgba(255, 160, 0, 0.7));
-  }
-}
-
-@keyframes shimmerSweep {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Animation Utility Classes */
-.animate-fade-up {
-  animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-stagger-1 {
-  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
-}
-.animate-stagger-2 {
-  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-}
-.animate-stagger-3 {
-  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
-}
-.animate-stagger-4 {
-  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
-}
-
-.animate-float-slow {
-  animation: floatSlow 4s ease-in-out infinite;
-}
-
-.animate-pop-spring {
-  animation: popSpring 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.animate-flame-dance {
-  animation: flameFlicker 2.5s ease-in-out infinite;
-}
-
-/* Interactive Card & Button Motion */
-.card-interactive-lift {
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
-}
-.card-interactive-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 24px -4px rgba(255, 255, 255, 0.08);
-}
-.card-interactive-lift:active {
-  transform: translateY(-1px) scale(0.99);
-}
-
-.btn-spring-press {
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.15s ease;
-}
-.btn-spring-press:hover {
-  transform: scale(1.02);
-}
-.btn-spring-press:active {
-  transform: scale(0.94);
-}
-
-/* Shimmer Sheen on Metallic/Glossy Surfaces */
-.shimmer-surface {
-  position: relative;
-  overflow: hidden;
-}
-.shimmer-surface::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-  transform: translateX(-100%);
-  animation: shimmerSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  pointer-events: none;
-}
-
-/* =========================================================================
-   NUTRITION DETAIL VIEW — ROUND 16
-   Vertical Macro Columns & Modal Transitions
-   ========================================================================= */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.22s ease-out forwards;
-}
-
-.macro-column-track {
-  background-color: #F0F4FA;
-  border-radius: 22px;
-}
-
-.macro-column-fill {
-  background: linear-gradient(180deg, #D9E8FD 0%, #CFE2FB 100%);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
