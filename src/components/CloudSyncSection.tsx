@@ -17,10 +17,25 @@ function timeAgo(iso: string | null): string {
 export const CloudSyncSection: React.FC<{ getCallbacks: () => SyncCallbacks }> = ({ getCallbacks }) => {
   const status = useSyncStatus();
   const [confirmReset, setConfirmReset] = useState(false);
+  const [linkId, setLinkId] = useState('');
+  const [showLink, setShowLink] = useState(false);
   const configured = isSupabaseConfigured();
 
   const handleSyncNow = async () => {
     await syncNow(getCallbacks());
+  };
+
+  const handleLinkDevice = () => {
+    const v = linkId.trim();
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v)) return;
+    try {
+      localStorage.setItem('bite_device_uuid', v);
+    } catch {
+      /* ignore */
+    }
+    setShowLink(false);
+    setLinkId('');
+    window.location.reload();
   };
 
   return (
@@ -79,6 +94,34 @@ export const CloudSyncSection: React.FC<{ getCallbacks: () => SyncCallbacks }> =
       <div className="pt-2 border-t border-white/5">
         <p className="text-[10px] text-zinc-600 mb-1">Device ID (is browser ka pehchan — native app jaisa):</p>
         <p className="text-[10px] font-mono text-zinc-500 break-all">{getDeviceUuid()}</p>
+        <p className="text-[10px] text-zinc-600 mt-1">
+          Phone ke app ka data yahan dekhna hai? Phone me Bite → Settings → Cloud Sync se Device ID copy karke neeche paste karo — dono ek hi hisaab ban jayenge.
+        </p>
+        {!showLink ? (
+          <button
+            type="button"
+            onClick={() => setShowLink(true)}
+            className="mt-2 text-[11px] text-sky-300 hover:text-sky-200 cursor-pointer"
+          >
+            + Link phone's device
+          </button>
+        ) : (
+          <div className="mt-2 flex gap-2">
+            <input
+              value={linkId}
+              onChange={(e) => setLinkId(e.target.value)}
+              placeholder="phone wali device ID paste karo"
+              className="flex-1 px-3 py-1.5 rounded-xl bg-black/70 border border-white/15 text-white text-[11px] font-mono focus:outline-none focus:border-white/60"
+            />
+            <button
+              type="button"
+              onClick={handleLinkDevice}
+              className="px-3 py-1.5 rounded-full bg-white text-black text-[11px] font-black cursor-pointer"
+            >
+              Link
+            </button>
+          </div>
+        )}
         {!confirmReset ? (
           <button
             type="button"
