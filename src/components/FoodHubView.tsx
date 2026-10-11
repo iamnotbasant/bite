@@ -204,6 +204,9 @@ export const FoodHubView: React.FC<FoodHubViewProps> = ({
 
   useEffect(() => {
     setCustomFoods(loadCustomFoods());
+    const reload = () => setCustomFoods(loadCustomFoods());
+    window.addEventListener('bite-foods-changed', reload);
+    return () => window.removeEventListener('bite-foods-changed', reload);
   }, []);
 
   const showToast = (msg: string) => {

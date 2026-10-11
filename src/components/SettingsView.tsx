@@ -11,6 +11,11 @@ import {
   Save,
 } from 'lucide-react';
 import type { ThemeMode, CardStyleMode } from '../types';
+import { ProfileSection } from './ProfileSection';
+import { CloudSyncSection } from './CloudSyncSection';
+import { BackupSection } from './BackupSection';
+import { WeightSection } from './WeightSection';
+import type { SyncCallbacks } from '../utils/syncEngine';
 import {
   loadServingUnits,
   addServingUnit,
@@ -25,9 +30,10 @@ interface SettingsViewProps {
   onSetTheme?: (theme: ThemeMode) => void;
   cardStyle?: CardStyleMode;
   onSetCardStyle?: (style: CardStyleMode) => void;
+  getSyncCallbacks?: () => SyncCallbacks;
 }
 
-export const SettingsView: React.FC<SettingsViewProps> = () => {
+export const SettingsView: React.FC<SettingsViewProps> = ({ getSyncCallbacks }) => {
   const navigate = useNavigate();
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -137,6 +143,18 @@ export const SettingsView: React.FC<SettingsViewProps> = () => {
 
       {/* Settings Options */}
       <div className="flex-1 overflow-y-auto no-scrollbar p-1 sm:p-2 pb-32 space-y-5 max-w-5xl xl:max-w-6xl mx-auto w-full">
+        {/* Profile (Mifflin-St Jeor auto targets) */}
+        <ProfileSection />
+
+        {/* Cloud Sync (shared Supabase DB with native app) */}
+        {getSyncCallbacks && <CloudSyncSection getCallbacks={getSyncCallbacks} />}
+
+        {/* Weight (local only) */}
+        <WeightSection />
+
+        {/* JSON Backup */}
+        <BackupSection />
+
         {/* Section: Serving Units Manager (Servings Base Units) */}
         <div className="p-4 sm:p-6 rounded-3xl bg-[radial-gradient(ellipse_65%_45%_at_50%_-5%,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.05)_25%,transparent_70%)] bg-[#050506] border border-white/[0.10] border-t-white/[0.48] shadow-[0_24px_60px_rgba(0,0,0,0.95),inset_0_1.2px_0.5px_rgba(255,255,255,0.50)] space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">

@@ -1,6 +1,6 @@
 import type { DayLog, MealItem, ThemeMode } from '../types';
-import { INITIAL_WEEK_LOGS } from '../data/initialData';
 import { getFoodImage } from './foodImages';
+import { enqueueOp, enqueueTombstone } from './syncEngine';
 
 const STORAGE_KEY_LOGS = 'fuel_app_week_logs_v7';
 const STORAGE_KEY_THEME = 'fuel_app_theme_v1';
@@ -10,10 +10,10 @@ export function loadWeekLogs(): DayLog[] {
     const saved = localStorage.getItem(STORAGE_KEY_LOGS);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed)) {
         return parsed.map((log: DayLog) => ({
           ...log,
-          meals: log.meals.map((m: MealItem) => ({
+          meals: (log.meals || []).map((m: MealItem) => ({
             ...m,
             imageUrl: m.imageUrl || getFoodImage(m.name),
           })),
@@ -23,7 +23,8 @@ export function loadWeekLogs(): DayLog[] {
   } catch (e) {
     console.error('Failed to parse logs from localStorage', e);
   }
-  return INITIAL_WEEK_LOGS;
+  // No seed data — honest empty state (native app parity).
+  return [];
 }
 
 export function saveWeekLogs(logs: DayLog[]): void {
@@ -127,10 +128,8 @@ export function addMealToDay(
     return [...logs, newDayLog];
   }
 
-  // Background Supabase Sync if configured
-  import('./supabase').then(({ insertFoodLogToSupabase }) => {
-    insertFoodLogToSupabase(date, newMeal).catch(() => {});
-  });
+  // Offline-first: enqueue cloud sync (sync engine flushes when online)
+  enqueueOp({ kind: 'upsert-log', date, meal: newMeal });
 
   return logs.map((log) => {
     if (log.date === date) {
@@ -144,10 +143,9 @@ export function addMealToDay(
 }
 
 export function removeMealFromDay(logs: DayLog[], date: string, mealId: string): DayLog[] {
-  // Background Supabase Sync if configured
-  import('./supabase').then(({ deleteFoodLogFromSupabase }) => {
-    deleteFoodLogFromSupabase(mealId).catch(() => {});
-  });
+  // Offline-first: tombstone + enqueue cloud delete
+  enqueueTombstone(mealId);
+  enqueueOp({ kind: 'delete-log', id: mealId });
 
   return logs.map((log) => {
     if (log.date === date) {
@@ -198,6 +196,47 @@ export function adjustWaterIntake(logs: DayLog[], date: string, deltaMl: number)
 
 const STORAGE_KEY_CUSTOM_FOODS = 'fuel_app_custom_foods_v1';
 
+export interface GlobalGoals {
+  calorieGoal: number;
+  proteinGoal: number;
+  carbsGoal: number;
+  fatGoal: number;
+  waterGoal: number;
+  updatedAt: string;
+}
+
+const STORAGE_KEY_GOALS = 'bite_goals_v1';
+
+export const DEFAULT_GOALS: GlobalGoals = {
+  calorieGoal: 2000,
+  proteinGoal: 120,
+  carbsGoal: 250,
+  fatGoal: 55,
+  waterGoal: 3000,
+  updatedAt: '',
+};
+
+export function loadGoals(): GlobalGoals {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_GOALS);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return { ...DEFAULT_GOALS, ...parsed };
+    }
+  } catch {
+    /* ignore */
+  }
+  return { ...DEFAULT_GOALS };
+}
+
+export function saveGoals(g: GlobalGoals): void {
+  try {
+    localStorage.setItem(STORAGE_KEY_GOALS, JSON.stringify(g));
+  } catch {
+    /* ignore */
+  }
+}
+
 export function loadCustomFoods(): import('../types').FoodLibraryItem[] {
   try {
     const saved = localStorage.getItem(STORAGE_KEY_CUSTOM_FOODS);
@@ -236,10 +275,8 @@ export function addCustomFood(food: Omit<import('../types').FoodLibraryItem, 'id
   const updated = [newItem, ...current];
   saveCustomFoods(updated);
 
-  // Background Supabase Sync if configured
-  import('./supabase').then(({ upsertCustomFoodToSupabase }) => {
-    upsertCustomFoodToSupabase(newItem).catch(() => {});
-  });
+  // Offline-first: enqueue cloud sync
+  enqueueOp({ kind: 'upsert-food', food: newItem });
 
   return newItem;
 }
@@ -249,10 +286,8 @@ export function updateCustomFood(updatedFood: import('../types').FoodLibraryItem
   const updated = current.map((f) => (f.id === updatedFood.id ? updatedFood : f));
   saveCustomFoods(updated);
 
-  // Background Supabase Sync if configured
-  import('./supabase').then(({ upsertCustomFoodToSupabase }) => {
-    upsertCustomFoodToSupabase(updatedFood).catch(() => {});
-  });
+  // Offline-first: enqueue cloud sync
+  enqueueOp({ kind: 'upsert-food', food: updatedFood });
 
   return updated;
 }
@@ -262,10 +297,9 @@ export function deleteCustomFood(id: string): import('../types').FoodLibraryItem
   const updated = current.filter((f) => f.id !== id);
   saveCustomFoods(updated);
 
-  // Background Supabase Sync if configured
-  import('./supabase').then(({ deleteCustomFoodFromSupabase }) => {
-    deleteCustomFoodFromSupabase(id).catch(() => {});
-  });
+  // Offline-first: tombstone + enqueue cloud delete
+  enqueueTombstone(id);
+  enqueueOp({ kind: 'delete-food', id });
 
   return updated;
 }

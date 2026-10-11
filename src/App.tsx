@@ -13,7 +13,16 @@ import {
   addMealToDay,
   removeMealFromDay,
   updateMealInDay,
+  loadGoals,
+  saveGoals,
+  loadCustomFoods,
+  saveCustomFoods,
+  type GlobalGoals,
 } from './utils/storage';
+import { getDeviceUuid } from './utils/device';
+import { loadProfile, saveProfile, isProfileSet } from './utils/profile';
+import { computeTargetsFromProfile } from './utils/targets';
+import { syncNow, enqueueOp, type SyncCallbacks } from './utils/syncEngine';
 import { Header } from './components/Header';
 import { CalorieArcGauge } from './components/CalorieArcGauge';
 import { MacroCardsGrid } from './components/MacroCardsGrid';
@@ -43,7 +52,8 @@ export function App() {
   const path = location.pathname;
 
   const [logs, setLogs] = useState<DayLog[]>(() => loadWeekLogs());
-  const [selectedDate] = useState<string>('2026-08-23'); // Today
+  const [selectedDate] = useState<string>(() => new Date().toISOString().slice(0, 10));
+  const [goals, setGoals] = useState<GlobalGoals>(() => loadGoals());
   const [theme, setTheme] = useState<ThemeMode>(() => loadSavedTheme());
   const [cardStyle, setCardStyle] = useState<CardStyleMode>(() => loadSavedCardStyle());
   const [activeLogCategory, setActiveLogCategory] = useState<MealCategory>(() => {
@@ -77,8 +87,99 @@ export function App() {
     saveCardStyle(cardStyle);
   }, [cardStyle]);
 
-  // Current active day log
-  const currentDay = logs.find((l) => l.date === selectedDate) || logs[3] || logs[0];
+  // Device identity + auto cloud sync (shared Supabase DB with native app)
+  useEffect(() => {
+    getDeviceUuid();
+  }, []);
+
+  const getSyncCallbacks = (): SyncCallbacks => ({
+    getLogs: () => loadWeekLogs(),
+    setLogs: (next) => setLogs(next),
+    getCustomFoods: () => loadCustomFoods(),
+    setCustomFoods: (next) => {
+      saveCustomFoods(next);
+      try {
+        window.dispatchEvent(new Event('bite-foods-changed'));
+      } catch {
+        /* ignore */
+      }
+    },
+    getGoals: () => ({ ...goals, updatedAt: goals.updatedAt }),
+    setGoals: (g) => {
+      const next = { ...g };
+      setGoals(next);
+      saveGoals(next);
+    },
+  });
+
+  useEffect(() => {
+    const cbs = getSyncCallbacks();
+    syncNow(cbs);
+    const onOnline = () => syncNow(getSyncCallbacks());
+    window.addEventListener('online', onOnline);
+    return () => window.removeEventListener('online', onOnline);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Recompute targets from profile (Mifflin-St Jeor) unless user overrode manually
+  useEffect(() => {
+    const recompute = () => {
+      const p = loadProfile();
+      if (!p.targetsManuallyEdited && isProfileSet(p)) {
+        const t = computeTargetsFromProfile(p);
+        setGoals((prev) => {
+          const next = {
+            ...prev,
+            calorieGoal: t.calories,
+            proteinGoal: t.protein,
+            carbsGoal: t.carbs,
+            fatGoal: t.fat,
+            updatedAt: new Date().toISOString(),
+          };
+          saveGoals(next);
+          return next;
+        });
+      }
+    };
+    window.addEventListener('bite-profile-changed', recompute);
+    recompute();
+    return () => window.removeEventListener('bite-profile-changed', recompute);
+  }, []);
+
+  // Current active day log (shell with global goals when the day is empty)
+  const shellDay = (date: string): DayLog => {
+    const d = new Date(date + 'T12:00:00');
+    const dayLabels = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return {
+      date,
+      dayLabel: dayLabels[d.getDay()],
+      displayDate: `${d.getDate()} ${months[d.getMonth()]}`,
+      isToday: true,
+      calorieGoal: goals.calorieGoal,
+      proteinGoal: goals.proteinGoal,
+      carbsGoal: goals.carbsGoal,
+      fatGoal: goals.fatGoal,
+      waterGoal: goals.waterGoal,
+      waterIntake: 0,
+      burnedCalories: 0,
+      sugarLevel: 100,
+      glucoseAverage: 100,
+      timeInRange: 100,
+      meals: [],
+    };
+  };
+  const foundDay = logs.find((l) => l.date === selectedDate);
+  const currentDay: DayLog = foundDay
+    ? {
+        ...foundDay,
+        calorieGoal: goals.calorieGoal,
+        proteinGoal: goals.proteinGoal,
+        carbsGoal: goals.carbsGoal,
+        fatGoal: goals.fatGoal,
+        waterGoal: goals.waterGoal,
+      }
+    : shellDay(selectedDate);
   const dayTotals = calculateDayTotals(currentDay);
 
   // Spotlight Metric for Radar Arc Gauge vs Cards Grid
@@ -184,7 +285,7 @@ export function App() {
     setLogs((prev) => updateMealInDay(prev, selectedDate, updatedMeal));
   };
 
-  // Save new goals
+  // Save new goals (manual override — pauses Mifflin-St Jeor auto-compute)
   const handleSaveGoals = (newGoals: {
     calorieGoal: number;
     proteinGoal: number;
@@ -193,39 +294,25 @@ export function App() {
     waterGoal: number;
     micronutrientGoals?: DayLog['micronutrientGoals'];
   }) => {
-    setLogs((prev) =>
-      prev.map((log) => {
-        if (log.date === selectedDate) {
-          return {
-            ...log,
-            calorieGoal: newGoals.calorieGoal,
-            proteinGoal: newGoals.proteinGoal,
-            carbsGoal: newGoals.carbsGoal,
-            fatGoal: newGoals.fatGoal,
-            waterGoal: newGoals.waterGoal,
-            micronutrientGoals: newGoals.micronutrientGoals,
-          };
-        }
-        return log;
-      })
-    );
+    const next: GlobalGoals = {
+      calorieGoal: newGoals.calorieGoal,
+      proteinGoal: newGoals.proteinGoal,
+      carbsGoal: newGoals.carbsGoal,
+      fatGoal: newGoals.fatGoal,
+      waterGoal: newGoals.waterGoal,
+      updatedAt: new Date().toISOString(),
+    };
+    setGoals(next);
+    saveGoals(next);
 
-    // Background Supabase Sync if configured
-    import('./utils/supabase').then(({ saveUserGoalsToSupabase }) => {
-      saveUserGoalsToSupabase({
-        calorieGoal: newGoals.calorieGoal,
-        proteinGoal: newGoals.proteinGoal,
-        carbsGoal: newGoals.carbsGoal,
-        fatGoal: newGoals.fatGoal,
-        waterGoal: newGoals.waterGoal,
-        fiberGoal: newGoals.micronutrientGoals?.fiber,
-        sugarGoal: newGoals.micronutrientGoals?.sugar,
-        sodiumGoal: newGoals.micronutrientGoals?.sodium,
-        potassiumGoal: newGoals.micronutrientGoals?.potassium,
-        saturatedFatGoal: newGoals.micronutrientGoals?.saturatedFat,
-        cholesterolGoal: newGoals.micronutrientGoals?.cholesterol,
-      }).catch(() => {});
-    });
+    // Mark profile as manually edited so auto-compute doesn't overwrite
+    const p = loadProfile();
+    if (!p.targetsManuallyEdited) {
+      saveProfile({ ...p, targetsManuallyEdited: true });
+    }
+
+    // Offline-first: enqueue cloud sync
+    enqueueOp({ kind: 'upsert-goals', goals: next });
   };
 
   const openLogForCategory = (category: MealCategory) => {
@@ -373,6 +460,7 @@ export function App() {
                   onSetTheme={setTheme}
                   cardStyle={cardStyle}
                   onSetCardStyle={setCardStyle}
+                  getSyncCallbacks={getSyncCallbacks}
                 />
               </div>
             }
