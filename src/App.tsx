@@ -1,9 +1,11 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BiteProvider, useBite, type TabKey } from './store';
 import { BottomNav } from './components/BottomNav';
 import { DashboardScreen } from './screens/DashboardScreen';
 import { FoodLogScreen } from './screens/FoodLogScreen';
 import { AnalyticsScreen } from './screens/AnalyticsScreen';
 import { MoreScreen } from './screens/MoreScreen';
+import AdminPanel from './admin/AdminPanel';
 
 function Shell() {
   const { tab, setTab } = useBite();
@@ -28,8 +30,18 @@ function Shell() {
 
 export default function App() {
   return (
-    <BiteProvider>
-      <Shell />
-    </BiteProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/adminpanel/*" element={<AdminPanel />} />
+        <Route
+          path="/*"
+          element={
+            <BiteProvider>
+              <Shell />
+            </BiteProvider>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
