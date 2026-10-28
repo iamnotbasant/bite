@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { FoodLibraryItem, MealItem } from '../types';
 import { getDeviceUuid } from './device';
+import { categoryFromAdmin, isSnackFood } from './snackTags';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
@@ -73,6 +74,8 @@ export function customFoodToRow(food: FoodLibraryItem, userId: string): Record<s
 }
 
 export function customFoodFromRow(row: RemoteCustomFoodRow): FoodLibraryItem {
+  // Snack tagging: respect the food's stored category instead of forcing
+  // everything to lunch (that bug made snack foods show as lunch).
   return {
     id: row.id,
     name: row.name,
@@ -89,7 +92,9 @@ export function customFoodFromRow(row: RemoteCustomFoodRow): FoodLibraryItem {
     servingSizeUnit: row.serving_size_unit || 'serving',
     servingWeightGrams: row.serving_weight_grams ? Number(row.serving_weight_grams) : 100,
     defaultPortion: row.default_portion || '1 serving',
-    category: 'lunch',
+    category: isSnackFood(row.name, (row as { category?: string | null }).category)
+      ? 'snack'
+      : categoryFromAdmin((row as { category?: string | null }).category),
     tagId: 'custom',
     imageUrl: row.image_url || undefined,
   };

@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Heart, Plus, ScanLine, Search, UtensilsCrossed, X, Zap } from 'lucide-react';
 import { useBite } from '../store';
 import { EmptyState, Field, inputCls, Segmented, Sheet } from '../components/ui';
+import { isSnackFood, loggingCategoryForFood } from '../utils/snackTags';
 import type { FoodLibraryItem, MealCategory } from '../types';
 
 type Tab = 'scan' | 'search' | 'quick' | 'library';
@@ -107,6 +108,9 @@ export function AddFoodSheet({
 
   const doLog = (food: FoodLibraryItem, quantity: number) => {
     const sc = (v?: number) => Math.round((v || 0) * quantity * 10) / 10;
+    // Snack tagging: snack foods always log to Snacks, whatever the
+    // selected section/time was — snack is decided by the food, not time.
+    const logCategory = loggingCategoryForFood(food, category);
     addMeal(date, {
       name: food.name,
       brand: food.brand,
@@ -125,7 +129,7 @@ export function AddFoodSheet({
       iron: sc(food.iron),
       imageUrl: food.imageUrl,
       portion: quantity === 1 ? food.defaultPortion : `${quantity} × ${food.defaultPortion}`,
-      category,
+      category: logCategory,
       timestamp: nowTime(),
     });
     onClose();
@@ -205,7 +209,12 @@ export function AddFoodSheet({
                 <div key={f.id} className="flex items-center gap-3 bg-[#1E1E26] rounded-[16px] p-3.5">
                   <FoodThumb url={f.imageUrl} />
                   <button type="button" onClick={() => { setLogging(f); setQty('1'); }} className="flex-1 text-left min-w-0 cursor-pointer">
-                    <div className="text-[15px] font-semibold text-white truncate">{f.name}</div>
+                    <div className="text-[15px] font-semibold text-white truncate">
+                      {f.name}
+                      {isSnackFood(f.name, f.category) && (
+                        <span className="ml-2 align-middle text-[11px] font-bold text-[#F2C14E] border border-[#F2C14E]/40 rounded-full px-2 py-0.5">Snack</span>
+                      )}
+                    </div>
                     <div className="text-[12px] text-[#5E5E6C] truncate">
                       {f.defaultPortion} · {Math.round(f.calories)} kcal
                     </div>
@@ -365,7 +374,7 @@ function CreateFoodForm({ onDone, onCancel }: { onDone: (f: FoodLibraryItem) => 
       calcium: num('calcium'),
       iron: num('iron'),
       defaultPortion: portion.trim() || '1 serving',
-      category: 'lunch',
+      category: isSnackFood(name.trim()) ? 'snack' : 'lunch',
       tagId: 'custom',
       imageUrl: image || undefined,
     });
@@ -475,7 +484,15 @@ function LogPortionStep({
       <div className="bg-[#1E1E26] rounded-[20px] p-5 mb-4 flex items-center gap-4">
         <FoodThumb url={food.imageUrl} size={64} />
         <div className="min-w-0">
-        <div className="text-[18px] font-bold text-white truncate">{food.name}</div>
+        <div className="text-[18px] font-bold text-white truncate">
+          {food.name}
+          {isSnackFood(food.name, food.category) && (
+            <span className="ml-2 align-middle text-[11px] font-bold text-[#F2C14E] border border-[#F2C14E]/40 rounded-full px-2 py-0.5">Snack</span>
+          )}
+        </div>
+        {isSnackFood(food.name, food.category) && (
+          <div className="text-[12px] text-[#F2C14E] mt-1">Snack tag — ye Snacks me log hoga, chahe time kuch bhi ho</div>
+        )}
         <div className="text-[13px] text-[#9A9AA5] mt-1">
           {food.defaultPortion} · {Math.round(food.calories)} kcal · P {food.protein}g · C {food.carbs}g · F {food.fat}g
         </div>

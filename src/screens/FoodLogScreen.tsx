@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, Menu, Plus, ScanLine, Search, SlidersHorizontal, Trash2, UtensilsCrossed } from 'lucide-react';
 import { useBite } from '../store';
 import { EmptyState } from '../components/ui';
+import { isSnackFood } from '../utils/snackTags';
 import { AddFoodSheet } from './AddFoodSheet';
 import type { MealCategory, MealItem } from '../types';
 
@@ -170,7 +171,12 @@ export function FoodLogScreen() {
                       />
                     )}
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14.5px] font-semibold text-white truncate">{m.name}</div>
+                      <div className="text-[14.5px] font-semibold text-white truncate">
+                        {m.name}
+                        {isSnackFood(m.name, m.category) && (
+                          <span className="ml-2 align-middle text-[11px] font-bold text-[#F2C14E] border border-[#F2C14E]/40 rounded-full px-2 py-0.5">Snack</span>
+                        )}
+                      </div>
                       <div className="text-[12px] text-[#5E5E6C] truncate">
                         {m.portion} · P {Math.round(m.protein)}g · C {Math.round(m.carbs)}g · F {Math.round(m.fat)}g
                       </div>
