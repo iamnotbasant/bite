@@ -52,3 +52,23 @@ export function loggingCategoryForFood(
 ): MealCategory {
   return isSnackFood(food.name, food.category) ? 'snack' : selected;
 }
+
+/**
+ * Auto meal from time (IST = device local time for the user).
+ * Used ONLY for non-snack foods. Snack foods never reach here — they
+ * are always Snacks, whatever the hour.
+ * Windows: 05:00-10:59 Breakfast, 11:00-16:59 Lunch, 17:00-22:59 Dinner,
+ * 23:00-04:59 late-night Snacks fallback (non-snack food at night).
+ */
+export function mealForTime(d: Date = new Date()): MealCategory {
+  const h = d.getHours();
+  if (h >= 5 && h < 11) return 'breakfast';
+  if (h >= 11 && h < 17) return 'lunch';
+  if (h >= 17 && h < 23) return 'dinner';
+  return 'snack';
+}
+
+/** Auto category on food selection: snack by food, else meal by time. */
+export function autoCategoryForFood(food: { name: string; category: MealCategory }): MealCategory {
+  return isSnackFood(food.name, food.category) ? 'snack' : mealForTime();
+}

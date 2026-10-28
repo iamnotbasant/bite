@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useRef, type ChangeEvent, type FormEvent } from 'react';
 import { supabase, isSupabaseConfigured } from '../utils/supabase';
+import { isSnackFood } from '../utils/snackTags';
 import {
   PHONE_USER_ID,
   STORAGE_BUCKET,
@@ -30,6 +31,7 @@ export function FoodsTab() {
   const [name, setName] = useState('');
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('lunch');
+  const [isSnack, setIsSnack] = useState(false);
   const [servingWeightGrams, setServingWeightGrams] = useState('100');
   const [defaultPortion, setDefaultPortion] = useState('1 serving (100g)');
   const [imageUrl, setImageUrl] = useState('');
@@ -134,6 +136,7 @@ export function FoodsTab() {
     setName('');
     setBrand('');
     setCategory('lunch');
+    setIsSnack(false);
     setServingWeightGrams('100');
     setDefaultPortion('1 serving (100g)');
     setImageUrl('');
@@ -174,6 +177,7 @@ export function FoodsTab() {
     setName(food.name || '');
     setBrand(food.brand || '');
     setCategory(food.category || 'lunch');
+    setIsSnack(isSnackFood(food.name || '', food.category || ''));
     setServingWeightGrams(food.serving_weight_grams?.toString() || '100');
     setDefaultPortion(food.default_portion || '1 serving (100g)');
     setImageUrl(food.image_url && food.image_url !== 'null' ? food.image_url : '');
@@ -333,7 +337,7 @@ export function FoodsTab() {
         user_id: PHONE_USER_ID,
         name: name.trim(),
         brand: brand.trim() || null,
-        category: category.trim() || 'lunch',
+        category: isSnack ? 'snack' : (category.trim() || 'lunch'),
         calories: round2(Number(calories)),
         protein: round2(Number(protein)),
         carbs: round2(Number(carbs)),
@@ -498,7 +502,12 @@ export function FoodsTab() {
                             </div>
                           )}
                           <div className="min-w-0">
-                            <div className="font-semibold text-zinc-200 truncate">{f.name}</div>
+                            <div className="font-semibold text-zinc-200 truncate">
+                              {f.name}
+                              {isSnackFood(f.name, f.category) && (
+                                <span className="ml-2 text-[10px] font-bold text-amber-300 border border-amber-500/50 rounded-full px-2 py-0.5">Snack</span>
+                              )}
+                            </div>
                             {f.brand && <div className="text-zinc-500 text-[11px] truncate">{f.brand}</div>}
                           </div>
                         </div>
@@ -605,6 +614,15 @@ export function FoodsTab() {
                   </div>
                 </div>
 
+                <div className="flex items-center gap-2 pb-1">
+                  <input
+                    type="checkbox"
+                    checked={isSnack}
+                    onChange={(e) => setIsSnack(e.target.checked)}
+                    className="accent-amber-400"
+                  />
+                  <label className="text-xs text-amber-300 font-semibold">Snack food — snack tag lagao (khane se pata chalega, time se nahi; log hote hi Snacks me jayega)</label>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
                     <label className="block text-xs text-zinc-400 mb-1">Category</label>

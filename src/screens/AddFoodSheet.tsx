@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Heart, Plus, ScanLine, Search, UtensilsCrossed, X, Zap } from 'lucide-react';
 import { useBite } from '../store';
 import { EmptyState, Field, inputCls, Segmented, Sheet } from '../components/ui';
-import { isSnackFood, loggingCategoryForFood } from '../utils/snackTags';
+import { autoCategoryForFood, isSnackFood, loggingCategoryForFood } from '../utils/snackTags';
 import type { FoodLibraryItem, MealCategory } from '../types';
 
 type Tab = 'scan' | 'search' | 'quick' | 'library';
@@ -208,7 +208,7 @@ export function AddFoodSheet({
               {results.map((f) => (
                 <div key={f.id} className="flex items-center gap-3 bg-[#1E1E26] rounded-[16px] p-3.5">
                   <FoodThumb url={f.imageUrl} />
-                  <button type="button" onClick={() => { setLogging(f); setQty('1'); }} className="flex-1 text-left min-w-0 cursor-pointer">
+                  <button type="button" onClick={() => { setLogging(f); setQty('1'); setCategory(autoCategoryForFood(f)); }} className="flex-1 text-left min-w-0 cursor-pointer">
                     <div className="text-[15px] font-semibold text-white truncate">
                       {f.name}
                       {isSnackFood(f.name, f.category) && (
@@ -229,7 +229,7 @@ export function AddFoodSheet({
                   </button>
                   <button
                     type="button"
-                    onClick={() => { setLogging(f); setQty('1'); }}
+                    onClick={() => { setLogging(f); setQty('1'); setCategory(autoCategoryForFood(f)); }}
                     className="w-9 h-9 rounded-full bg-[#4F8FF7] flex items-center justify-center cursor-pointer"
                     aria-label="Log"
                   >
@@ -255,6 +255,7 @@ export function AddFoodSheet({
             setCreating(false);
             setLogging(food);
             setQty('1');
+            setCategory(autoCategoryForFood(food));
           }}
           onCancel={() => setCreating(false)}
         />

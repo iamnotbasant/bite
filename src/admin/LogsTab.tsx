@@ -511,8 +511,12 @@ export function LogsTab() {
                         </div>
                       </td>
                       <td className="py-2.5 px-3 whitespace-nowrap">
-                        <span className="capitalize px-1.5 py-0.5 border border-zinc-800 bg-zinc-900 text-zinc-300 rounded text-[11px]">
-                          {log.category || 'lunch'}
+                        <span className={`capitalize px-1.5 py-0.5 border rounded text-[11px] ${
+                          (log.category || '').toLowerCase() === 'snack' || (log.category || '').toLowerCase() === 'snacks'
+                            ? 'border-amber-500/60 bg-amber-950/60 text-amber-300 font-bold'
+                            : 'border-zinc-800 bg-zinc-900 text-zinc-300'
+                        }`}>
+                          {(log.category || '').toLowerCase() === 'snacks' ? 'Snack' : (log.category || 'lunch')}
                         </span>
                       </td>
                       <td className="py-2.5 px-3 whitespace-nowrap text-zinc-300">
